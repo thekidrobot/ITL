@@ -49,10 +49,10 @@
 			</table>
 			</div>
 			<div class="search_box">
-				<form action="">
+				<form action="search.php" method="post">
 				<table border="0" cellspacing="0" cellpadding="0">
 				  <tr>
-					<td><input name="" type="text" value="Search" /></td>
+					<td><input name="search" type="text" value="Search" onfocus="this.value = this.value=='Search'?'':this.value;" onblur="this.value = this.value==''?'Search':this.value;"/></td>
 					<td class="search_btn"><input name="" type="submit" value="" /></td>
 				  </tr>
 				</table>

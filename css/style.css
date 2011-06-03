@@ -527,3 +527,18 @@ ul.side_nav li a:hover, ul.side_nav li.active a {
 	color:#0073B7;
 	}						 													
 	
+/*----------------------02_06_2011-----------------------*/
+
+.search_result_box {
+    padding:10px 0px;
+    width:auto;
+	border-bottom:1px dotted #ccc;
+	}
+	
+p.search_link a {
+	color:#333;
+	}
+	
+p.search_title a {
+	color:#3E6FBF;
+	}	

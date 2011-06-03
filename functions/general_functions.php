@@ -55,8 +55,6 @@ function escape_value($value)
   return $value;
 }
 
-
-
 //This function simply checks if the session variable 'valid' is set to 1.
 function isLoggedIn()
 {
@@ -77,21 +75,6 @@ function redirect($filename)
 {
 	if (!headers_sent()) header('Location: '.$filename);
 	else echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';
-}
-
-//PHP has function for this. Consider removal. 
-function get_month_no($month)
-{
- $month_arr=array(1=>"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-  foreach($month_arr as $key=>$value)
-  {
-    if($value==$month)
-	{
-	  if($value<=9)
-	    $key="0".$key;
-	  return $key;
-	}
-  }
 }
 
 ?>
