@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Komodo Project File - DO NOT EDIT -->
-<project id="bdcf307d-6562-4be0-8744-173105106b3f" kpf_version="4" name="itl.kpf">
-<livefolder id="bdcf307d-6562-4be0-8744-173105106b3f/admin/js/includes" idref="bdcf307d-6562-4be0-8744-173105106b3f/admin/js" name="includes" url="admin/includes">
-</livefolder>
-<preference-set idref="bdcf307d-6562-4be0-8744-173105106b3f">
+<project id="8afbed2c-aa05-4af8-9d7f-0b69fef0bfe7" kpf_version="4" name="itl.kpf">
+<preference-set idref="8afbed2c-aa05-4af8-9d7f-0b69fef0bfe7">
+  <string id="import_exclude_matches">*.*~;*.bak;*.tmp;CVS;.#*;*.pyo;*.pyc;.svn;_svn;*%*;tmp*.html;.DS_Store;.git</string>
+  <string id="import_include_matches"></string>
   <boolean id="import_live">1</boolean>
+  <boolean id="import_recursive">1</boolean>
+  <string id="import_type">useFolders</string>
 </preference-set>
 </project>

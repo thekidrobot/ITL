@@ -4,26 +4,23 @@ include('../functions/ps_pagination.php');
 $id=$_GET['id'];
 if($id=='') $id=1;
 
-//This should be changed
-
 if ($_POST['Edit']=='Edit')
 {
 	$postArray = &$_POST ;
 	
 	$title = $postArray['title'];
-	$content_plain = $postArray['content'];
-	$article_date=explode("/",$postArray['article_date']);
-	$newdate=$article_date[0]."-".get_month(ltrim($article_date[1],'0'))."-".$article_date[2];
+	$content = $postArray['content'];
+	$newdate = $postArray['article_date'];
 	$status = $postArray['status'];
 	$type = $postArray['type'];
+	
 	$query="UPDATE article SET
-			type_article ='$type',
-			title_article='$title',
-			brief_article='$content_plain',
-			content_article='$content_html',
-			status_article='$status',
-			date_article='$newdate'
-			WHERE id_article = $id";
+					type_article ='$type',
+					title_article='$title',
+					content_article='$content',
+					status_article='$status',
+					date_article='$newdate'
+					WHERE id = $id";
 	
 	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
 	$status= "Article Modified Sucessfully";
@@ -32,7 +29,7 @@ if ($_POST['Edit']=='Edit')
  ?>
 <body>
   <div id="wrapper">
-		<h1><a href="index.php"><span>International Financial Services</span></a></h1>
+		<h1><a href="index.php"><span><?=$website_name?></span></a></h1>
 		<?php include('includes/menu.php'); ?>
 		<div id="containerHolder">
 			<div id="container">

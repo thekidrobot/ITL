@@ -24,21 +24,4 @@
     <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.4.custom.css" rel="stylesheet" />	
     <script type="text/javascript" src="js/jquery-ui-1.8.4.custom.min.js"></script>
     <!--dialogue UI-->
-
-    <?php
-    // Custom scripts for different pages
-    if($curr_page == "index.php")
-    {
-        ?>
-        <script src="style/js/selecmenu.js"  language="javascript"></script>
-        <?php 
-    }
-    
-    if($curr_page == "parceltracking.php")
-    {
-        ?>
-        <script src="style/js/selecmenu_parcel.js"  language="javascript"></script>            
-        <?php
-    }
-    ?>
 </head>

@@ -1,10 +1,21 @@
 <div id="sidebar">
 	<ul class="sideNav">
-		<li><a href="../index.php">Home</a></li>
-		<li><a href="../about_us.php">About Us</a></li>
-		<li><a href="../services.php">Services</a></li>
-		<li><a href="../tracking.php">Tracking</a></li>
-		<li><a href="../quote.php">Request a quote</a></li>
-		<li><a href="../contact.php">Contact Us</a></li>
-	</ul>
+    <?php
+    if($curr_page == "index.php" or $curr_page == "add_article.php")
+    {
+      ?>
+      <li><a href="index.php">Article Mgmt.</a></li>
+      <li><a href="add_article.php">New Article</a></li>
+      <?php
+    }
+    if($curr_page == "review_article.php" or $curr_page == "modify_article.php")
+    {
+      ?>
+    	<li><a href="index.php">View all</a></li>
+    	<li><a href="modify_article.php?id=<?=$_GET['id'] ?>">Edit Current</a></li>
+     	<li><a href="index.php?id=<?=$_GET['id']?>">Delete Current</a></li>
+      <?php
+    }
+    ?>
+  </ul>
 </div>    
