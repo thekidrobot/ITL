@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	padding:0px;
+  	margin:0px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:12px;
+ }
+ 
+.form_wrapper{
+	margin:0 auto;
+	width:800px;
+}
+
+legend{
+	margin:10px;
+	font-weight:bold;
+	color:#666600;
+	border:dashed 1px #999900;
+	font-size:18px;
+}
+
+.error{
+	color:#FF0000;
+}
+
+.submit{
+	background-color:#000000;
+	color:#FFFFFF;
+}

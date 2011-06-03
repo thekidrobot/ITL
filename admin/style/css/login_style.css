@@ -1,0 +1,92 @@
+/* Last Modified 24-12-2009 by Menuka Walpitagamage */
+body {
+    width:640px; 
+    margin:0 auto;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top:100px;
+    font-size:16px;
+}
+
+#content {
+    padding:5px 0;
+    border: 1px solid #999999;
+    -moz-border-radius: 6px;
+    -webkit-border-radius:4px;
+}
+
+#innerholder {
+    margin:10px auto;
+    width:90%;
+}
+
+#innerholder h3 span{
+    background:url('../img/logo.jpg') center no-repeat;
+    height:150px;
+    display:block;
+}
+
+#innerholder .a {
+    padding:4px;
+}
+
+#innerholder .a, #innerholder .a .sb-inner{
+    padding:30px;
+    height:200px;
+}
+
+#loginbutton{
+    background:#ccc;
+    color:#000000;
+    cursor:pointer;
+    padding: 5px 10px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius:4px;
+    width:150px;
+    height:30px;
+    margin-top:10px;
+}
+
+input{
+    border: none;
+    font-size:14px;
+    width: 250px;
+    height:20px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius:4px;
+}
+
+.roundedfield{
+    -moz-border-radius: 6px;
+    -webkit-border-radius:4px;
+    border: solid 1px #999999;
+    height:20px;
+    width: 250px;
+    padding:4px;
+    margin-top:10px;
+    text-align:left;
+}
+
+.err_roundedfield{
+    -moz-border-radius: 6px;
+    -webkit-border-radius:4px;
+    border: solid 1px #EF6B6B;
+    height:20px;
+    width: 250px;
+    padding:4px;
+    margin-top:10px;
+    text-align:left;
+}
+
+#label {
+    margin-top:10px;
+    padding-bottom:5px;
+    text-align:left;
+}
+
+.error{
+    color:#FF0000;
+    padding:0 px 4px;
+    height:20px;
+    width: 250px;
+}

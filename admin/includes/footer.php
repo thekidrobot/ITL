@@ -1,0 +1,1 @@
+ <p id="footer">Copyright Technology10 LTD <?php echo date('Y')?></a></p>
