@@ -38,8 +38,7 @@ switch($event)
 <body>
  <div id="wrapper">
  <!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
- <h1><a href="#"><span>Belship</span></a></h1>
- <!-- You can name the links with lowercase, they will be transformed to uppercase by CSS, we prefered to name them with uppercase to have the same effect with disabled stylesheet -->
+ <h1><a href="index.php"><span>ITL</span></a></h1>
  <?php include("includes/menu.php"); ?>
  <!-- // #end mainNav -->
  <?php include('mgtusercontent.php');?>

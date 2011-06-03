@@ -21,8 +21,8 @@ body {
 }
 
 #innerholder h3 span{
-    background:url('../img/logo.jpg') center no-repeat;
-    height:150px;
+    background:url(../../style/img/logo.jpg) no-repeat;
+    height:80px;
     display:block;
 }
 
@@ -57,6 +57,7 @@ input{
 }
 
 .roundedfield{
+    /*background:  url(../../style/img/rounded.gif) no-repeat left top;*/
     -moz-border-radius: 6px;
     -webkit-border-radius:4px;
     border: solid 1px #999999;
@@ -68,6 +69,7 @@ input{
 }
 
 .err_roundedfield{
+    /*background:  url(../../style/img/err_rounded.gif) no-repeat left top;*/
     -moz-border-radius: 6px;
     -webkit-border-radius:4px;
     border: solid 1px #EF6B6B;

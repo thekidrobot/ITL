@@ -4,6 +4,8 @@ include('../functions/ps_pagination.php');
 $id=$_GET['id'];
 if($id=='') $id=1;
 
+//This should be changed
+
 if ($_POST['Edit']=='Edit')
 {
 	$postArray = &$_POST ;
@@ -30,7 +32,7 @@ if ($_POST['Edit']=='Edit')
  ?>
 <body>
   <div id="wrapper">
-		<h1><a href="#"><span>International Financial Services</span></a></h1>
+		<h1><a href="index.php"><span>International Financial Services</span></a></h1>
 		<?php include('includes/menu.php'); ?>
 		<div id="containerHolder">
 			<div id="container">
@@ -76,12 +78,8 @@ if ($_POST['Edit']=='Edit')
 						<tr>
 							<td>Date:</td>
 						<td>
-							<?php
-								$db_date=explode("-",$row['date_article']);
-								$adate=$db_date[0]."/".get_month_no($db_date[1])."/".$db_date[2];
-							?>
-							<input name="article_date" id="article_date" type="text" readonly="readonly" value=<?=$adate?> /> 
-							<img src="images/calendar.jpg" onclick="displayDatePicker('article_date', this, 'dmy', '/');" alt="calendar" class="calendar_icon" /> 
+							<input name="article_date" id="article_date" type="text" readonly="readonly" value="<?=date( 'Y/m/d H:i:s', strtotime('now') )?>" /> 
+							<img src="images/calendar.jpg" onclick="displayDatePicker('article_date', this, 'ymd', '/');" alt="calendar" class="calendar_icon" /> 
 						</td>
 					</tr>
 					<tr>

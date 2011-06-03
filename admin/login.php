@@ -1,13 +1,11 @@
 <?php
 session_start();
-
 include('../functions/conn.php');
 include('../functions/process_login.php'); 
-
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <title>Belship</title>
+  <title>ITL</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="style/css/login_style.css" rel="stylesheet" type="text/css">
   <style type="text/css">
@@ -18,7 +16,7 @@ include('../functions/process_login.php');
   <div id="content">
     <div id="innerholder">
       <h3><span></span><hr></h3>
-      <?php if(isset($error)&&$error!="")
+      <?php if($error)
       {?>
         <div>
         <div id="label"><b class="error">Username/Password error</b></div>
@@ -26,7 +24,7 @@ include('../functions/process_login.php');
         <?php
       }
       ?>
-       <form action="" method="post">
+       <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
         <div>
         <div id="label"><b>Username :</b></div>
         <div <?php if(isset($err_user)&& $err_user!="")
