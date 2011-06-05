@@ -10,6 +10,7 @@ if ($_POST['Edit']=='Edit')
 	
 	$title = $postArray['title'];
 	$content = $postArray['content'];
+	$content_plain = strip_tags($postArray['content']);
 	$newdate = $postArray['article_date'];
 	$status = $postArray['status'];
 	$type = $postArray['type'];
@@ -18,6 +19,7 @@ if ($_POST['Edit']=='Edit')
 					type_article ='$type',
 					title_article='$title',
 					content_article='$content',
+					content_plain='$content_plain',
 					status_article='$status',
 					date_article='$newdate'
 					WHERE id = $id";

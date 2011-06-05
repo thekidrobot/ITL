@@ -1,21 +1,19 @@
 <?php
 include('includes/header.php');
-include('../functions/general_functions.php');
 include('../functions/ps_pagination.php');
-
-//Cambiar el query
 
 if ($_POST['Add']=='Add')
 {
 	$postArray = &$_POST ;
 	$title = $postArray['title'];
-	$content_plain = $postArray['content_html'];
+	$content = $postArray['content_html'];
+	$content_plain = strip_tags($postArray['content_html']);
 	$newdate = $postArray['article_date'];
 	$status = $postArray['status'];
 	$type = $postArray['type'];
 	
-	$query="INSERT INTO article (date_article,type_article,title_article,content_article,status_article)
-					VALUES ('$newdate','$type','$title','$content_html','$status')";
+	$query="INSERT INTO article (date_article,type_article,title_article,content,content_plain,status_article)
+					VALUES ('$newdate','$type','$title','$content','$content_plain','$status')";
 	
 	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
 	$id =mysql_insert_id();

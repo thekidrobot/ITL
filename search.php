@@ -20,8 +20,8 @@
 					?>
 					<div class="search_result_box">
 						<p class="search_title"><a href="content.php?art_id=<?=$row['id']?>"><?= $row['title_article'] ?></a></p>
-						<p class="search_detail"><?=substr($row['content_article'],0,255) ?></p>	
-						<p class="search_link"><a href="content.php?art_id=<?=$row['id']?>">www.lorem.co.uk</a></p>
+						<p class="search_detail"><?=substr($row['content_plain'],0,255) ?>...</p>	
+						<p class="search_link"><a href="content.php?art_id=<?=$row['id']?>">http://<?=$_SERVER['HTTP_HOST']?>/content.php?art_id=<?=$row['id']?></a></p>
 					</div>
 					<?php
 				}
