@@ -23,6 +23,52 @@ function get_inner_article($id_article)
 	}
 }
 
+//Constructs the top menu
+function make_kids($row_id)
+{
+	$result = mysql_query("SELECT * FROM top_menu WHERE parent_id = $row_id");
+	if (mysql_num_rows($result) > 0)
+	{
+		?>
+		<ul>
+		<?php
+		while ($row = mysql_fetch_array($result))
+		{
+			if(trim($row['link_url']) != '')
+			{
+				?>
+				<li><a href="<?=$row['link_url']?>"><?=$row['name'] ?></a></li>
+				<?php
+			}
+			else
+			{
+				?>
+				<li><a href="content.php?art_id=<?=$row['link_id']?>"><?=$row['name'] ?></a></li>
+				<?php
+			}
+			//Welcome Mr. Cobb
+			make_kids($row['id']);
+		}
+		?>
+		</ul>
+		<?php
+	}
+}		
+
+//Get parent menu. Used for side menus and searches.
+function whoisyourdaddy($article_id)
+{
+	$result = mysql_query("SELECT parent_id FROM top_menu WHERE link_id = $article_id");
+	if (mysql_num_rows($result) > 0)
+	{
+		while ($row = mysql_fetch_array($result))
+		{
+			$_SESSION['parent'] = $row['parent_id'];
+		}
+	}
+	else $_SESSION['parent'] = 0;
+}
+
 /////////////USED BY BACK///////////////////////////
 
 //Display status active - inactive in a row

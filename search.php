@@ -1,4 +1,7 @@
-<?php include("includes/main/head.php"); ?>
+<?php
+	include("includes/main/head.php");
+	include("functions/ps_pagination.php"); 
+?>
 <body>	
 <!--container-->
 <div class="container">
@@ -14,7 +17,10 @@
 				<?php
 				$search = escape_value($_POST['search']);
 				$sql = "select * from article where content_article like '%$search%'";
-				$result = mysql_query($sql) or die(mysql_error());
+				
+				$pager = new PS_Pagination($conn,$sql,5,3);
+				$result = $pager->paginate();
+				
 				while($row=mysql_fetch_array($result))
 				{
 					?>
@@ -26,6 +32,7 @@
 					<?php
 				}
 				?>
+				<div align="center"><br/><?php echo $pager->renderFullNav();?></div>
 				</div>
 			<div class="core_btm"><img src="images/content_btm.jpg" alt="" /></div>
 		</div>

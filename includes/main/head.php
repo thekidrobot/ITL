@@ -5,8 +5,8 @@
 	if($_GET['art_id'])	$id_article = $_GET['art_id'];
 	else $id_article = 0;
 	
-	if($_GET['parent'])	$parent_menu = $_GET['parent'];
-	else $parent_menu = 0;
+	whoisyourdaddy($id_article);
+	$parent_menu = $_SESSION['parent'];
 	
 ?>
 
