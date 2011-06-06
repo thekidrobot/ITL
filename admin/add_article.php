@@ -6,16 +6,16 @@ if ($_POST['Add']=='Add')
 {
 	$postArray = &$_POST ;
 	$title = $postArray['title'];
-	$content = $postArray['content_html'];
-	$content_plain = strip_tags($postArray['content_html']);
+	$content = $postArray['content'];
+	$content_plain = strip_tags($postArray['content']);
 	$newdate = $postArray['article_date'];
 	$status = $postArray['status'];
 	$type = $postArray['type'];
 	
-	$query="INSERT INTO article (date_article,type_article,title_article,content,content_plain,status_article)
+	$query="INSERT INTO article (date_article,type_article,title_article,content_article,content_plain,status_article)
 					VALUES ('$newdate','$type','$title','$content','$content_plain','$status')";
 	
-	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
+	$r= mysql_query($query)or die("Error : ".mysql_error());
 	$id =mysql_insert_id();
 	$status= "Article Added Sucessfully";
 	redirect('index.php');
@@ -48,6 +48,7 @@ if ($_POST['Add']=='Add')
 							</td></tr>
 							<tr><td>Type:</label></td><td>
 							<select name="type">
+								<option value="A">Article</option>
 								<option value="E">Event</option>
 								<option value="N">News</option>
 							</select>

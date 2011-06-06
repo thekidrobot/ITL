@@ -69,6 +69,7 @@ if ($_POST['Edit']=='Edit')
 							<td>Type:</td>
 							<td>
 								<select name="type">
+									<option value="A" <?php if($row['type_article'] == "A") echo 'selected="selected"'?>>Article</option>
 									<option value="E" <?php if($row['type_article'] == "E") echo 'selected="selected"'?>>Event</option>
 									<option value="N" <?php if($row['type_article'] == "N") echo 'selected="selected"'?>>News</option>
 								</select>

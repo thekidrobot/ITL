@@ -11,7 +11,10 @@
 		<?php include("includes/inner/main_content.php"); ?>
 		<!--end Main Content-->
 		<!--Side Content-->
-		<?php include("includes/inner/side_content.php"); ?>
+    <?php
+      if ($parent_menu == 0) include("includes/main/side_content.php");
+      else include("includes/inner/side_content.php");
+    ?>
 		<!--End Side Content-->
 <div class="cleaner"></div>
 	</div>

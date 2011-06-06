@@ -4,12 +4,12 @@ var response = window.confirm("Are you sure you want to quit without saving?");
 if (response)
   {
     if(page=="user")
-	location.replace("admin_space.php");
-	else if(page=="article")
-	location.replace("gestion.php");
-	else
-	location.replace("documents.php");
-  }
+		location.replace("admin_space.php");
+		else if(page=="article")
+		location.replace("index.php");
+		else
+		location.replace("documents.php");
+	}
 }
 
 function ValidateForm(){
@@ -31,7 +31,6 @@ function ValidateForm(){
       alert('Invalid Email Address');
       return false;
    }
-
  }
 
  function doc_validation()
@@ -86,5 +85,4 @@ function CompareDates()
          alert("To date cannot be greater than from date");
          return false;
      }
-   
- } 
+ }

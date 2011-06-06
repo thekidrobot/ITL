@@ -54,9 +54,12 @@ include('../functions/ps_pagination.php');
 						<tr class="tr_<?php echo $row['id'] ?>">
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo "<b>".$counter."</b>"?></td>
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['title_article']?></td>  
-							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php 
+							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>>
+							<?php 
 								if($row['type_article']=="E") echo "Event";
-								else echo "News";?>
+								elseif($row['type_article']=="A") echo "Article";
+								elseif($row['type_article']=="N") echo "News";
+							?>
 							</td>  
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['date_article']?></td>  
 							<td class="action">
