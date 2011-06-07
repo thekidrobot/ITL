@@ -71,52 +71,53 @@ $counter = 0;
 //$todaysEvents = "";
 //run a selec statement to hi-light the days'
 ?>
-<h2>Events</h2>
-
-<div class="legend">&nbsp;</div><div class="legend_text">Holidays</div>
-<div class="legend_blue">&nbsp;</div><div class="legend_text">Events</div><br /><br />
-
-<table width="150" cellpadding="0" cellspacing="0">
-<tr>
-<td width="50" colspan="1">
-<input type="button" value=" < " onClick="goLastMonth(<?php echo $month . ", " . $year; ?>);return false;">
-</td>
-<td width="250" colspan="5">
-<span class="title"><?php echo $monthName . " " . $year; ?></span><br>
-</td>
-<td width="50" colspan="1" align="right">
-<input type="button" value=" > " onClick="goNextMonth(<?php echo $month . ", " . $year; ?>);return false;">
-</td>
-</tr>
-<tr>
-<th>S</td>
-<th>M</td>
-<th>T</td>
-<th>W</td>
-<th>T</td>
-<th>F</td>
-<th>S</td>
-</tr>
-<tr>
-<?php
-for($i = 1; $i < $numDays+1; $i++, $counter++){
-$dateToCompare = $month . '/' . $i . '/' . $year;
-$timeStamp = strtotime("$year-$month-$i");
-//echo $timeStamp . '<br/>';
-if($i == 1){
-// Workout when the first day of the month is
-$firstDay = date("w", $timeStamp);
-for($j = 0; $j < $firstDay; $j++, $counter++){
-echo "<td>&nbsp;</td>";
-}
-}
-if($counter % 7 == 0){
-?>
-</tr><tr>
-<?php
-}
-?>
-<!--right here--><td width="50" <?=hiLightEvt($month,$i,$year);?>>
+<div class="calendar_box">
+  <table border="0" cellpadding="0" cellspacing="0">
+    <tr class="month">
+    <td>
+      <input type="button" value=" < " onClick="goLastMonth(<?php echo $month . ", " . $year; ?>);return false;">
+    </td>
+    <td colspan="5" style="color:#000">
+      <?php echo $monthName . " " . $year; ?>
+    </td>
+    <td>
+      <input type="button" value=" > " onClick="goNextMonth(<?php echo $month . ", " . $year; ?>);return false;">
+    </td>
+  </tr>
+  <tr class="days">
+    <th>S</td>
+    <th>M</td>
+    <th>T</td>
+    <th>W</td>
+    <th>T</td>
+    <th>F</td>
+    <th>S</td>
+  </tr>
+  <tr>
+    <?php
+    for($i = 1; $i < $numDays+1; $i++, $counter++)
+    {
+      $dateToCompare = $month . '/' . $i . '/' . $year;
+      $timeStamp = strtotime("$year-$month-$i");
+      //echo $timeStamp . '<br/>';
+      if($i == 1)
+      {
+        // Workout when the first day of the month is
+        $firstDay = date("w", $timeStamp);
+        for($j = 0; $j < $firstDay; $j++, $counter++){
+        echo "<td>&nbsp;</td>";
+      }
+    }
+    if($counter % 7 == 0)
+    {
+      ?>
+      </tr>
+      <tr>
+      <?php
+    }
+    ?>
+    <!--right here-->
+    <td <?=hiLightEvt($month,$i,$year);?>>
 <?
 if($month<=9)
   $mm="0".$month;
@@ -137,7 +138,8 @@ $evedate=$dd."-".get_month($month)."-".$year;
 <?php
 }
 ?>
-</table><br />
+</table>
+</div>
 <? $hsql=mysql_query("SELECT holiday_date,title FROM holidays WHERE holiday_date LIKE '%".$year."-".$mm."%'ORDER BY holiday_date");
   $count_holidays=mysql_num_rows($hsql);
   if($count_holidays>0)

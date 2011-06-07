@@ -542,3 +542,111 @@ p.search_link a {
 p.search_title a {
 	color:#3E6FBF;
 	}	
+
+/*---------------------Calendar-----------------------*/
+
+.calendar_box {
+	background:#fff;
+	margin-top:15px;
+	border:1px solid #fff;
+	font-size:11px;
+	}
+
+.calendar_box table th {
+	padding:6px 0px;
+	color:#003351;
+	text-align:center;
+	border-right:1px solid #fff;
+	width:30px;
+	}
+	
+.calendar_box table tr.days {
+	background:#f1f1f1;
+	}
+	
+.calendar_box table td {
+	padding:6px 0px;
+	color:#fff;
+	text-align:center;
+	}
+	
+.calendar_box table tr.month td input {
+	width:20px;
+	font-size:11px;
+	height:20px;
+	padding:0px;
+	border:0px;
+	background:#ddd;
+	padding-bottom:3px;
+	font-weight:bold;
+	cursor:pointer;
+	}
+	
+.news_content.event_box	{
+	height:auto!important;
+	min-height:260px;
+	position:relative;
+	}
+	
+.news_listing {
+	padding:6px 8px;
+	background:#f1f1f1;
+	border-bottom:1px dotted #ddd;
+	}
+	
+.news_listing p {
+	line-height:16px;
+	}	
+	
+p.listing_date {
+	font-size:11px;
+	color:#999;
+	}
+	
+.news_listing h3 {
+	font-size:18px;
+	padding-bottom:3px;
+	color:#0066A6;
+	font-weight:normal;
+	}
+	
+p.news_read_more {
+	text-align:right;
+	font-size:11px;
+	}
+	
+p.news_read_more a {
+	color:#999;
+	}	
+	
+.news_filter {
+	position:absolute;
+	top:20px;
+	right:5px;
+	}
+	
+.news_filter td {
+	padding-right:10px;
+	}	
+	
+.news_filter select {
+	height:18px;
+	width:70px;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+	}	
+	
+.news_filter input {
+	width:30px;
+	height:18px;
+	background:#ccc;
+	border:1px solid #999;
+	font-size:11px;
+	font-weight:bold;
+	color:#666;
+	}
+
+.news_detail{
+	text-align:justify;
+	padding:5px 10px 10px 0px;
+}
