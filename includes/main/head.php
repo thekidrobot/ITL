@@ -28,6 +28,33 @@ body{
 	behavior:url(js/csshover.htc);
 }
 </style>
+
+<style type="text/css">
+.top_home_menu {
+    color: #919191;
+    float: right;
+    font-size: 14px;
+    height: 36px;
+    padding-top: 75px;
+}
+
+.top_home_menu ul li.last {
+    background: none repeat scroll 0 0 transparent;
+    padding-right: 0;
+}
+
+.logbox {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 2px solid #818181;
+    margin: 0 auto;
+    padding: 5px;
+    position: absolute;
+    right: 2px;
+    width: 565px;
+    z-index: 1;
+}
+</style>
+
 <script language="javascript" type="text/javascript" src="js/fixpng.js"></script>
 <![endif]-->
 </head>
