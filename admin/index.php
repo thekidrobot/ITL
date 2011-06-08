@@ -12,6 +12,9 @@ include('../functions/ps_pagination.php');
 		$status= "Article Deleted Sucessfully";
 		redirect('index.php');
 	}
+	
+	if($_POST['type']) $type = $_POST['type'];
+	else $type = "";
 ?>
 
 <body>
@@ -33,7 +36,16 @@ include('../functions/ps_pagination.php');
 					</ul>
 				</div>    
 				<div id="main">
-				<h2>All Articles</h2>	
+				<h2>All Articles</h2>
+				<form name="content" action="<?=$_SERVER['PHP_SELF'];?>" method="post" onchange="content.submit()" >
+					<select name="type">
+						<option value="">--Select a Type--</option>
+						<option value="A">Articles</option>
+						<option value="E">Events</option>
+						<option value="F">Factsheets</option>
+						<option value="N">News</option>						
+					</select>
+				</form>
 				<table cellpadding="0" cellspacing="0">
 					<tr align="center">
 						<td><b>No.</b></td>
@@ -44,7 +56,9 @@ include('../functions/ps_pagination.php');
 					</tr>     
 					<?php 
 					$query="select * from article";
-					$pager = new PS_Pagination($conn,$query,10,3);
+					if ($type != "") $query.=" where type_article = '$type'";
+					
+					$pager = new PS_Pagination($conn,$query,30,3);
 					$result = $pager->paginate();
 					$no_rows=mysql_num_rows($result);
 					$counter=($no_page*$page)-9;
@@ -59,6 +73,7 @@ include('../functions/ps_pagination.php');
 								if($row['type_article']=="E") echo "Event";
 								elseif($row['type_article']=="A") echo "Article";
 								elseif($row['type_article']=="N") echo "News";
+								elseif($row['type_article']=="F") echo "Factsheet";
 							?>
 							</td>  
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['date_article']?></td>  

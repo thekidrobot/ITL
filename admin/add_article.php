@@ -6,8 +6,8 @@ if ($_POST['Add']=='Add')
 {
 	$postArray = &$_POST ;
 	$title = $postArray['title'];
-	$content = $postArray['content'];
-	$content_plain = strip_tags($postArray['content']);
+	$content = escape_value($postArray['content']);
+	$content_plain = strip_tags($content);
 	$newdate = $postArray['article_date'];
 	$status = $postArray['status'];
 	$type = $postArray['type'];
@@ -36,29 +36,48 @@ if ($_POST['Add']=='Add')
 					<h2>Add an Article</h2>
 					<h3><?php echo isset($_GET['status']) ? $_GET['status'] : ''; ?></h3>
 					<form method="post" name='myform'>
+						<fieldset>
 						<table>
-							<tr><td>Title:</td><td><input type="text" class="text-long" name="title" value="" /></td></tr>
-							<tr><td>Content:</td><td><textarea name="content" id="ckeditor"></textarea>
-							<script type="text/javascript" src="js/ckedit_behavior.js"></script></td></tr>
-							<tr><td>Status:</label></td><td>
-							<select name="status">
-								<option value="1">Active</option>
-								<option value="0">Inactive</option>
-							</select>
-							</td></tr>
-							<tr><td>Type:</label></td><td>
-							<select name="type">
-								<option value="A">Article</option>
-								<option value="E">Event</option>
-								<option value="N">News</option>
-							</select>
-							</td></tr>
-							<tr><td>Date:</td><td>
-								<input name="article_date" id="article_date" type="text" readonly="readonly" value="<?=date( 'Y/m/d H:i:s', strtotime('now') )?>" /> 
-								<img src="images/calendar.jpg" onclick="displayDatePicker('article_date', this, 'ymd', '/');" alt="calendar" class="calendar_icon" /> 
-							</td></tr>
-							<tr><td colspan="2" align="center"><input type="submit" class="button-submit" value="Add" name="Add" id ="add"/></td></tr>
+							<tr>
+								<td colspan="2" align="center"><input type="submit" class="button-submit" value="Add" name="Add"></td>
+							</tr>
+							<tr>
+								<td>Title:</td>
+								<td><input type="text" class="text-long" name="title" value="" /></td>
+							</tr>
+							<tr>
+								<td>Type:</label></td>
+								<td>
+								<select name="type">
+									<option value="A">Article</option>
+									<option value="E">Event</option>
+									<option value="F">Factsheet</option>
+									<option value="N">News</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Content:</td><td><textarea name="content" id="ckeditor"></textarea>
+								<script type="text/javascript" src="js/ckedit_behavior.js"></script></td>
+							</tr>
+							<tr>
+								<td>Status:</label></td>
+								<td>
+								<select name="status">
+									<option value="1">Active</option>
+									<option value="0">Inactive</option>
+								</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Date:</td>
+								<td>
+									<input name="article_date" id="article_date" type="text" readonly="readonly" value="<?=date( 'Y/m/d H:i:s', strtotime('now') )?>" /> 
+									<img src="images/calendar.jpg" onclick="displayDatePicker('article_date', this, 'ymd', '/');" alt="calendar" class="calendar_icon" /> 
+								</td>
+							</tr>
             </table>
+						</fieldset>
 					</form>
         </div>
         <!-- // #main -->

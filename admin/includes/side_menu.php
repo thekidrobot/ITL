@@ -8,7 +8,15 @@
       <li><a href="add_article.php">New Article</a></li>
       <?php
     }
-    if($curr_page == "review_article.php" or $curr_page == "modify_article.php")
+    if($curr_page == "modify_article.php")
+    {
+      ?>
+    	<li><a href="index.php">View all</a></li>
+    	<li><a href="review_article.php?id=<?=$_GET['id'] ?>">View Current</a></li>
+     	<li><a href="index.php?id=<?=$_GET['id']?>">Delete Current</a></li>
+      <?php
+    }
+    if($curr_page == "review_article.php")
     {
       ?>
     	<li><a href="index.php">View all</a></li>

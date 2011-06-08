@@ -253,7 +253,7 @@ h3 {
 	padding: 5px 7px;
 	width: 264px;
 	float: left;
-	margin: 0 10px 0 0;
+	margin: 10px 10px 0 0;
 }
 
 #main fieldset .text-medium {
@@ -291,19 +291,21 @@ h3 {
 	padding: 5px 7px;
 	width: 600px;
 	float: left;
-	margin: 0 10px 0 0;
+	margin: 5px 10px 5px 0;
 	height: 300px;
 	overflow: auto;
 }
 
 .button-submit {
-	font: 11px Arial, Helvetica, sans-serif;
-	color: #646464;
+	font: 14px Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color: #272727;
 	width: 94px;
 	height: 29px;
 	cursor: pointer;
 	border: none;
 	background: url(../img/button-submit.gif) no-repeat left top;
+	margin:5px 0px 5px 0px;
 }
 
 /* Footer ---------------------------------------- */
