@@ -650,3 +650,83 @@ p.news_read_more a {
 	text-align:justify;
 	padding:5px 10px 10px 0px;
 }
+
+/*----------------------07_06_2011-----------------------*/
+
+.logbox {
+	position:absolute;
+	left:530px;
+	top:35px;
+	z-index:1000;
+	background:#f1f1f1;
+	padding:5px;
+	width:300px;
+	border:1px solid #ddd;
+	}
+
+.logbox h2 {
+	background:none;
+	font-size:18px;
+	font-weight:normal;
+	padding-bottom:10px;
+	color:#003351;
+	}
+	
+.logbox table {
+	position:relative;
+	}	
+	
+.logbox table th {
+	padding-bottom:10px;
+	padding-right:25px;
+	font-size:12px;
+	font-weight:normal;
+	}
+	
+.logbox table td {
+	padding-bottom:10px;
+	}		
+
+.logbox table td input {
+	width:210px;
+	height:22px;
+	border:1px solid #ddd;
+	font-size:11px;
+	}
+	
+.logbox table td.send_btn {
+	padding-top:5px;
+	text-align:right;
+	border-bottom:1px dotted #ccc;
+	}	
+	
+.logbox table td.send_btn input {
+	width:100px;
+	background:#ddd;
+	border:1px solid #ccc;
+	text-transform:uppercase;
+	color:#666;
+	cursor:pointer;
+	}	
+
+.logbox table td.pass_forgot {
+	font-size:11px;
+	padding-top:8px;
+	padding-bottom:0px;
+	}
+	
+.logbox table td.pass_forgot a {
+	text-decoration:underline;
+	}
+	
+.close_box {
+	position:relative;
+	font-size:11px;
+	}
+	
+.close_box a {
+	position:absolute;
+	top:0px;
+	right:0px;
+	}
+	
