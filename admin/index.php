@@ -19,7 +19,6 @@ include('../functions/ps_pagination.php');
 
 <body>
  <div id="wrapper">
- <!-- h1 tag stays for the logo, you can use the a tag for linking the index page -->
  <h1><a href="index.php"><span><?=$website_name?></span></a></h1>
  <?php include("includes/menu.php"); ?>
  <!-- // #end mainNav -->
