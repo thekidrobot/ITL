@@ -181,4 +181,23 @@ function check_event($eMonth,$eDay,$eYear)
 
 ///////End functions used by the calendar in event search.////////
 
+//Sends a mail on document creation
+//Commented on tests
+
+function sendemail($client,$fname,$sname,$title,$path)
+{
+	$msg="<p>Hello ".$fname." ".$surname.",<br />
+				<br />
+				Your document titled ".$title." is uploaded. To view, please click <a href='".$path."'>here</a> 
+				<br />
+				-- <br />
+				Thanks,<br />
+				The IFS Team</p>";
+	$to = $client;
+  $subject = 'IFS document uploaded';
+	$headers = 'Content-type: text/html; charset=iso-8859-1'."\r\n";
+	$headers .= 'From: IFS Admin' . "\r\n";
+	//mail( $to, $subject, $msg, $headers );	
+}
+
 ?>

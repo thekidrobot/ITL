@@ -52,7 +52,7 @@ if (isset($_GET['id']))
 						$no_rows=mysql_num_rows($result);
 						if($result)
 						{
-						  $counter=($no_page*$page)-9;
+						  $counter=1;
 							while($row=mysql_fetch_object($result))
 							{
 								?>

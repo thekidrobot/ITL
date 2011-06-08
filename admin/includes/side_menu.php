@@ -24,7 +24,7 @@
      	<li><a href="index.php?id=<?=$_GET['id']?>">Delete Current</a></li>
       <?php
     }
-    if($curr_page == "documents.php" or $curr_page == "add_document.php")
+    if($curr_page == "documents.php" or $curr_page == "add_document.php" or $curr_page == "view_document.php")
     {
       ?>
       <li><a href="documents.php">Docs Mgmt.</a></li>
