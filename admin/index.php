@@ -13,20 +13,17 @@ include('../functions/ps_pagination.php');
 		redirect('index.php');
 	}
 	
-	if($_POST['type']) $type = $_POST['type'];
-	else $type = "";
+	if($_POST['type']) $content_type = $_POST['type'];
+	else $content_type = "";
+	
+	$user_type = $_SESSION['type'];
+
 ?>
 
 <body>
  <div id="wrapper">
- <h1><a href="index.php"><span><?=$website_name?></span></a></h1>
- <?php include("includes/menu.php"); ?>
- <!-- // #end mainNav -->
-	<?php
-		$no_page=10;
-		if($_REQUEST['page']=="") $page=1;
-		else $page=$_REQUEST['page'];
-	?>
+	<h1><a href="index.php"><span><?=$website_name?></span></a></h1>
+	<?php include("includes/menu.php"); ?>
 		<div id="containerHolder">
 			<div id="container">
 				<div id="sidebar">
@@ -36,10 +33,17 @@ include('../functions/ps_pagination.php');
 				</div>    
 				<div id="main">
 				<h2>All Articles</h2>
-				<form name="content" action="<?=$_SERVER['PHP_SELF'];?>" method="post" onchange="content.submit()" >
+				<form name="content" action="<?=$_SERVER['PHP_SELF']?>" method="post" onchange="content.submit()" >
 					<select name="type">
 						<option value="">--Select a Type--</option>
-						<option value="A">Articles</option>
+						<?php
+						if ($user_type == 1)
+						{
+							?>
+							<option value="A">Articles</option>
+							<?
+						}
+						?>
 						<option value="E">Events</option>
 						<option value="F">Factsheets</option>
 						<option value="N">News</option>						
@@ -55,25 +59,33 @@ include('../functions/ps_pagination.php');
 					</tr>     
 					<?php 
 					$query="select * from article";
-					if ($type != "") $query.=" where type_article = '$type'";
+					if ($user_type != 1)
+					{
+						$query.=" where type_article <> 'A'";
+						if ($content_type != "") $query.=" and type_article = '$content_type'";
+					}
+					else
+					{
+						if ($content_type != "") $query.=" where type_article = '$content_type'";	
+					}
 					
 					$pager = new PS_Pagination($conn,$query,30,3);
 					$result = $pager->paginate();
-					$no_rows=mysql_num_rows($result);
-					$counter=($no_page*$page)-9;
-					while($row=mysql_fetch_array($result))
+					$no_rows = mysql_num_rows($result);
+					$counter = 1;
+					while($row = mysql_fetch_array($result))
 					{
 						?>
 						<tr class="tr_<?php echo $row['id'] ?>">
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo "<b>".$counter."</b>"?></td>
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['title_article']?></td>  
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>>
-							<?php 
-								if($row['type_article']=="E") echo "Event";
-								elseif($row['type_article']=="A") echo "Article";
-								elseif($row['type_article']=="N") echo "News";
-								elseif($row['type_article']=="F") echo "Factsheet";
-							?>
+								<?php 
+									if($row['type_article']=="E") echo "Event";
+									elseif($row['type_article']=="A") echo "Article";
+									elseif($row['type_article']=="N") echo "News";
+									elseif($row['type_article']=="F") echo "Factsheet";
+								?>
 							</td>  
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['date_article']?></td>  
 							<td class="action">

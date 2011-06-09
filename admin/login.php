@@ -25,40 +25,64 @@ include('../functions/process_login.php');
       }
       ?>
        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-        <div>
-        <div id="label"><b>Username :</b></div>
-        <div <?php if(isset($err_user)&& $err_user!="")
-        {?>
-          class="err_roundedfield"
-          <?php
-        }
-        else
-        {
-          ?>
-          class="roundedfield"
-          <?php
-        }
-        ?>>  
-        <input type="text" name="username" />
-        </div>
+        <table>
+					<tr>
+						<td>
+							<div id="label"><b>Username :</b></div>
+						</td>
+						<td>
+							<div <?php if(isset($err_user)&& $err_user!="")
+							{?>
+								class="err_roundedfield"
+								<?php
+							}
+							else
+							{
+								?>
+								class="roundedfield"
+								<?php
+							}
+							?>>  
+							<input type="text" name="username" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div id="label"><b>Password :</b></div>
+						</td>
+						<td>
+							<div <?php if(isset($err_passwrd)&& $err_passwrd!="")
+							{?>
+								class="err_roundedfield"
+								<?php
+							}
+							else
+							{
+								?>
+								class="roundedfield"
+								<?php
+							}
+							?>> 
+							<input type="password" name="password" /></div>    
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td align="center">
+							<input type="submit" value="Login" id="loginbutton" name="loginbutton" />
+						</td>
+					</tr>
+				</table>
+				<div>
+        
+
       </div>
     <div>
-    <div id="label"><b>Password :</b></div>
-    <div <?php if(isset($err_passwrd)&& $err_passwrd!="")
-		{?>
-			class="err_roundedfield"
-      <?php
-		}
-		else
-    {
-      ?>
-			class="roundedfield"
-      <?php
-    }
-		?> > 
-    <input type="password" name="password" /></div>    
-    </div>
-    <input type="submit" value="Login" id="loginbutton" name="loginbutton"/>
+
+    
+
 		</form>
   </div>
 </div>

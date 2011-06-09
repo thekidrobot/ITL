@@ -31,6 +31,12 @@
       <li><a href="add_document.php">New Doc.</a></li>
       <?php
     }
+    if($curr_page == "users.php")
+    {
+      ?>
+      <li><a href="users.php">User Mgmt.</a></li>
+      <?php
+    }    
     ?>
   </ul>
 </div>    

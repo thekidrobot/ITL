@@ -5,12 +5,12 @@ include('../functions/ps_pagination.php');
 if ($_POST['Add']=='Add')
 {
 	$postArray = &$_POST ;
-	$title = $postArray['title'];
+	$title = escape_value($postArray['title']);
 	$content = escape_value($postArray['content']);
-	$content_plain = strip_tags($content);
-	$newdate = $postArray['article_date'];
-	$status = $postArray['status'];
-	$type = $postArray['type'];
+	$content_plain = strip_tags(escape_value($content));
+	$newdate = escape_value($postArray['article_date']);
+	$status = escape_value($postArray['status']);
+	$type = escape_value($postArray['type']);
 	
 	$query="INSERT INTO article (date_article,type_article,title_article,content_article,content_plain,status_article)
 					VALUES ('$newdate','$type','$title','$content','$content_plain','$status')";
@@ -49,7 +49,14 @@ if ($_POST['Add']=='Add')
 								<td>Type:</label></td>
 								<td>
 								<select name="type">
-									<option value="A">Article</option>
+									<?php 
+									if ($user_type == 1)
+									{
+										?>
+										<option value="A">Article</option>
+										<?php
+									}
+									?>
 									<option value="E">Event</option>
 									<option value="F">Factsheet</option>
 									<option value="N">News</option>

@@ -1,6 +1,6 @@
 /* Last Modified 24-12-2009 by Menuka Walpitagamage */
 body {
-    width:640px; 
+    width:440px; 
     margin:0 auto;
     text-align:center;
     font-family: Arial, Helvetica, sans-serif;
@@ -21,8 +21,8 @@ body {
 }
 
 #innerholder h3 span{
-    background:url(../../style/img/logo.jpg) no-repeat;
-    height:120px;
+    background:url(../../style/img/logo.jpg) center no-repeat;
+    height:140px;
     display:block;
 }
 
@@ -88,7 +88,7 @@ input{
 
 .error{
     color:#FF0000;
-    padding:0 px 4px;
+    padding:0px 4px;
     height:20px;
     width: 250px;
 }

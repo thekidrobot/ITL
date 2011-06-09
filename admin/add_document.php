@@ -6,16 +6,14 @@ include('../functions/ps_pagination.php');
   $res=mysql_fetch_object($query);
   if($_POST['Add']!='')
   {
-    //SANITIZE ENTRIES
-    
     $msg="";
     $postArray = &$_POST ;
-    $client = $postArray['client'];
-    $title = $postArray['title'];
-    $description = $postArray['description'];
-    $fromDate = $postArray['fromDate'];
-    $toDate = $postArray['toDate'];
-    $created_by = $postArray['created_by'];
+    $client = escape_value($postArray['client']);
+    $title = escape_value($postArray['title']);
+    $description = escape_value($postArray['description']);
+    $fromDate = escape_value($postArray['fromDate']);
+    $toDate = escape_value($postArray['toDate']);
+    $created_by = escape_value($postArray['created_by']);
     if($_FILES["file"]["name"]!="")
     {
       if ($_FILES["file"]["error"] > 0)
