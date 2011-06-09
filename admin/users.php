@@ -1,166 +1,121 @@
 <?php 
-include('includes/header.php');
-include('../functions/ps_pagination.php');
-
-if($_POST['add']!="")
-$event='add';
-switch($event)
+include('header.php');
+include('includes/ps_pagination.php');
+$no_page=10;
+if($_REQUEST['page']=="")
+ $page=1;
+else
+ $page=$_REQUEST['page']; 
+if (isset($_GET['id']))
 {
- case'add':
- {
-  //insert data into DB
-  foreach($_POST as $key=>$value)
-  {
-   $$key=$value;
-  }
- 
-  $query="insert into user
-  (f_name,l_name,email,username,pwd,address,status,jobtitle)
-  values('$f_name','$l_name','$email','$username','$password','$address','$status','$jobtitle')";
-  $r= mysql_query($query)or die(mysql_error()."cannot  enter data");
-  $last_id=mysql_insert_id();
-  break;
- }
- case'delete':
- {
-  break;
- }
+	$id = $_GET['id'];
+	$login_query=mysql_query("SELECT login FROM user WHERE id=$id");
+	$loginname=mysql_fetch_object($login_query);
+	if(is_dir("documents/".$loginname->login))
+	  deleteDirectory("documents/".$loginname->login);
+	$query="delete from user where id = $id";
+	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
+	$status= "User Deleted Sucessfully";
+	redirect('admin_space.php');
 }
 
 ?>
-
-</div>
-
 <body>
 	<div id="wrapper">
-		<h1><a href="#"><span><?=$website_name?></span></a></h1>
-		<?php include('includes/menu.php'); ?>
-     <!-- // #end mainNav -->
-      <div id="containerHolder">
-  <div id="container">
-   <div id="sidebar"><?php include('includes/side_menu.php'); ?></div>    
-   <h2 class="status"><?php echo $status ?></h2>
-   <h2><a href="#">User Management</a> &raquo; <a href="#" class="active" id="menu" >Click to add new user</a></h2>
-   <div id="main">
-    <h3>Listing section</h3>
-    <div id="dialog-confirm" title="Delete user?" style="display:none; height:56px !important;">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>Are you sure?</p>
-   </div>
-   <table cellpadding="0" cellspacing="0">
-   <tr>
-    <td><b> No.</b></td>
-    <td><b> Name</b></td>
-		<td><b>Jobtitle</b></td>
-		<td align="center"><b> Actions</b></td>
-   </tr>     
-   <?php 
-    $query="select * from user";
-		$pager = new PS_Pagination($conn,$query,10,3);
-		$result = $pager->paginate();
-		$counter=0;
-		while($row=mysql_fetch_array($result))
-		{
-     ?>
-		 <tr  class="tr_<?php echo $row['staff_id'] ?>">
-     <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo "<b>".$counter."</b>"?></td>
-     <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['f_name']." ".$row['l_name']?></td>
-     <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['jobtitle'] ?></td>
-     <td class="action">
-     <!-- dialogue script goes here-->
-     <script type="text/javascript">
-      // increase the default animation speed to exaggerate the effect
-      $.fx.speeds._default = 800;
-      $(function()
-      {
-        $('#dialog_<?php echo $row['staff_id']?>').dialog({
-          autoOpen: false,
-          show: 'blind',
-          hide: 'explode'
-        });
-     
-        $('#view_<?php echo $row['staff_id']?>').click(function()
-        {
-          $('#dialog_<?php echo $row['staff_id']?>').dialog('open');
-          return false;
-        });
-      });
-     </script>
-     <!--end script goes here-->
-     
-     <?php echo display_status($row['status']) ?>
-     <a href="#" class="view" id="view_<?php echo $row['staff_id']?>">View</a>
-     <a href="user_edit.php?id=<?php echo $row['staff_id']  ?>" class="edit">Edit</a>
-     <a href="<?php echo $row['staff_id'];?>" class="delete">Delete</a>
-     <!--dialogue content-->
-     <div id="dialog_<?php echo $row['staff_id']?>" title="Staff Details">
-      <p><b>First Name     :      </b><?php echo $row['f_name'] ?></p>
-      <p><b>Last Name      :      </b><?php echo $row['l_name'] ?></p>    
-      <p><b>Email          :      </b><?php echo $row['email']  ?></p>       
-      <p><b>Jobtitle       :      </b><?php echo $row['jobtitle'] ?></p>         
-      <p><b>Status         :      </b><?php echo display_status($row['status']) ?></p>         
-      <p><b>Username       :      </b><?php echo $row['username'] ?></p>   
-      <p><b>Password       :      </b><?php echo  $row['pwd']?></p>   
-     </div> 
-     <!--end dialogue content-->
-     </td>
-    </tr>                        
-    <?php
-		$counter++;  
-    }//while            
-    ?>
-   <tr >
-     <td colspan="4"> <?php echo $pager->renderFullNav();?> </td>
-   </tr> 
-  </table>
-		<br/>
-    <form action="" class="jNice" name="add_user" method="post">
-			<div class="add_user">
-				<h3>ADD NEW USER</h3>
-				<fieldset>
-					<p><label>First Name:</label><input type="text" class="text-long" name="f_name" /></p>
-					<p><label>Last Name:</label><input type="text" class="text-long" name="l_name"/></p>
-					<p><label>Email:</label><input type="text" class="text-long" name="email" /></p>
-					<p><label>UserName:</label><input type="text" class="text-long" name="username" /></p>
-					<p><label>Password:</label><input type="text" class="text-long" name="password" /></p>
-					<p><label>Address:</label><textarea name="address" rows="2" cols="10"></textarea></p>
-					<p><label>Job title:</label><input type="text" class="text-medium"  name="jobtitle"/></p>
-					<p><label>Status:</label>
-					<select name="status">
-						<option value="1">Active</option>
-						<option value="0">Inactive</option>
-					</select>
-					</p>
-					<p><label>User Right:</label>
-          <select name="rights">
-						<?php
-						$query="select * from user_type order by id desc";
-						$r= mysql_query($query)or die(mysql_error());
-						if(mysql_affected_rows()>0)
-						{
-							while($result=mysql_fetch_array($r))
-							{
+    <h1><a href="gestion.php"><span>International Financial Services</span></a></h1>
+	<?php include('menu.php'); ?>
+	<div id="containerHolder">
+		<div id="container">
+			<div id="sidebar">
+					<?php include('side_menu.php'); ?>
+            </div>    
+			<?//check if admin or superadmin
+					$type_query=mysql_query("SELECT type FROM user WHERE login='".$_SESSION['member']."'");
+					$type_user=mysql_fetch_object($type_query);
+			?>
+            <div id="main">
+			<h2>All Users</h2>	
+			<table cellpadding="0" cellspacing="0">
+            <tr>
+                <td><b>No.</b></td>
+					<td><b>Name</b></td>
+					<td><b>Email Address</b></td>
+					<?if($type_user->type==0)
+					  echo "<td><b>User Type</b></td>";
+					?>
+                    <td align="right"><b> Actions</b></td>
+                    </tr>     
+					<?php 
+					$cols=4;
+					//get data and list them
+					if($type_user->type==0)
+					{
+					 $cols=5;
+					$query="select * from user";
+					}
+					elseif($type_user->type==1)
+					 $query="SELECT * FROM user WHERE type=2";
+				    $pager = new PS_Pagination($conn,$query,10,3);
+				    $result = $pager->paginate();
+					$no_rows=mysql_num_rows($result);
+					   $counter=($no_page*$page)-9;
+					 
+					 if($result)
+					{
+					   while($row=mysql_fetch_object($result))
+					   {
+					    ?>
+							<tr  class="tr_<?php echo $row->id ?>">
+                                <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo "<b>".$counter."</b>"?></td>
+                                <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row->other_name." ".$row->surname?></td>  
+								<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row->email?></td>  
+								<?
+								if($type_user->type==0)
+								{
+								echo "<td ";
+								 if ($counter%2!=0) 
+								 echo "class='odd' ";
+                                 echo " >".get_type($row->type)."</td>";  
+								}
 								?>
-                <option value="<?php echo $result['login_id'] ?>"><?php echo $result['title'] ?></option>
-                <?php 
-							}//while
-						}//if
-						?>
-					</select>
-					</p>
-					<input type="submit" value="Add"  name="add" class="add" id="add"/>
-        </fieldset>
-        <h3 class='hide'>HIDE</h3>
-      </div>
-    </form>
-  </div>
-  <!-- // #main -->
-  <div class="clear"></div>
-</div>
-<!-- // #container -->
-</div>	
-<!-- // #containerHolder -->
- <?php include('includes/footer.php');?> 
- <!-- // #wrapper -->
+								<td class="action">
+								<?php echo display_status($row->status) ?>
+								<a href="view_user.php?id=<?php echo $row->id?>" class="view" id="view_<?php echo $row->id?>">View</a>
+								<a href="add_user.php?id=<?php echo $row->id  ?>" class="edit">Edit</a>
+								<?if($row->type!=0)
+								{?>
+								<a href="admin_space.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to delete?')" class="delete" id="delete">Delete</a>
+								<?}?>
+								</td>
+                            </tr>                        
+							<?php
+						    $counter++;  
+						}//while            
+				    }//if
+					
+					?>
+                    <tr >
+					<?php
+					if($no_rows>=10 || ($_REQUEST['page']!=1 && isset($_REQUEST['page']))){?>
+						<td colspan="<?=$cols?>" align="center"> <?php echo $pager->renderFullNav();?> </td>
+					<?php }// if 
+					elseif($counter == 1){
+					?>
+						<td colspan="<?=$cols?>" align="center">No clients yet</td>
+					<?php
+					}//else  ?>
+		       </tr> 
+			</table>
+		</div>
+		<!-- // #main -->
+		<div class="clear"></div>
+    </div>
+    <!-- // #container -->
+	</div>	
+	
+    <!-- // #containerHolder -->       
+    <?php include('footer.php');?> 
+    <!-- // #wrapper -->
+	</div>
 </body>
 </html>
-
