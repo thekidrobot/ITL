@@ -25,60 +25,68 @@ include('../functions/ps_pagination.php');
       else
       {
         //get folder name of the client
-       $login_query=mysql_query("SELECT login,type FROM user WHERE id='".$client."'");
-       $loginname=mysql_fetch_object($login_query);
-       //check if dir with loginname exists else create one
-        if(!is_dir("documents/".$loginname->login)) mkdir("documents/".$loginname->login,0777);
-        if (file_exists("documents/".$loginname->login."/".$_FILES["file"]["name"]))
+        $login_query=mysql_query("SELECT login,type FROM user WHERE id='".$client."'");
+        $loginname=mysql_fetch_object($login_query);
+        $documents_path = "documents/".$loginname->login;
+         
+        //check if dir with loginname exists else create one
+        if(!is_dir($documents_path)) mkdir($documents_path,0777);
+        if (file_exists($documents_path."/".$_FILES["file"]["name"]))
         {
           $msg=$_FILES["file"]["name"] . " already exists. ";
         }
         else
         {
-          move_uploaded_file($_FILES["file"]["tmp_name"],"documents/".$loginname->login."/".$_FILES["file"]["name"]);
+          if (move_uploaded_file($_FILES["file"]["tmp_name"],$documents_path."/".$_FILES["file"]["name"]))
+          {
+            if($_REQUEST['id']=="")
+            {
+              if($msg=="")
+              {
+                $query="INSERT INTO document(user_id,path,title,description,date,datevalidfrom,datevalidto,createdby)
+                        VALUES ('$client','documents/".$loginname->login."/".$_FILES["file"]["name"]."','$title','$description',now(),'$fromDate','$toDate','$created_by')";
+                $r= mysql_query($query);
+                $id =mysql_insert_id();
+                //insert into log file
+                $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','$id',now(),'document added')");
+                $status= "Document Added Sucessfully";
+                //send email to the client
+                //get email address
+                $email_query=mysql_query("SELECT email,other_name,surname FROM user WHERE id='$client'");
+                $email_res=mysql_fetch_object($email_query);
+                $path="http://www.t10world.com/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
+                sendemail($email_res->email,$email_res->other_name,$email_res->surname,$title,$path);
+                if($user_type->type==2)
+                  redirect('client_space.php');
+                else  
+                  redirect('documents.php');
+              }
+            }
+            else
+            {
+              if($msg=="")
+              {
+                $query="UPDATE document SET user_id='$client',title='$title',description='$description',datevalidfrom='$fromDate',datevalidto='$toDate',createdby='$created_by'";
+                if($_FILES["file"]["name"]!="")
+                $query.=",path='documents/".$loginname->login."/".$_FILES["file"]["name"]."'";
+                $query.=" WHERE id=".$_REQUEST['id'];
+          
+                mysql_query($query);
+                //update log table
+                $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','".$_REQUEST['id']."',now(),'document updated')");
+                if($user_type->type==2)
+                  redirect('client_space.php');
+                else  
+                  redirect('documents.php');
+              }
+            }
+          }
+          else
+          {
+            $msg="Error uploading file: " . $_FILES["file"]["error"] . "<br />";
+          }
         }
       }   
-    }
-    if($_REQUEST['id']=="")
-    {
-      if($msg=="")
-      {
-        $query="INSERT INTO document(user_id,path,title,description,date,datevalidfrom,datevalidto,createdby)
-                VALUES ('$client','documents/".$loginname->login."/".$_FILES["file"]["name"]."','$title','$description',now(),'$fromDate','$toDate','$created_by')";
-        $r= mysql_query($query);
-        $id =mysql_insert_id();
-        //insert into log file
-        $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','$id',now(),'document added')");
-        $status= "Document Added Sucessfully";
-        //send email to the client
-        //get email address
-        $email_query=mysql_query("SELECT email,other_name,surname FROM user WHERE id='$client'");
-        $email_res=mysql_fetch_object($email_query);
-        $path="http://www.t10world.com/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
-        sendemail($email_res->email,$email_res->other_name,$email_res->surname,$title,$path);
-        if($user_type->type==2)
-          redirect('client_space.php');
-        else  
-          redirect('documents.php');
-      }
-    }
-    else
-    {
-      if($msg=="")
-      {
-        $query="UPDATE document SET user_id='$client',title='$title',description='$description',datevalidfrom='$fromDate',datevalidto='$toDate',createdby='$created_by'";
-        if($_FILES["file"]["name"]!="")
-        $query.=",path='documents/".$loginname->login."/".$_FILES["file"]["name"]."'";
-        $query.=" WHERE id=".$_REQUEST['id'];
-	
-        mysql_query($query);
-        //update log table
-        $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','".$_REQUEST['id']."',now(),'document updated')");
-        if($user_type->type==2)
-          redirect('client_space.php');
-        else  
-          redirect('documents.php');
-      }
     }
   }	
 ?>
