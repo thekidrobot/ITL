@@ -54,12 +54,10 @@ include('../functions/ps_pagination.php');
                 //get email address
                 $email_query=mysql_query("SELECT email,other_name,surname FROM user WHERE id='$client'");
                 $email_res=mysql_fetch_object($email_query);
-                $path="http://www.t10world.com/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
+                
+                $path=$_SERVER['HTTP_HOST']."/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
                 sendemail($email_res->email,$email_res->other_name,$email_res->surname,$title,$path);
-                if($user_type->type==2)
-                  redirect('client_space.php');
-                else  
-                  redirect('documents.php');
+                redirect('documents.php');
               }
             }
             else
@@ -74,10 +72,7 @@ include('../functions/ps_pagination.php');
                 mysql_query($query);
                 //update log table
                 $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','".$_REQUEST['id']."',now(),'document updated')");
-                if($user_type->type==2)
-                  redirect('client_space.php');
-                else  
-                  redirect('documents.php');
+                redirect('documents.php');
               }
             }
           }
