@@ -8,12 +8,12 @@ if ($_POST['Edit']=='Edit')
 {
 	$postArray = &$_POST ;
 	
-	$title = $postArray['title'];
+	$title = escape_value($postArray['title']);
 	$content = escape_value($postArray['content']);
 	$content_plain = strip_tags($content);
-	$newdate = $postArray['article_date'];
-	$status = $postArray['status'];
-	$type = $postArray['type'];
+	$newdate = escape_value($postArray['article_date']);
+	$status = escape_value($postArray['status']);
+	$type = escape_value($postArray['type']);
 	
 	$query="UPDATE article SET
 					type_article ='$type',

@@ -2,6 +2,8 @@
 include('includes/header.php');
 include('../functions/ps_pagination.php');
 
+$user_type = $_SESSION['type'];
+
 if ($_POST['Add']=='Add')
 {
 	$postArray = &$_POST ;

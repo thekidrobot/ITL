@@ -4,11 +4,12 @@ var response = window.confirm("Are you sure you want to quit without saving?");
 if (response)
   {
     if(page=="user")
-		location.replace("admin_space.php");
-		else if(page=="article")
-		location.replace("index.php");
+			location.replace("users.php");
 		else
-		location.replace("documents.php");
+			if(page=="article")
+				location.replace("index.php");
+			else
+				location.replace("documents.php");
 	}
 }
 

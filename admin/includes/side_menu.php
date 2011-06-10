@@ -35,6 +35,7 @@
     {
       ?>
       <li><a href="users.php">User Mgmt.</a></li>
+      <li><a href="add_user.php">New User</a></li>
       <?php
     }    
     ?>

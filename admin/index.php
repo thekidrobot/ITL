@@ -6,7 +6,7 @@ include('../functions/ps_pagination.php');
 <?php
 	if (isset($_GET['id']))
 	{
-		$id = $_GET['id'];
+		$id = escape_value($_GET['id']);
 		$query="delete from article where id = $id";
 		$r= mysql_query($query)or die(mysql_error()."cannot enter data");
 		$status= "Article Deleted Sucessfully";

@@ -45,12 +45,15 @@ if (isset($_GET['id']))
               $counter = 1;
               while($row=mysql_fetch_object($result))
               {
+               $sql = mysql_query("select name from user_type where id = $row->type");
+               $result1 = mysql_fetch_array($sql);
+               
                 ?>
                 <tr class="tr_<?php echo $row->id ?>">
                   <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?="<b>".$counter."</b>"?></td>
                   <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?=$row->other_name." ".$row->surname?></td>  
                   <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?=$row->email?></td>
-                  <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?=$row->type?></td>
+                  <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?=$result1['name']?></td>
                   <td class="action">
                     <?php display_status($row->status) ?>
                     <a href="view_user.php?id=<?php echo $row->id?>" class="view" id="view_<?php echo $row->id?>">View</a>

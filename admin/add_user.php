@@ -3,7 +3,6 @@ include('includes/header.php');
 include('../functions/ps_pagination.php');
 
 $type_user=$_SESSION['type'];
-
 if ($type_user!=1) redirect('index.php');
 
 $query=mysql_query("SELECT * FROM user WHERE id='".$_REQUEST['id']."'");
@@ -11,14 +10,14 @@ $res=mysql_fetch_object($query);
 if($_POST['Add']!='')
 {
 	$postArray = &$_POST ;
-	$other_name = $postArray['other_name'];
-	$surname = $postArray['surname'];
-	$company = $postArray['company'];
-	$type = $postArray['type'];
-	$login = $postArray['login'];
-	$password = $postArray['password'];
-	$email = $postArray['email'];
-	$status = $postArray['status'];
+	$other_name = escape_value($postArray['other_name']);
+	$surname = escape_value($postArray['surname']);
+	$company = escape_value($postArray['company']);
+	$type = escape_value($postArray['type']);
+	$login = escape_value($postArray['login']);
+	$password = escape_value($postArray['password']);
+	$email = escape_value($postArray['email']);
+	$status = escape_value($postArray['status']);
 	$error="";
   
   if($_POST['Add']=='Add')
@@ -56,7 +55,6 @@ if($_POST['Add']!='')
 	}
 }
 
-$type_user=$_SESSION['type'];
 ?>
 
 <body>
@@ -79,12 +77,24 @@ $type_user=$_SESSION['type'];
 				<?php
           if($error!="") echo "<div class='error'>".$error."</div>";?>
           <form method="post" name='user_form' onsubmit="return ValidateForm()">
+						<fieldset>
             <table cellpadding="0" cellspacing="0">
-              <tr><td><b>Name: </b></td><td><input type="text" name="other_name" value="<?=$res->other_name?>" /></td></tr>
-              <tr><td><b>Surname: </b></td><td><input type="text" name="surname" value="<?=$res->surname?>" /></td></tr>
-              <tr><td><b>Company: </b></td><td><input type="text" name="company" value="<?=$res->company?>" /></td></tr>
-              <tr><td><b>Type: </b></td><td>
-              <?php
+              <tr>
+								<td><b>Name: </b></td>
+								<td><input class="text-long" type="text" name="other_name" value="<?=$res->other_name?>" /></td>
+							</tr>
+              <tr>
+								<td><b>Surname: </b></td>
+								<td><input class="text-long" type="text" name="surname" value="<?=$res->surname?>" /></td>
+							</tr>
+              <tr>
+								<td><b>Company: </b></td>
+								<td><input class="text-long" type="text" name="company" value="<?=$res->company?>" /></td>
+							</tr>
+              <tr>
+								<td><b>Type: </b></td>
+								<td>
+								<?php
               
               $query=mysql_query("SELECT * FROM user_type");
               ?>
@@ -98,24 +108,46 @@ $type_user=$_SESSION['type'];
                 }
                 ?>
 							</select>
-                <tr><td><b>Login: </b></td><td><input type="text" name="login" value="<?=$res->login?>" /></td></tr>
-                <tr><td><b>Password: </b></td><td><input type="text" name="password" /></td></tr>
-                <tr><td><b>Email: </b></td><td><input type="text" name="email" value="<?=$res->email?>" /></td></tr>
-                <tr><td><b>Status: </b></td><td><select name="status">
-								<option value="1" <?if($res->status==1 || $_REQUEST['id']=="") echo "selected"?>>Active</option>
-                <option value="0" <?if($res->status==0 && $_REQUEST['id']!="") echo "selected"?>>Inactive</option>
-                </select></td></tr>
-					  <tr><td></td><td>
-					  <?php
-            if($_REQUEST['id']=="")
-              echo '<input type="submit" class="button-submit" value="Add" name="Add" id ="add" />';
-					  else
-              echo '<input type="submit" class="button-submit" value="Save" name="Add" id ="add" />';	
-					  ?>
-            &nbsp;&nbsp;
-					  <input type="button" class="button-submit" value="Cancel" name="Cancel" onclick="confirm_msg('user')" />
-					  </td></tr>		
+                <tr>
+									<td><b>Login: </b></td>
+									<td><input class="text-long" type="text" name="login" value="<?=$res->login?>" /></td>
+								</tr>
+                <tr>
+									<td><b>Password: </b></td>
+									<td><input class="text-long" type="text" name="password" /></td>
+								</tr>
+                <tr>
+									<td><b>Email: </b></td>
+									<td><input class="text-long" type="text" name="email" value="<?=$res->email?>" /></td>
+								</tr>
+                <tr>
+									<td><b>Status: </b></td>
+									<td>
+										<select name="status">
+											<option value="1" <? if($res->status==1 || $_REQUEST['id']=="") echo "selected"?>>Active</option>
+											<option value="0" <? if($res->status==0 && $_REQUEST['id']!="") echo "selected"?>>Inactive</option>
+		                </select>
+									</td>
+								</tr>
+								<?php
+									if($_REQUEST['id']=="")
+									{ 
+										$value = "Add";
+									}
+									else
+									{
+										$value = "Save";
+									}
+								?>
+								<tr>
+									<td>&nbsp;</td>
+									<td>
+										<input style="margin-top:5px" type="submit" class="button-submit" value="<?=$value ?>" name="Add" id ="add" />&nbsp;&nbsp;
+										<input type="button" class="button-submit" value="Cancel" name="Cancel" onclick="confirm_msg('user')" />
+									</td>
+								</tr>	
 					  </table>
+						</fieldset>
           </form>
         </div>
       <!-- // #main -->
