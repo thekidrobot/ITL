@@ -31,7 +31,7 @@
       <li><a href="add_document.php">New Doc.</a></li>
       <?php
     }
-    if($curr_page == "users.php")
+    if($curr_page == "users.php" or $curr_page == "view_user.php" or $curr_page == "add_user.php")
     {
       ?>
       <li><a href="users.php">User Mgmt.</a></li>
