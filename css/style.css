@@ -152,7 +152,7 @@ p {
 	}	
 	
 .menu ul li ul li:hover {
-	background:#ccc;
+	background:#E2C038;
 	}		
 		
 .menu li ul li a {
@@ -208,6 +208,9 @@ p {
 	width:708px;
 	background:#fff;
 	padding:0px 15px 15px 15px;
+	height:auto!important;
+	min-height:482px;
+	_height:482px!important;
 	}
 	
 .side_col {
@@ -216,7 +219,7 @@ p {
 	}
 	
 .welcome_txt {
-	background:url(../images/home_pix.jpg) top right no-repeat;
+	background:url(../images/home_pix.jpg) bottom right no-repeat;
 	border-bottom:1px dashed #D7D7D7;
 	padding-bottom:10px;
 	height:auto!important;
@@ -228,14 +231,14 @@ p {
 .core_content h1 {
 	color:#003351;
 	font-weight:normal;
-	font-size:45px;
+	font-size:40px;
 	line-height:70px;
 	}
 	
 .core_content h2 {
 	color:#003351;
 	font-weight:normal;
-	font-size:35px;
+	font-size:30px;
 	line-height:60px;
 	}
 	
@@ -274,6 +277,7 @@ span.read_more a, span.read_more a:hover {
 	
 .hm_btm_teasers {
 	padding:18px 0px;
+	padding-bottom:0px;
 	width:335px;
 	float:left;
 	padding-right:38px;
@@ -284,14 +288,11 @@ span.read_more a, span.read_more a:hover {
 	}	
 	
 .hm_teaser_pix {
-	width:148px;
-	float:left;
-	padding-right:15px;
+	padding-bottom:15px;
 	}
 	
 .hm_teaser_detail {
-	width:172px;
-	float:left;
+	width:auto;
 	}			
 	
 .hm_btm_teasers h3 {
@@ -304,10 +305,12 @@ span.read_more a, span.read_more a:hover {
 .hm_btm_teasers ul li {
 	font-size:12px;
 	background:url(../images/arrow_01.jpg) top left no-repeat;
+	margin:0px;
+	padding:0px;
 	padding-left:10px;
-	color:#003351;
 	padding-bottom:10px;
 	list-style:none;
+	line-height:18px;
 	}
 	
 .teaser_read_more {
@@ -331,6 +334,7 @@ span.read_more a, span.read_more a:hover {
 	
 .factsheet_box {
 	background:url(../images/factsheet_bg.png) top left no-repeat;
+	behavior: url(js/iepngfix.htc);
 	height:172px;
 	padding:75px 25px 0 25px;
 	color:#fff;
@@ -428,20 +432,17 @@ span.read_more.news_more a {
 	}
 
 .login_box {
-	float:right;
-	padding-right:15px;
-	padding-top:35px;
+	width:49px;
+	height:47px;
+	background:url(../images/login_icon.jpg) top left no-repeat;
+	margin-left:5px;
+	margin-top:21px;
 	}
 	
-.login_box span {
-	background:url(../images/lock_icon.jpg) top right no-repeat;
-	color:#fff;
-	font-size:11px;
-	padding-right:15px;
-	}
-	
-.login_box span a {
-	color:#fff;
+.login_box a {
+	display:block;
+	width:49px;
+	height:47px;
 	}			
 	
 .search_box {
@@ -536,11 +537,13 @@ ul.side_nav li a:hover, ul.side_nav li.active a {
 	}
 	
 p.search_link a {
-	color:#333;
+	color:#0E774A;
 	}
 	
 p.search_title a {
 	color:#3E6FBF;
+	font-size:14px;
+	font-weight:bold;
 	}	
 
 /*---------------------Calendar-----------------------*/
@@ -653,15 +656,17 @@ p.news_read_more a {
 
 /*----------------------07_06_2011-----------------------*/
 
+
 .logbox {
 	position:absolute;
-	left:530px;
-	top:35px;
+	left:-282px;
+	top:69px;
 	z-index:1000;
 	background:#f1f1f1;
 	padding:5px;
-	width:300px;
+	width:324px;
 	border:1px solid #ddd;
+	z-index:101;
 	}
 
 .logbox h2 {
@@ -688,7 +693,7 @@ p.news_read_more a {
 	}		
 
 .logbox table td input {
-	width:210px;
+	width:230px;
 	height:22px;
 	border:1px solid #ddd;
 	font-size:11px;
@@ -730,3 +735,15 @@ p.news_read_more a {
 	right:0px;
 	}
 	
+.flt_rgt {
+	float:right;
+	padding:5px 0px 0px 0px;
+	margin-left:20px;
+	}	
+
+.login_container {
+	position:relative;
+	width:54px;
+	float:right;
+	z-index:100;
+	}	

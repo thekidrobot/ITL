@@ -48,38 +48,39 @@
 			  </tr>  
 			</table>
 			</div>
+			<div class="login_container">
+				<div class="login_box">
+					<a href="#">&nbsp;</a>		
+				</div>
+				<div style="display: none;" class="logbox">
+					<div class="close_box"><a class="close" href="#">Close X</a></div>
+					<h2>Members login here</h2>
+					<form method="post">
+					<table cellspacing="0" cellpadding="0" border="0">
+					  <tr>
+						<th>Username:</th>
+						<td><input name="" type="text" /></td>
+					  </tr>
+					  <tr>
+						<th>Password:</th>
+						<td><input name="" type="text" /></td>
+					  </tr>
+					  <tr>
+						<td colspan="2" class="send_btn"><input name="" type="submit" value="Send" /></td>
+					  </tr>
+					  <tr>
+						<td class="pass_forgot" colspan="2"><a href="#">Forgot Password?</a> - <a href="#">Apply for membership</a></td>
+					  </tr>
+					</table>
+					</form>
+				</div>
+			</div>	
 			<div class="search_box">
 				<form action="search.php" method="post">
 				<table border="0" cellspacing="0" cellpadding="0">
 				  <tr>
 					<td><input name="search" type="text" value="Search" onfocus="this.value = this.value=='Search'?'':this.value;" onblur="this.value = this.value==''?'Search':this.value;"/></td>
 					<td class="search_btn"><input name="" type="submit" value="" /></td>
-				  </tr>
-				</table>
-				</form>
-			</div>
-			
-			<div class="login_box">
-				<span><a href="#">Login</a></span>			
-			</div>
-			<div style="display: none;" class="logbox">
-				<div class="close_box"><a class="close" href="#">Close X</a></div>
-				<h2>Members login here</h2>
-				<form method="post">
-				<table cellspacing="0" cellpadding="0" border="0">
-				  <tr>
-					<th>Username:</th>
-					<td><input name="" type="text" /></td>
-				  </tr>
-				  <tr>
-					<th>Password:</th>
-					<td><input name="" type="text" /></td>
-				  </tr>
-				  <tr>
-					<td colspan="2" class="send_btn"><input name="" type="submit" value="Send" /></td>
-				  </tr>
-				  <tr>
-					<td class="pass_forgot" colspan="2"><a href="#">Forgot Password?</a> - <a href="#">Apply for membership</a></td>
 				  </tr>
 				</table>
 				</form>

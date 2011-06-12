@@ -1,0 +1,4 @@
+[27-May-2011 23:43:49] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'tonezerw'@'localhost' (using password: NO) in /home2/tonezerw/public_html/itl/functions/conn.php on line 58
+[27-May-2011 23:43:49] PHP Warning:  mysql_select_db(): supplied argument is not a valid MySQL-Link resource in /home2/tonezerw/public_html/itl/functions/conn.php on line 59
+[08-Jun-2011 03:53:47] PHP Warning:  include(includes/main/side_content.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home2/tonezerw/public_html/itl/index.php on line 14
+[08-Jun-2011 03:53:47] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening 'includes/main/side_content.php' for inclusion (include_path='.:/usr/lib64/php:/usr/lib/php') in /home2/tonezerw/public_html/itl/index.php on line 14
