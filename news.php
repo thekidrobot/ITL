@@ -10,25 +10,28 @@
 	<!--content-->
 	<div class="content">
 		<div class="core">
-			<div class="core_top"><img src="images/content_top.jpg" alt="" /></div>
+			<div class="core_top">
+				<img src="images/content_top.jpg" alt="" />
+			</div>
 			<div class="core_content">
-				<h2>News</h2>
+				
 				<div class="news_filter">
 					<form name="news_form">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-						<td>Search News by month:</td>
+							<td>Search News by month:</td>
 						<td>
 							<select name="search_month">
 							  <option>All</option>
 								<?php
-									$month_arr=array(1=>"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+									$month_number = 1;
+									$month_arr=array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
 									foreach($month_arr as $ma)
 									{
-										echo "<option value='".$ma."'";
-										if($_REQUEST['search_month']==$ma)
-										echo " selected";
+										echo "<option value='".$month_number."'";
+										if($_REQUEST['search_month']==$ma) echo " selected";
 										echo ">".$ma."</option>";
+										$month_number++;
 									}
 								?>
 							</select>
@@ -39,20 +42,19 @@
 					</form>
 				</div>
 				
+				<h2>News</h2>
 				<?php
-					$sql = "SELECT id, date_article, title_article, content_plain FROM
+					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
 									article WHERE status_article = 1 AND type_article IN('N','E')";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{
-						$sql.=" AND date_article like '%".$_REQUEST['search_month']."%'";
+						$sql.=" AND EXTRACT(MONTH from date_article) = ".$_REQUEST['search_month'];
 					}
-					
 					$sql.=" ORDER BY id DESC";
 					$pager = new PS_Pagination($conn,$sql,5,3);
 					$result = $pager->paginate();
 					$no_rows=mysql_num_rows($result);
-					$counter=($no_page*$page)-9;
 					while($row = mysql_fetch_assoc($result))
 					{
 						?>
@@ -72,31 +74,41 @@
 						<div align="center" id="page"> <?php echo $pager->renderFullNav();?> </div>
 						<?php
 					}
-					elseif($counter == 1)
+					elseif($no_rows == 0)
 					{
 						?>
-						<div align="center"><b>No news</b></div>
+						<div align="center"><b>No news for the selected month</b></div>
 						<?php
 					}
 					?>
-			</div>
-			<div class="core_btm"><img src="images/content_btm.jpg" alt="" /></div>
-		</div>
+				</div>
+			
+				<div class="core_btm">
+					<img src="images/content_btm.jpg" alt="" />
+				</div>
 
-		<div class="side_col">
-			<div class="news_box">
-				<div class="news_top"><img src="images/1px.gif" alt="" height="6" /></div>
-				<div class="news_content event_box">
-					<h2>Event Calendar</h2>
-					<div class="calendar_box">
-						<?php include("functions/jcalendar.php");?>		
+			</div>
+
+			<div class="side_col">
+				<div class="news_box">
+					<div class="news_top">
+						<img src="images/1px.gif" alt="" height="6" />
+					</div>
+					<div class="news_content event_box">
+						<h2>Event Calendar</h2>
+						<div class="calendar_box">
+							<?php include("functions/jcalendar.php");?>		
+						</div>
+					</div>
+					<div class="news_btm">
+						<img src="images/1px.gif" alt="" height="6" />
 					</div>
 				</div>
-				<div class="news_btm"><img src="images/1px.gif" alt="" height="6" /></div>
-			</div>
+			
 			<div class="partners_box">
 				<img src="images/baker_tilly_logo.jpg" alt="" /><img src="images/sas70_logo.jpg" alt="" /><img src="images/partner_logo.jpg" alt="" />
 			</div>
+		
 		</div>
 		<div class="cleaner"></div>
 	</div>

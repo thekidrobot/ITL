@@ -556,15 +556,16 @@ p.search_title a {
 	}
 
 .calendar_box table th {
-	padding:6px 0px;
+	padding:3px 0px;
 	color:#003351;
 	text-align:center;
-	border-right:1px solid #fff;
+	border:1px solid #f1f1f1;
 	width:30px;
 	}
 	
 .calendar_box table tr.days {
 	background:#f1f1f1;
+	border:1px solid #f1f1f1;
 	}
 	
 .calendar_box table td {
@@ -623,13 +624,13 @@ p.news_read_more a {
 	}	
 	
 .news_filter {
-	position:absolute;
-	top:20px;
-	right:5px;
+	position:relative;
+	float:right;
+	top:25px;
 	}
 	
 .news_filter td {
-	padding-right:10px;
+	padding-right:0px;
 	}	
 	
 .news_filter select {
@@ -637,6 +638,8 @@ p.news_read_more a {
 	width:70px;
 	font-size:11px;
 	font-family:Arial, Helvetica, sans-serif;
+	margin-right:5px;	
+	margin-left:5px;	
 	}	
 	
 .news_filter input {
@@ -652,6 +655,26 @@ p.news_read_more a {
 .news_detail{
 	text-align:justify;
 	padding:5px 10px 10px 0px;
+}
+
+.event {
+	background-color: #f8f8f8;
+	border:1px solid #0080ff;
+}
+
+.holiday {
+	background-color: #f8f8f8;
+	border:1px solid #6686f2;
+}
+
+.normal {
+	background-color: #ffffff;
+}
+
+.today {
+	font-weight:bold;
+	background-color: #f8f8f8;
+	border:1px solid #ff8040;
 }
 
 /*----------------------07_06_2011-----------------------*/

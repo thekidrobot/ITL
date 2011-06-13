@@ -126,52 +126,47 @@ function redirect($filename)
 ///////Functions used by the calendar in event search.////////
 function hiLightEvt($eMonth,$eDay,$eYear)
 {
-	//$tDayName = date("l");
 	$todaysDate = date("n/j/Y");
 	$dateToCompare = $eMonth . '/' . $eDay . '/' . $eYear;
-	$articlemonth=get_month($eMonth);
-	
+
 	if($eDay<=9) $artday="0".$eDay;
-	else $artday=$eDay;  
-	$sql="select count(date_article) as eCount ,title_article from article where date_article = '" . $artday. '-' . $articlemonth . '-' . $eYear . "' AND status_article = 1 AND type_article='E'";
+	else $artday=$eDay;
+	
+	if($eMonth<=9) $eMonth="0".$eMonth;
+
+	$sql="select 	count(date_article) as eCount, title_article 
+				from 		article
+				where 	DATE_FORMAT(date_article, '%d-%m-%Y')  = '" . $artday. '-' . $eMonth . '-' . $eYear . "'
+				AND 		status_article = 1 
+				AND 		type_article IN('E','N')";
+
 	$hsql=mysql_query("SELECT title FROM holidays WHERE holiday_date= '" . $eYear . '/' . $eMonth . '/' . $eDay . "'");
 	$holiday_count=mysql_fetch_object($hsql);
 	
-	//return;
 	$result = mysql_query($sql);
+	
 	while($row= mysql_fetch_array($result))
 	{
 		if($row['eCount'] >=1 || $holiday_count->title!="")
 		{
-			if($row['eCount'] >=1) $aClass = 'class="event" title="'.$row['title_article'].'"';
+			if($row['eCount'] >=1) $aClass = ' class="event" title="'.$row['title_article'].'"';
 			else $aClass = 'class="holiday" title="'.$holiday_count->title.'"';
 		}
 		elseif($row['eCount'] ==0)
 		{
 			$aClass ='class="normal"';
 		}
-		if($todaysDate == $dateToCompare) $aClass.=' style="font-weight:bold"';
+		if($todaysDate == $dateToCompare) $aClass =' class="today"';
 	}
 	return $aClass;
 }
 
-function get_month($month)
-{
-	$month_arr=array(1=>"Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
-	$counter=1;
-	foreach($month_arr as $m)
-	{
-		if($counter==$month)
-		return $month_arr[$month];
-		$counter++;
-	}
-}
-
 function check_event($eMonth,$eDay,$eYear)
 {
-	$articlemonth=get_month($eMonth);
+	$articlemonth=$eMonth;
 	if($eDay<=9) $artday="0".$eDay;
 	else $artday=$eDay; 
+
 	$sql=mysql_query("select count(date_article) as eCount from article where date_article = '" . $artday. '-' . $articlemonth . '-' . $eYear . "' AND status_article = 1 AND type_article='E'");
 	$count = mysql_fetch_object($sql);
   if($count->eCount>0) $event=1;
