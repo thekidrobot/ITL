@@ -40,7 +40,7 @@
 							<li>Principals involved in the Global Business sector in Mauritius since its inception</li>
 							<li>Large institutional clients and high profile organizations in portfolio</li>
 						</ul>
-						<div class="teaser_read_more"><a href="#">Read More</a></div>
+						<div class="teaser_read_more"><a href="content.php?art_id=38&parent=1">Read More</a></div>
 					</div>
 					<div class="cleaner"></div>
 				</div>
@@ -49,7 +49,7 @@
 					<div class="hm_teaser_detail">
 						<h3>Why Mauritius</h3>
 						<p>In the World Bank's "Doing Business Survey 2011" report; Mauritius ranks first as the country with the most favourable business reputation in the African region and scores 20th place in the Ease of Doing Business Index out of 183 countries surveyed.<br /><br /></p>
-						<div class="teaser_read_more"><a href="#">Read More</a></div>
+						<div class="teaser_read_more"><a href="content.php?art_id=41&parent=5">Read More</a></div>
 					</div>
 					<div class="cleaner"></div>
 				</div>

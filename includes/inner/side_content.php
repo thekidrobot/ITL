@@ -9,10 +9,21 @@
 				</div>
 				<div class="news_btm"><img src="images/1px.gif" alt="" height="6" /></div>
 			</div>
+			<?php 
+			$result = mysql_query("SELECT * FROM article WHERE type_article = 'F' order by date_article desc limit 1");
+			
+			while ($row = mysql_fetch_array($result))
+			{
+				$factsheet_id = $row['id'];
+				$factsheet_title = $row['title_article'];
+				$factsheet_text = $row['content_plain'];
+			}
+			
+			?>
 			<div class="factsheet_box">
-				<h2>Factsheet</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna...<br /><br /></p>
-				<span class="read_more fact_more"><a href="#">Read More</a></span>
+				<h2><?=$factsheet_title ?></h2>
+				<p><?=substr($factsheet_text,0,100); ?>...<br /><br /></p>
+				<span class="read_more fact_more"><a href="content.php?art_id=<?=$factsheet_id ?>">Read More</a></span>
 				<div class="cleaner"></div>
 			</div>
 			<div class="partners_box">

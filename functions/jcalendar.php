@@ -143,7 +143,16 @@ $evedate=$dd."-".get_month($month)."-".$year;
 </table>
 </div>
 
-<? $hsql=mysql_query("SELECT holiday_date,title FROM holidays WHERE holiday_date LIKE '%".$year."-".$mm."%'ORDER BY holiday_date");
+<?php
+
+  $hsql=mysql_query("SELECT holiday_date,title FROM holidays WHERE holiday_date LIKE '%".$year."-".$mm."%'ORDER BY holiday_date");
+
+  $esql=mysql_query("select title_article,DAYOFMONTH(date_article) as date_article
+        from article
+        where 	DATE_FORMAT(date_article, '%m-%Y')  = '" . $mm . '-' . $year . "'
+        AND 		status_article = 1 
+        AND 		type_article IN('E','N')");
+
   $count_holidays=mysql_num_rows($hsql);
   if($count_holidays>0)
   {
@@ -154,6 +163,25 @@ $evedate=$dd."-".get_month($month)."-".$year;
     {
       $day=explode("-",$holidays->holiday_date);
       echo $day[2]."&nbsp;&nbsp;-&nbsp;&nbsp;".$holidays->title."<br />";
+    }
+    ?>
+    </div>
+    <?php 
+  }
+  
+  $count_events=mysql_num_rows($esql);
+  if($count_events>0)
+  {
+    ?>
+    <div style='margin:5px; padding:5px; background-color:#e6e6e6;'><b>Events:</b><br />
+    <?php
+    for($i=0;$events=mysql_fetch_object($esql);$i++)
+    {
+      $day=$events->date_article;
+      
+      if ($day < 10) $day='0'.$day;
+      
+      echo $day."&nbsp;&nbsp;-&nbsp;&nbsp;".$events->title_article."<br />";
     }
     ?>
     </div>
