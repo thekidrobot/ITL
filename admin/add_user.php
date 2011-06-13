@@ -99,11 +99,11 @@ if($_POST['Add']!='')
               $query=mysql_query("SELECT * FROM user_type");
               ?>
               <select name="type">
-								<?php
+				<?php
                 while($result = mysql_fetch_array($query))
                 {
                   ?>
-                  <option value="<?=$result['id'] ?>" <? if($res->type==0) echo "selected"?>><?=$result['name']?></option>
+                  <option value="<?=$result['id'] ?>" <? if($res->type==$result['id']) echo "selected"?>><?=$result['name']?></option>
                   <?
                 }
                 ?>
