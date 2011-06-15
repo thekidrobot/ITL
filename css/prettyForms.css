@@ -25,59 +25,59 @@ Feel free to use this however you like.  Credit is always appreciated.
 	display:block;
 }
 
-.clearAll{
+.form_container .clearAll{
 	clear:both;
 }
 
 /***** Shadows that wrap around ALL elements ***********/
-.frmShdwTopLt{
+.form_container .frmShdwTopLt{
 	float:left;
 	background:url(../images/prettyforms/shadowUpperLeft.gif) top left no-repeat;
 }
 
-.frmShdwBottomRt{
+.form_container .frmShdwBottomRt{
 	float:left;
 	background:url(../images/prettyforms/shadowLowerRight.gif) bottom right no-repeat;
 }
 
-.frmShdwBottomLt{
+.form_container .frmShdwBottomLt{
 	float:left;
 	background:transparent url(../images/prettyforms/shadowBottomLeft.gif) bottom left no-repeat;
 }
 
-.frmShdwTopRt{
+.form_container .frmShdwTopRt{
 	float:left;
 	background:transparent url(../images/prettyforms/shadowTopRight.gif) top right no-repeat;
 }
 
 
 /***** styles specific to the CHECKBOX **********/
-.frmShdwCheck{
+.form_container .frmShdwCheck{
 	border:0;
 	margin:0;
 	padding:0;
 }
 
-	.frmShdwCheck img{
-		border:0;
-		margin:0;
-	}
+.form_container .frmShdwCheck img{
+	border:0;
+	margin:0;
+}
 
 	
 /***** styles specific to the RADIO BUTTONS **********/
-.frmShdwRadio{
+.form_container .frmShdwRadio{
 	float:left;
 	margin:0;
 }
 
-	.frmShdwRadio img{
+.form_container .frmShdwRadio img{
 		border:0;
 		margin:0;
 	}
 
 	
 /***** styles specific to the SUBMIT BUTTONS **********/
-.frmShdwSubmit{
+.form_container .frmShdwSubmit{
 	border:0;
 	background:#f7f7f7 !important;
 	background:transparent;
@@ -87,13 +87,13 @@ Feel free to use this however you like.  Credit is always appreciated.
 	width:100px;
 }
 
-	.frmShdwSubmit:hover{
+.form_container	.frmShdwSubmit:hover{
 		color:#000000;
 	}
 	
 
 /***** styles specific to the SELECT BOX **********/
-.frmShdwSelectDropChosen{
+.form_container .frmShdwSelectDropChosen{
 	margin:3px 3px 3px 5px;
 	padding: 0 0 0 2px !important;
 	padding: 0 0 3px 2px;
@@ -109,7 +109,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 	text-decoration:none;
 }
 
-.frmShdwSelectDropShown{
+.form_container .frmShdwSelectDropShown{
 	margin:3px 3px 3px 5px;
 	padding: 0 0 0 2px;
 	font-size:.9em;
@@ -121,16 +121,16 @@ Feel free to use this however you like.  Credit is always appreciated.
 	background:#ffffff;
 }
 
-.frmShdwSelectDrop{
+.form_container .frmShdwSelectDrop{
 	display:none;
 }
 
-.fakeSelectImg{
+.form_container .fakeSelectImg{
 	border:0;
 	margin:5px 5px 0px 0px;
 }
 
-.frmShdwSelectDropShown a{
+.form_container .frmShdwSelectDropShown a{
 	display:block;
 	margin:0;
 	padding:0px;
@@ -139,26 +139,24 @@ Feel free to use this however you like.  Credit is always appreciated.
 	color:#666666;
 }
 	
-	.frmShdwSelectDropShown a.selected{
+.form_container	.frmShdwSelectDropShown a.selected{
 		background:#f7f7f7;
 		color:#000000;
 		border-bottom:1px dashed #cccccc;
 	}
 	
-	.frmShdwSelectDropShown a.selected:after{
+.form_container	.frmShdwSelectDropShown a.selected:after{
 		content:" <<";
 	}
 	
 	
-	.frmShdwSelectDropShown a:hover{
+.form_container	.frmShdwSelectDropShown a:hover{
 		background:#f7f7f7;
 		border-bottom:1px dashed #cccccc;
 		text-decoration:none;
 		color:#666666;
 	}
 	
-	.frmShdwSelectDropShown a:hover:after{
+.form_container	.frmShdwSelectDropShown a:hover:after{
 		content:" <<";
 	}
-	
-	
