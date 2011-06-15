@@ -58,16 +58,10 @@
               </p>
        
               <p>
-                <label><strong>E-Mail: </strong></label>
+                <label><strong>E-Mail <br/>(Will be also your username): </strong></label>
                 <input name="email" type="text" />
                 <br class="clearAll" /><br />
-              </p> 
-    
-              <p>
-                <label><strong>Choose a Username: </strong></label>
-                <input name="username" type="text" />
-                <br class="clearAll" /><br />
-              </p>
+              </p>  
     
               <p>
                 <label><strong>Choose a Password: </strong></label>
