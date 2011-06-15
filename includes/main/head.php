@@ -28,6 +28,9 @@ body{
 	behavior:url(js/csshover.htc);
 }
 </style>
+<!--For the contact form-->
+<script type="text/javascript" src="js/prettyForms.js"></script>
+<link rel="stylesheet" href="css/prettyForms.css" type="text/css" media="screen" />
 <script language="javascript" type="text/javascript" src="js/fixpng.js"></script>
 <![endif]-->
 </head>

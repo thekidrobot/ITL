@@ -69,7 +69,7 @@
 						<td colspan="2" class="send_btn"><input name="" type="submit" value="Send" /></td>
 					  </tr>
 					  <tr>
-						<td class="pass_forgot" colspan="2"><a href="#">Forgot Password?</a> - <a href="#">Apply for membership</a></td>
+						<td class="pass_forgot" colspan="2"><a href="#">Forgot Password?</a> - <a href="signin.php">Apply for membership</a></td>
 					  </tr>
 					</table>
 					</form>
