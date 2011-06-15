@@ -9,7 +9,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 	margin:20px 0px 20px 10px;
 }
 
-input, textarea, select{
+.form_container input, textarea, select{
 	border:0;
 	margin:3px;
 	padding:0px 3px;
@@ -18,7 +18,7 @@ input, textarea, select{
 	width:250px;
 }
 
-label{
+.form_container label{
 	float:left;
 	margin:5px;
 	width:150px;
