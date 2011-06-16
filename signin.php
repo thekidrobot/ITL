@@ -25,7 +25,7 @@
           
           <h2>Personal Data</h2>
           <div class="form_container">
-            <form id="myForm" action="<?=$_SERVER['PHP_SELF']?> method="post">
+            <form id="myForm" action="<?=$_SERVER['PHP_SELF']?>" method="post">
               
               <p>
                 <label><strong>First Name: </strong></label>
