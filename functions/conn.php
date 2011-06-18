@@ -7,7 +7,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost' or $_SERVER['HTTP_HOST'] == '127.0.0.1')
 	$site_url = 'http://'.$_SERVER['HTTP_HOST'].'/itl/';
 	$document_root = $_SERVER['DOCUMENT_ROOT'].'/itl/';
 	$physical_path=".";
-	$email_admin="info@belship.com";
+	$email_admin="noreply@ifs.com";
 }
 else{
 	$server = 'localhost';

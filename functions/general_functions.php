@@ -77,7 +77,7 @@ function display_status($c)
 	if($c==1)
 	return "<span style=\"color:blue;\">Active</span>";
 	if($c==0)
-	return "<span style=\"color:red;\">Inactive/span>";
+	return "<span style=\"color:red;\">Inactive</span>";
 }
 
 //Safely escape values. Please use in your SQL queries. 
@@ -108,12 +108,17 @@ function isLoggedIn()
     else return false;
 }
 
-//random  password generator
-function getUniqueCode($length = "")
+//Random Password Generator
+function genRandomString()
 {
-  $code = md5(uniqid(rand(), true));
-  if ($length != "") return substr($code, 0, $length);
-  else return $code;
+    $length = 12;
+    $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+    $string = '';    
+
+    for ($p = 0; $p < $length; $p++) {
+        $string .= $characters[mt_rand(0, strlen($characters))];
+    }
+    return $string;
 }
 
 //Safely Redirects
@@ -176,23 +181,38 @@ function check_event($eMonth,$eDay,$eYear)
 
 ///////End functions used by the calendar in event search.////////
 
-//Sends a mail on document creation
-//Commented on tests
-
-function sendemail($client,$fname,$sname,$title,$path)
+//Generic function to send mails
+//TODO : Make this function safer
+function sendemail($to,$subject,$msg)
 {
-	$msg="<p>Hello ".$fname." ".$surname.",<br />
-				<br />
-				Your document titled ".$title." is uploaded. To view, please click <a href='".$path."'>here</a> 
-				<br />
-				-- <br />
-				Thanks,<br />
-				The IFS Team</p>";
-	$to = $client;
-  $subject = 'IFS document uploaded';
-	$headers = 'Content-type: text/html; charset=iso-8859-1'."\r\n";
-	$headers .= 'From: IFS Admin' . "\r\n";
-	//mail( $to, $subject, $msg, $headers );	
+  
+  $mailcheck = spamcheck($_REQUEST['email']);
+  
+  if ($mailcheck==FALSE){
+    echo "Invalid email format";
+  }
+  else{
+    $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
+    $headers.='From:'. $email_admin ."\r\n";
+    mail( $to, $subject, $msg, $headers );	  
+  }
+  
 }
+
+
+function spamcheck($field)
+{
+  $field=filter_var($field, FILTER_SANITIZE_EMAIL);
+
+  if(filter_var($field, FILTER_VALIDATE_EMAIL))
+  {
+    return TRUE;
+  }
+  else
+  {
+    return FALSE;
+  }
+}
+
 
 ?>

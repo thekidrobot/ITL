@@ -6,17 +6,18 @@ Feel free to use this however you like.  Credit is always appreciated.
 *******************/
 
 	//need to set a couple of images here:
-	imageCheckboxChecked="checkboxChecked.gif";
-	imageCheckboxUnchecked="checkboxUnchecked.gif";
-	imageRadioChecked="radiobuttonChecked.gif";
-	imageRadioUnchecked="radiobuttonUnchecked.gif";
-	imageSelectDropDownArrow="selectDrop.gif";
+	imageCheckboxChecked="../images/checkboxChecked.gif";
+	imageCheckboxUnchecked="../images/checkboxUnchecked.gif";
+	imageRadioChecked="../images/radiobuttonChecked.gif";
+	imageRadioUnchecked="../images/radiobuttonUnchecked.gif";
+	imageSelectDropDownArrow="../images/selectDrop.gif";
 	
 	//the rest of the images are in the CSS
 
 
 	function prettyForms(){
 		fixTextBoxes();
+		fixTextPasswords();
 		fixTextareas();
 		fixSelects();
 		fixChecks();
@@ -71,6 +72,16 @@ Feel free to use this however you like.  Credit is always appreciated.
 		inputs = document.getElementsByTagName("input");
 		for(i=0;i<inputs.length;i++){
 			if(inputs[i].type=="text"){
+				appendParentsTo(inputs[i]);
+			}
+		}
+	}
+	
+	//apply look to password
+	function fixTextPasswords(){
+		inputs = document.getElementsByTagName("input");
+		for(i=0;i<inputs.length;i++){
+			if(inputs[i].type=="password"){
 				appendParentsTo(inputs[i]);
 			}
 		}

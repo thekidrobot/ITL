@@ -13,6 +13,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<link rel="SHORTCUT ICON" href="favicon.ico" type="image/x-icon"> 
+<meta name="keywords" content="Intercontinental trust , Mauritius, finance Mauritius, international tax,
+management services, trust fund Mauritius, legal system Mauritius, company
+law Mauritius, companies law Mauritius, double tax treaties, global
+companies Mauritius" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO 8859-1" />
 <title>ITL</title>
 <!--For the contact form-->

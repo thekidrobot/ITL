@@ -40,7 +40,8 @@ h1 span { display: none; }
 	height: 37px;
 	padding: 6px;
 	margin: 0 0 30px 0;
-	background: url(../img/top-menu-bg.gif) no-repeat left top; 
+	background: url(../img/top-menu-bg.gif) no-repeat left top;
+	font-size:12px;
 	/* We used a background image making the thick border and the thin one to keep the html structure simple */
 }
 
@@ -54,17 +55,19 @@ h1 span { display: none; }
 	display: block;
 	float: left;
 	height: 37px;
-	font-weight: bold;
+	font-weight: normal;
 	line-height: 37px;
 	text-decoration: none;
 	color: #646464;
-	padding: 0 20px;
+	padding: 0 10px;
 }
 
 #mainNav li.logout {
 	float: right;
 	border-left: 1px solid #ddd;
 	border-right: none;
+	font-size:12px;
+	font-weight: bold;
 }
 
 #mainNav li.welcome {
@@ -77,7 +80,6 @@ h1 span { display: none; }
 	color: #646464;
 	padding: 0 20px;
 	border-left: 1px solid #ddd;
-
 }
 
 #mainNav li a:hover { background: #fdfcf6; }
@@ -85,6 +87,7 @@ h1 span { display: none; }
 #mainNav li a.active, #mainNav li a.active {
 	background: #f0f0f0 url(../img/top-menu-item-bg.gif) repeat-x left top;
 	color: #454545;
+	font-weight:bold;
 }
 
 /* Container ---------------------------------------- */

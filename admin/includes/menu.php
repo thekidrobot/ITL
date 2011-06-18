@@ -6,6 +6,7 @@
 <ul id="mainNav">
  <li><a href="index.php" <?php if ($curr_page == "index.php") echo "class='active'" ?>>Content Administration</a></li>
  <li><a href="documents.php" <?php if ($curr_page == "documents.php") echo "class='active'" ?>>Documents Administration</a></li>
+ <li><a href="subscribers.php" <?php if ($curr_page == "subscribers.php") echo "class='active'" ?>>Subscribers Administration</a></li>
  <?php
   if ($type_user==1)
   {

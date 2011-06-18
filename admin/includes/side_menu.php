@@ -38,6 +38,12 @@
       <li><a href="add_user.php">New User</a></li>
       <?php
     }    
-    ?>
+    if($curr_page == "subscribers.php" or $curr_page == "view_subscriber.php")
+    {
+      ?>
+      <li><a href="subscribers.php">User Mgmt.</a></li>
+      <?php
+    }
+	?>
   </ul>
 </div>    

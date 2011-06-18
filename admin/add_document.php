@@ -54,7 +54,6 @@ include('../functions/ps_pagination.php');
                 $email_res=mysql_fetch_object($email_query);
                 
                 $path=$_SERVER['HTTP_HOST']."/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
-                sendemail($email_res->email,$email_res->other_name,$email_res->surname,$title,$path);
                 redirect('documents.php');
               }
             }

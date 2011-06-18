@@ -58,7 +58,7 @@
 					<form method="post">
 					<table cellspacing="0" cellpadding="0" border="0">
 					  <tr>
-						<th>Username:</th>
+						<th>Registered Mail:</th>
 						<td><input name="" type="text" /></td>
 					  </tr>
 					  <tr>
@@ -66,10 +66,10 @@
 						<td><input name="" type="text" /></td>
 					  </tr>
 					  <tr>
-						<td colspan="2" class="send_btn"><input name="" type="submit" value="Send" /></td>
+						<td colspan="2" class="send_btn"><input name="" type="submit" value="Login" /></td>
 					  </tr>
 					  <tr>
-						<td class="pass_forgot" colspan="2"><a href="#">Forgot Password?</a> - <a href="signin.php">Apply for membership</a></td>
+						<td class="pass_forgot" colspan="2"><a href="forgotpassword.php">Forgot Password?</a> - <a href="signin.php">Apply for membership</a></td>
 					  </tr>
 					</table>
 					</form>
