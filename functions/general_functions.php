@@ -101,10 +101,18 @@ function escape_value($value)
   return $value;
 }
 
-//This function simply checks if the session variable 'valid' is set to 1.
+//This function simply checks if the session variable 'valid' is set to 1. - for ADMIN
 function isLoggedIn()
 {
     if($_SESSION['valid']) return true;
+    else return false;
+}
+
+
+//This function simply checks if the session variable 'valid' is set to 1. - for SUBSCRIBER
+function isSubscriberLoggedIn()
+{
+    if($_SESSION['valid_subscriber']) return true;
     else return false;
 }
 

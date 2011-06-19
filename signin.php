@@ -69,12 +69,12 @@
             //Now, validate the form
             elseif($validator->ValidateForm())
             { 
-              $password = md5($password);
+              $password1 = md5($password1);
               
               $query="INSERT INTO contact 
                       (firstname,middlename,company,tel,mobile,email,password,status,type)
                       VALUES
-                      ('$fname','$lname','$company',$ophone,$mphone,'$email','$password','0','1')";
+                      ('$fname','$lname','$company',$ophone,$mphone,'$email','$password1','0','1')";
                       
               $r= mysql_query($query)or die("Error : ".mysql_error());
               $id =mysql_insert_id();

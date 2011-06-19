@@ -49,27 +49,54 @@
 			</table>
 			</div>
 			<div class="login_container">
-				<div class="login_box">
+        <?php
+          $sub_logged_in = isSubscriberLoggedIn();
+          
+          if ($sub_logged_in == true)
+          {
+          ?>
+            <div class="login_box" style="background:url('images/logout_icon.jpg') top left no-repeat;">
+          <?php
+          }
+          else
+          {
+          ?>
+          	<div class="login_box" style="background:url('images/login_icon.jpg') top left no-repeat;">
+          <?php
+          }
+          ?>
 					<a href="#">&nbsp;</a>		
 				</div>
 				<div style="display: none;" class="logbox">
 					<div class="close_box"><a class="close" href="#">Close X</a></div>
 					<h2>Members login here</h2>
-					<form method="post">
+					<form action="client_login.php" method="post">
 					<table cellspacing="0" cellpadding="0" border="0">
 					  <tr>
 						<th>Registered Mail:</th>
-						<td><input name="" type="text" /></td>
+						<td><input name="username" type="text" /></td>
 					  </tr>
 					  <tr>
 						<th>Password:</th>
-						<td><input name="" type="text" /></td>
+						<td><input name="password" type="password" /></td>
 					  </tr>
 					  <tr>
 						<td colspan="2" class="send_btn"><input name="" type="submit" value="Login" /></td>
 					  </tr>
 					  <tr>
-						<td class="pass_forgot" colspan="2"><a href="forgotpassword.php">Forgot Password?</a> - <a href="signin.php">Apply for membership</a></td>
+						<?php
+            
+            if ($sub_logged_in == true){ ?>
+              <td class="pass_forgot" colspan="2">Welcome <?=$_SESSION['subscriber_firstame']?> - <a href="logout.php">Logout</a></td>
+						<?php
+						}
+						else
+						{
+              ?>
+							<td class="pass_forgot" colspan="2"><a href="forgotpassword.php">Forgot Password?</a> - <a href="signin.php">Apply for membership</a></td>
+							<?php
+						}
+						?>
 					  </tr>
 					</table>
 					</form>

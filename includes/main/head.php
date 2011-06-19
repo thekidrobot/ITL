@@ -1,4 +1,5 @@
-<?php 
+<?php
+	session_start();
 	include("functions/conn.php"); 
 	include("functions/general_functions.php"); 
 

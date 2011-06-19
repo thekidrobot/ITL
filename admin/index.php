@@ -1,6 +1,7 @@
 <?php 
 include('includes/header.php');
 include('../functions/ps_pagination.php');
+session_start();
 ?>
 
 <?php

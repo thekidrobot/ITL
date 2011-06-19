@@ -434,7 +434,6 @@ span.read_more.news_more a {
 .login_box {
 	width:49px;
 	height:47px;
-	background:url(../images/login_icon.jpg) top left no-repeat;
 	margin-left:5px;
 	margin-top:21px;
 	}
@@ -443,7 +442,7 @@ span.read_more.news_more a {
 	display:block;
 	width:49px;
 	height:47px;
-	}			
+	}	
 	
 .search_box {
 	width:282px;
