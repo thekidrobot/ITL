@@ -52,25 +52,27 @@
               
                 $id =mysql_insert_id();
                 echo "<p><h2>Thank you for register with ITL.</h2>";
-                echo "Thanks you for your interest in Intercontinental Trust Ltd.<br />
-                      Our staff will review your details and come back to you soon.<br /><br />
-                      A mail will be sent to you to $email</p>
+                echo "A change password request was sent to $email</p>
                       <br /><br />
                       <a href = 'index.php'>Go to the home page</a>
                       <br /><br />";
-                      
+                 
+                $query = mysql_query("SELECT firstname, middlename from contact where email = '$email'"); 
+                
+                while ($row = mysql_fetch_object($query))
+                {
+                  $fname = $row->firstname;
+                  $lname = $row->middlename;                      
+                }
                 //For the mail
                 $subject = "Welcome to IFS!";
   
                 $msg="<p>Dear ".$fname." ".$lname.",<br />
                       <br />
                       <p><h2>Thank you for register with ITL.</h2>
-                      Thanks you for your interest in Intercontinental Trust Ltd.<br />
-                      Our staff will review your details and come back to you soon.<br /><br />
-                      A mail will be sent to you to the registered email adress. </p>
-                      <br />
-                      -- <br />
-                      Thanks,<br />
+                      As per your password reset request, your new pasword is:
+                      $password. <br /><br />Note that the letters in the password are case sensitive. <br /> <br /> -- <br
+                      /> Thanks,<br />
                       The IFS Team</p>";
   
                 sendemail($email,$subject,$msg);
