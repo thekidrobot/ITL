@@ -1,6 +1,5 @@
 <?php 
 include('conn.php');
-include('general_functions.php');
 
 foreach($_POST as $key=>$value)
 {

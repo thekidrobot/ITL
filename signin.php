@@ -36,7 +36,8 @@
           the release of Letraset sheets containing Lorem Ipsum passages, and
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
-          
+          <br /><br />
+          If you are already subscribed, Please login with your ITL account.
           <?php 
           if(isset($_POST['Submit']))
           {// The form is submitted
@@ -94,7 +95,6 @@
                     <p><h2>Thank you for register with ITL.</h2>
                     Thanks you for your interest in Intercontinental Trust Ltd.<br />
                     Our staff will review your details and come back to you soon.<br /><br />
-                    A mail will be sent to you to the registered email adress. </p>
                     <br />
                     -- <br />
                     Thanks,<br />
@@ -172,7 +172,7 @@
                 <br class="clearAll" /><br />
               </p>
             
-              <p><input type="submit" value="Sign In" name="Submit" /></p>
+              <p><input type="submit" value="Register" name="Submit" /></p>
             </form>
           </div>
           <?php

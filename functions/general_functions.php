@@ -194,7 +194,7 @@ function check_event($eMonth,$eDay,$eYear)
 function sendemail($to,$subject,$msg)
 {
   
-  $mailcheck = spamcheck($_REQUEST['email']);
+  $mailcheck = spamcheck($to);
   
   if ($mailcheck==FALSE){
     echo "Invalid email format";

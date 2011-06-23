@@ -18,10 +18,13 @@ elseif(isset($_GET['activate']))
 {
  	$id = $_GET['activate'];
 
-  $rs_actual_status = mysql_query("select status from contact where id = $id");
+  $rs_actual_status = mysql_query("select status,email,firstname,middlename from contact where id = $id");
   while ($row = mysql_fetch_object($rs_actual_status))
   {
     $actual_status = $row->status;
+    $fname = $row->firstname;
+    $lname = $row->middlename;
+    $email = trim($row->email);
   }
   
   if($actual_status == 0) $status = 1;
@@ -29,7 +32,26 @@ elseif(isset($_GET['activate']))
 
   $sql = "UPDATE contact SET status = $status WHERE id = ". $id;
 	$r= mysql_query($sql)or die(mysql_error()." Error while updating");
-	$status= "User Updated Sucessfully";
+
+  if($status == 1)
+  {
+    //For the mail
+    $subject = "Welcome to IFS!";
+  
+    $msg="<p>Dear ".$fname." ".$lname.",<br />
+          <br />
+          <p><h2>Thank you for register with ITL.</h2>
+          Your membership has been activated.<br />
+          You can login to our site to access the newsletter section.<br /><br />
+          <br />
+          -- <br />
+          Thanks,<br />
+          The IFS Team</p>";
+    
+    sendemail($email,$subject,$msg);
+  }
+
+
 	redirect('subscribers.php'); 
 }
 ?>
