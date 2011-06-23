@@ -50,14 +50,14 @@
 				
 				<h2>News</h2>
 				<?php
-					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
-									article WHERE status_article = 1 AND type_article IN('N','E')";
+					$sql = "SELECT path, title, description ,EXTRACT(MONTH from date) as month, date FROM
+									document ";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{
-						$sql.=" AND EXTRACT(MONTH from date_article) = ".$_REQUEST['search_month'];
+						$sql.=" WHERE EXTRACT(MONTH from date) = ".$_REQUEST['search_month'];
 					}
-					$sql.=" ORDER BY id DESC";
+					$sql.=" ORDER BY date DESC";
 					$pager = new PS_Pagination($conn,$sql,5,3);
 					$result = $pager->paginate();
 					$no_rows=mysql_num_rows($result);
@@ -66,10 +66,10 @@
 						?>
 
 						<div class="news_listing">
-							<p class="listing_date"><?=$row['date_article']?></p>
-							<h3><?=$row['title_article'];?></h3>
-							<p class="news_detail"><?=substr($row['content_plain'], 0, 376)?> ...</p>
-							<p class="news_read_more"><a href="#">read more >></a></p>
+							<p class="listing_date"><?=$row['date']?></p>
+							<h3><?=$row['title'];?></h3>
+							<p class="news_detail"><?=substr($row['description'], 0, 376)?></p>
+							<p class="news_read_more"><a href="<?="admin/".$row['path']?>">View Document >></a></p>
 						</div>
 						<?php
 						$counter++;
@@ -83,7 +83,7 @@
 					elseif($no_rows == 0)
 					{
 						?>
-						<div align="center"><b>No news for the selected month</b></div>
+						<div align="center"><b>No newsletter published... Yet!</b></div>
 						<?php
 					}
 					?>
@@ -101,7 +101,7 @@
 						<img src="images/1px.gif" alt="" height="6" />
 					</div>
 					<div class="news_content event_box">
-						<h2>Event Calendar</h2>
+						<h2>Newsletter</h2>
 						<div class="calendar_box">
 							<?php include("functions/jcalendar.php");?>		
 						</div>
