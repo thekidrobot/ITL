@@ -444,6 +444,20 @@ span.read_more.news_more a {
 	height:47px;
 	}	
 	
+	.logout_box {
+	width:49px;
+	height:47px;
+	margin-left:5px;
+	margin-top:21px;
+	}
+	
+.logout_box a {
+	display:block;
+	width:49px;
+	height:47px;
+	}	
+	
+	
 .search_box {
 	width:282px;
 	float:right;

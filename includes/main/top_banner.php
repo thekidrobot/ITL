@@ -55,7 +55,7 @@
           if ($sub_logged_in == true)
           {
           ?>
-            <div class="login_box" style="background:url('images/logout_icon.jpg') top left no-repeat;">
+            <a href="logout.php"><div class="logout_box" style="background:url('images/logout_icon.jpg') top left no-repeat;"></a>
           <?php
           }
           else
