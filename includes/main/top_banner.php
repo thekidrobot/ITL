@@ -4,32 +4,16 @@
 			<table border="0" cellspacing="5" cellpadding="0" style="padding-top:5px;">
 			  <tr>
 					<td>
-						<ul id="clock1">	
-							<li id="sec1"></li>
-							<li id="hour1"></li>
-							<li id="min1"></li>
-						</ul>
+						<iframe src="clock_mauritius.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
 					</td>
 					<td>
-						<ul id="clock2">	
-							<li id="sec2"></li>
-							<li id="hour2"></li>
-							<li id="min2"></li>
-						</ul>
+						<iframe src="clock_london.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
 					</td>
 					<td>
-						<ul id="clock3">	
-							<li id="sec3"></li>
-							<li id="hour3"></li>
-							<li id="min3"></li>
-						</ul>
+						<iframe src="clock_singapore.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
 					</td>
 			  	<td>
-					<ul id="clock4">	
-						<li id="sec4"></li>
-				   	<li id="hour4"></li>
-						<li id="min4"></li>
-					</ul>
+						<iframe src="clock_san_francisco.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
 					</td>
 			  </tr>  
 			  <tr align="center">

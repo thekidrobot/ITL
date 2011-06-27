@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html lang="en"> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+		<title>Triqui Clock</title> 
+		<script type="text/javascript" src="js/raphael-min.js"></script> 
+		<script type="text/javascript">
+ 
+    function update_clock(width){
+      var now = new Date();
+      var hours = now.getUTCHours() + 8;
+      var minutes = now.getUTCMinutes();
+      var seconds = now.getUTCSeconds();
+      hour_hand.rotate(30*hours+(minutes/2.5), width/2, width/2);
+      minute_hand.rotate(6*minutes, width/2, width/2);
+      second_hand.rotate(6*seconds, width/2, width/2);
+    }
+
+    function draw_clock(width, fillColor, strokeWidth, strokeColor, pinWidth, pinColor, hourHandLengh, hourHandColor, minuteHandLengh, minuteHandColor, secondHandLengh, secondHandExceeding, secondHandColor){
+      canvas = Raphael("clock_id",width, width);
+      var clock = canvas.circle(width/2,width/2,25);
+      clock.attr({"fill":fillColor,"stroke":strokeColor,"stroke-width":strokeWidth})
+      var hour_sign;
+        for(i=0;i<12;i++){
+        var start_x = width/2+Math.round(22*Math.cos(30*i*Math.PI/180));
+        var start_y = width/2+Math.round(22*Math.sin(30*i*Math.PI/180));
+        var end_x = width/2+Math.round(20*Math.cos(30*i*Math.PI/180));
+        var end_y = width/2+Math.round(20*Math.sin(30*i*Math.PI/180));
+        hour_sign = canvas.path("M"+start_x+" "+start_y+"L"+end_x+" "+end_y);
+      }
+      hour_hand = canvas.path("M"+width/2+" "+width/2+"L"+width/2+" "+((width/2)-hourHandLengh)+"");
+      hour_hand.attr({stroke: hourHandColor, "stroke-width": 2});
+      minute_hand = canvas.path("M"+width/2+" "+width/2+"L"+width/2+" "+((width/2)-minuteHandLengh)+"");
+      minute_hand.attr({stroke: minuteHandColor, "stroke-width": 2});
+      second_hand = canvas.path("M"+width/2+" "+((width/2)+secondHandExceeding)+"L"+width/2+" "+((width/2)-secondHandLengh)+"");
+      second_hand.attr({stroke: secondHandColor, "stroke-width": 1});
+      var pin = canvas.circle(width/2, width/2, pinWidth);
+      pin.attr("fill", pinColor);
+      update_clock(width)
+      setInterval("update_clock("+width+")",1000);
+    }
+ 
+		</script>
+ 
+	</head> 
+	<body> 
+		<div id="clock_id" style="background-color:transparent"></div>
+		<script>draw_clock(55, "#DEDEDE", 3, "#000000", 2, "#000000", 15, "#444444", 20, "#444444", 20, 5, "#D15353")</script>
+	</body> 
+</html>
