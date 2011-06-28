@@ -5,6 +5,9 @@ URL: http://www.agavegroup.com
 Feel free to use this however you like.  Credit is always appreciated.
 *******************/
 
+.hide { display:none; }
+.show { display:inline; }
+
 .form_container{
 	margin:20px 0px 20px 10px;
 }
@@ -119,6 +122,8 @@ Feel free to use this however you like.  Credit is always appreciated.
 	border-bottom:1px solid #cccccc;
 	position:absolute;
 	background:#ffffff;
+	max-height:200px;
+	overflow:scroll;
 }
 
 .form_container .frmShdwSelectDrop{

@@ -6,11 +6,11 @@ Feel free to use this however you like.  Credit is always appreciated.
 *******************/
 
 	//need to set a couple of images here:
-	imageCheckboxChecked="../images/checkboxChecked.gif";
-	imageCheckboxUnchecked="../images/checkboxUnchecked.gif";
-	imageRadioChecked="../images/radiobuttonChecked.gif";
-	imageRadioUnchecked="../images/radiobuttonUnchecked.gif";
-	imageSelectDropDownArrow="../images/selectDrop.gif";
+	imageCheckboxChecked="images/prettyforms/checkboxChecked.gif";
+	imageCheckboxUnchecked="images/prettyforms/checkboxUnchecked.gif";
+	imageRadioChecked="images/prettyforms/radiobuttonChecked.gif";
+	imageRadioUnchecked="images/prettyforms/radiobuttonUnchecked.gif";
+	imageSelectDropDownArrow="images/prettyforms/selectDrop.gif";
 	
 	//the rest of the images are in the CSS
 
@@ -473,3 +473,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 		}
 	}
 	
+function showHide(id)
+{
+  document.getElementById('showhide').className = document.getElementById('showhide').className == 'hide' ? 'show' : 'hide';
+}
