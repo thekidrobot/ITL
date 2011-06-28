@@ -4,16 +4,16 @@
 			<table border="0" cellspacing="5" cellpadding="0" style="padding-top:5px;">
 			  <tr>
 					<td>
-						<iframe src="clock_mauritius.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
+						<iframe src="clock_mauritius.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 					<td>
-						<iframe src="clock_london.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
+						<iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 					<td>
-						<iframe src="clock_singapore.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
+						<iframe src="clock_singapore.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 			  	<td>
-						<iframe src="clock_san_francisco.html" frameborder="0" height="60px" width="60px" scrolling="no"></iframe>
+						<iframe src="clock_san_francisco.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 			  </tr>  
 			  <tr align="center">

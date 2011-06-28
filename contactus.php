@@ -8,6 +8,9 @@
   <?php $show_form=true; ?>
 
   <?php
+  
+    $email_admin = "vick@technology10.com";
+  
     $postArray = &$_POST ;
     $title = escape_value($postArray['title']);
     $fname = escape_value($postArray['fname']);
@@ -35,16 +38,15 @@
 			<div class="core_top"><img src="images/content_top.jpg" alt="" /></div>
 			<div class="core_content">
 				<div class="welcome_txt">
-					<h1>Contact Us</h1>
           <?php 
           if(isset($_POST['Submit']))
           {// The form is submitted
-        
-            //Setup Validations
-            $validator = new FormValidator();
             
+            //If he applies for the newsletter we have to sign him up
             if($newsletter == 'yes')
             {
+              //Setup Validations
+              $validator = new FormValidator();
               $validator->addValidation("fname","req","Please fill in Name");
               $validator->addValidation("lname","req","Please fill in Surname");
               $validator->addValidation("company","req","Please fill in Company");
@@ -57,31 +59,6 @@
               $validator->addValidation("query_comments","req","Please Tell us your thoughts");
               
               $email = trim($email);
-              
-              //For the query mail
-              $subject = "$query_type";
-  
-              $msg="<p>$query_comments</p>
-                    <br />
-                    -- <br />
-                    Regards,<br />
-                    $title $fname $lname
-                    <br />Country: $country
-                    <br />Company: $company
-                    <br />Phone: $ophone
-                    <br />Mail: $email";
-
-              $mailcheck1 = spamcheck($email);
-              $mailcheck2 = spamcheck($email_admin);
-
-              if ($mailcheck1==FALSE or $mailcheck2==FALSE){
-                echo "Invalid email format";
-              }
-              else{
-                $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
-                $headers.='From:'. $email ."\r\n";
-                mail($email_admin, $subject, $msg, $headers );	  
-              }
               
               //Registration
               $sql = "SELECT email from contact where email = '$email'";
@@ -97,6 +74,34 @@
               //Now, validate the form
               elseif($validator->ValidateForm())
               { 
+              
+                //For the query mail
+                $subject = "$query_type";
+    
+                $msg="<p>$query_comments</p>
+                      <br />
+                      -- <br />
+                      Regards,<br />
+                      $title $fname $lname
+                      <br />Country: $country
+                      <br />Company: $company
+                      <br />Phone: $ophone
+                      <br />Mail: $email";
+  
+                $mailcheck1 = spamcheck($email);
+                $mailcheck2 = spamcheck($email_admin);
+  
+                if ($mailcheck1==FALSE or $mailcheck2==FALSE){
+                  echo "Invalid email format";
+                }
+                else{
+                  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
+                  $headers.='From:'. $email ."\r\n";
+                  mail($email_admin, $subject, $msg, $headers );
+                }
+                
+                //Storing in contact database
+              
                 $password1 = md5($password1);
                 
                 $query="INSERT INTO contact 
@@ -141,52 +146,76 @@
                       echo "$inp_err<br/>\n";
                   }
                   echo "</p>";
-              }//else
-            }//if(isset($_POST['Submit']))
-              
-              
-            }
-            else
+              }
+            }//if $newsletter == 'yes'
+            
+            elseif($newsletter == 'no')
             {
+              //Setup Validations
+              $validator = new FormValidator();
               $validator->addValidation("fname","req","Please fill in Name");
               $validator->addValidation("lname","req","Please fill in Surname");
               $validator->addValidation("company","req","Please fill in Company");
+              $validator->addValidation("ophone","req","Please fill in Contact Phone");
               $validator->addValidation("ophone","num","Only numbers are allowed in telephone field");
               $validator->addValidation("email","email","The input for Email should be a valid email value");
               $validator->addValidation("email","req","Please fill in Email");
               $validator->addValidation("query_comments","req","Please Tell us your thoughts");
-             
+            
               $email = trim($email);
               
-              //For the query mail
-              $subject = "$query_type";
-  
-              $msg="<p>$query_comments</p>
-                    <br />
-                    -- <br />
-                    Regards,<br />
-                    $title $fname $lname
-                    <br />Country: $country
-                    <br />Company: $company
-                    <br />Phone: $ophone
-                    <br />Mail: $email";
-
-              $mailcheck1 = spamcheck($email);
-              $mailcheck2 = spamcheck($email_admin);
-
-              if ($mailcheck1==FALSE or $mailcheck2==FALSE){
-                echo "Invalid email format";
-              }
-              else{
-                $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
-                $headers.='From:'. $email ."\r\n";
-                mail($email_admin, $subject, $msg, $headers );	  
-              }
-
+              if($validator->ValidateForm())
+              { 
               
-            }
-
-
+                //For the query mail
+                $subject = "$query_type";
+  
+                $msg="<p>$query_comments</p>
+                      <br />
+                      -- <br />
+                      Regards,<br />
+                      $title $fname $lname
+                      <br />Country: $country
+                      <br />Company: $company
+                      <br />Phone: $ophone
+                      <br />Mail: $email";
+    
+                $mailcheck1 = spamcheck($email);
+                $mailcheck2 = spamcheck($email_admin);
+    
+                if ($mailcheck1==FALSE or $mailcheck2==FALSE){
+                  echo "Invalid email format";
+                }
+                else{
+                  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
+                  $headers.='From:'. $email ."\r\n";
+                  mail($email_admin, $subject, $msg, $headers );
+                  
+                  echo "<p><h2>Thank you for let us know your thoughts.</h2>";
+                  echo "Thanks you for your interest in Intercontinental Trust Ltd.<br />
+                      Our staff will review your details and come back to you soon.<br /><br />
+                      A mail will be sent to you to $email</p>
+                      <br /><br />
+                      <a href = 'index.php'>Go to the home page</a>
+                      <br /><br />";
+                  
+                  $show_form = false;
+                }
+              }
+              else
+              {
+                echo "<p><h2>Please Complete the following:</h2>";
+        
+                $error_hash = $validator->GetErrors();
+                foreach($error_hash as $inpname => $inp_err)
+                {
+                    echo "$inp_err<br/>\n";
+                }
+                echo "</p>";
+              }
+            } // if $newsletter == 'no'                
+          }
+          
           ?>
           <?php
           if ($show_form==true){

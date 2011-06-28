@@ -23,7 +23,15 @@ companies Mauritius" />
 <title>ITL</title>
 <!--For the contact form-->
 <script type="text/javascript" src="js/prettyForms.js"></script>
-<link rel="stylesheet" href="css/prettyForms.css" type="text/css" media="screen" />
+<!--[if IE]>
+	<link rel="stylesheet" href="css/prettyForms.css" type="text/css" media="screen" />
+<![endif]-->
+
+<!--[if !IE]><!-->
+	<link rel="stylesheet" href="css/prettyForms_noie.css" type="text/css" media="screen" />
+<!--<![endif]-->
+
+
 <!--for the clock-->
 <link href="css/clock.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>

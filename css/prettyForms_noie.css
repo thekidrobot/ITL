@@ -105,7 +105,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 	border-right:1px solid #cccccc;
 	border-left:1px solid #ffffff !important;
 	border-left:0;
-	display:inline;
+	display:block;
 	cursor:pointer;
 	/*some stuff for IE*/
 	color:#666666;
@@ -125,7 +125,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 	height:80px;
 	max-height:80px; 
 	overflow:scroll;
-	display:inline;
+	display:block;
 }
 
 .form_container .frmShdwSelectDrop{
