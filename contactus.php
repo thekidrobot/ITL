@@ -94,10 +94,9 @@
                 if ($mailcheck1==FALSE or $mailcheck2==FALSE){
                   echo "Invalid email format";
                 }
-                else{
-                  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
-                  $headers.='From:'. $email ."\r\n";
-                  mail($email_admin, $subject, $msg, $headers );
+                else
+                {
+                  sendemail($email_admin,$subject,$msg);
                 }
                 
                 //Storing in contact database
@@ -187,10 +186,9 @@
                   echo "Invalid email format";
                 }
                 else{
-                  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
-                  $headers.='From:'. $email ."\r\n";
-                  mail($email_admin, $subject, $msg, $headers );
                   
+                  sendemail($email_admin,$subject,$msg);
+
                   echo "<p><h2>Thank you for let us know your thoughts.</h2>";
                   echo "Thanks you for your interest in Intercontinental Trust Ltd.<br />
                       Our staff will review your details and come back to you soon.<br /><br />
