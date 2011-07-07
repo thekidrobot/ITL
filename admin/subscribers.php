@@ -36,7 +36,7 @@ elseif(isset($_GET['activate']))
   if($status == 1)
   {
     //For the mail
-    $subject = "Welcome to IFS!";
+    $subject = "Welcome to ITL!";
   
     $msg="<p>Dear ".$fname." ".$lname.",<br />
           <br />
@@ -46,7 +46,7 @@ elseif(isset($_GET['activate']))
           <br />
           -- <br />
           Thanks,<br />
-          The IFS Team</p>";
+          The ITL Team</p>";
     
     sendemail($email,$subject,$msg);
   }

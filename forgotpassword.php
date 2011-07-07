@@ -65,7 +65,7 @@
                   $lname = $row->middlename;                      
                 }
                 //For the mail
-                $subject = "Welcome to IFS!";
+                $subject = "Welcome to ITL!";
   
                 $msg="<p>Dear ".$fname." ".$lname.",<br />
                       <br />
@@ -73,7 +73,7 @@
                       As per your password reset request, your new pasword is:
                       $password. <br /><br />Note that the letters in the password are case sensitive. <br /> <br /> -- <br
                       /> Thanks,<br />
-                      The IFS Team</p>";
+                      The ITL Team</p>";
   
                 sendemail($email,$subject,$msg);
                 

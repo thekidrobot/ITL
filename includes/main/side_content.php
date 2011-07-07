@@ -7,8 +7,9 @@
 					$result = mysql_query($SQL) or die(mysql_error());
 					$total_rows = mysql_num_rows($result);
 					$i = 1;
+					$class = "";
 					?>
-					<h2><a href="news.php" style="color:#fff">News &amp; Events</a></h2>
+					<h2><a href="news.php" style="color:#fff">News &amp; Events &rsaquo;&rsaquo;</a></h2>
 					<ul>
 						<?
 						while ($db_field = mysql_fetch_assoc($result))
@@ -16,6 +17,10 @@
 							if ($i == ($total_rows))
 							{			
 								$class = "class='last'";
+							}
+							else
+							{
+								$class = "";	
 							}
 							?>
 							<li <?=$class?>>

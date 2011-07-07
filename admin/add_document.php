@@ -54,7 +54,7 @@ include('../functions/ps_pagination.php');
                 $email_query=mysql_query("SELECT email,other_name,surname FROM user WHERE id='$client'");
                 $email_res=mysql_fetch_object($email_query);
                 
-                $path=$_SERVER['HTTP_HOST']."/ifs/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
+                $path=$_SERVER['HTTP_HOST']."/itl/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
                 redirect('documents.php');
               }
             }

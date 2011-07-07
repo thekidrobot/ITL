@@ -119,7 +119,7 @@
                       <br /><br />";
                       
                 //For the registration mail
-                $subject = "Welcome to IFS!";
+                $subject = "Welcome to ITL!";
   
                 $msg="<p>Dear ".$fname." ".$lname.",<br />
                       <br />
@@ -129,7 +129,7 @@
                       <br />
                       -- <br />
                       Thanks,<br />
-                      The IFS Team</p>";
+                      The ITL Team</p>";
   
                 sendemail($email,$subject,$msg);
                      

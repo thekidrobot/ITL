@@ -63,7 +63,7 @@
 							<p class="listing_date"><?=$row['date_article']?></p>
 							<h3><?=$row['title_article'];?></h3>
 							<p class="news_detail"><?=substr($row['content_plain'], 0, 376)?> ...</p>
-							<p class="news_read_more"><a href="#">read more >></a></p>
+							<p class="news_read_more"><a href="content.php?art_id=<?=$row['id']?>">read more >></a></p>
 						</div>
 						<?php
 						$counter++;
