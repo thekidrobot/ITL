@@ -25,7 +25,7 @@
 					<form name="news_form">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-							<td>Search News by month:</td>
+							<td>Search Newsletter by month:</td>
 						<td>
 							<select name="search_month">
 							  <option>All</option>
@@ -48,7 +48,7 @@
 					</form>
 				</div>
 				
-				<h2>News</h2>
+				<h2>Newsletter</h2>
 				<?php
 					$sql = "SELECT path, title, description ,EXTRACT(MONTH from date) as month, date FROM
 									document ";
@@ -101,7 +101,7 @@
 						<img src="images/1px.gif" alt="" height="6" />
 					</div>
 					<div class="news_content event_box">
-						<h2>Newsletter</h2>
+						<h2>Events Calendar</h2>
 						<div class="calendar_box">
 							<?php include("functions/jcalendar.php");?>		
 						</div>

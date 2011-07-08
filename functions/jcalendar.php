@@ -147,20 +147,20 @@ $evedate=$dd."-".get_month($month)."-".$year;
 
   $hsql=mysql_query("SELECT holiday_date,title FROM holidays WHERE holiday_date LIKE '%".$year."-".$mm."%'ORDER BY holiday_date");
 
-  if($curr_page == "newsletter.php")
-  { 
-    $esql=mysql_query("SELECT title as title_article,DAYOFMONTH(date) AS date_article
-                       FROM document
-                       WHERE 	DATE_FORMAT(date, '%m-%Y')  = '" . $mm . '-' . $year . "'");
-  }
-  else
-  {
+  //if($curr_page == "newsletter.php")
+  //{ 
+  //  $esql=mysql_query("SELECT title as title_article,DAYOFMONTH(date) AS date_article
+  //                     FROM document
+  //                     WHERE 	DATE_FORMAT(date, '%m-%Y')  = '" . $mm . '-' . $year . "'");
+  //}
+  //else
+  //{
     $esql=mysql_query("select title_article,DAYOFMONTH(date_article) as date_article
           from article
           where 	DATE_FORMAT(date_article, '%m-%Y')  = '" . $mm . '-' . $year . "'
           AND 		status_article = 1 
-          AND 		type_article IN('E','N')");
-  }
+          AND 		type_article = 'E'");
+  //}
 
 
   $count_holidays=mysql_num_rows($hsql);

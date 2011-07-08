@@ -151,7 +151,7 @@ function hiLightEvt($eMonth,$eDay,$eYear)
 				from 		article
 				where 	DATE_FORMAT(date_article, '%d-%m-%Y')  = '" . $artday. '-' . $eMonth . '-' . $eYear . "'
 				AND 		status_article = 1 
-				AND 		type_article IN('E','N')";
+				AND 		type_article IN('E')";
 
 	$hsql=mysql_query("SELECT title FROM holidays WHERE holiday_date= '" . $eYear . '/' . $eMonth . '/' . $eDay . "'");
 	$holiday_count=mysql_fetch_object($hsql);

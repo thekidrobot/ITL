@@ -45,13 +45,20 @@
 				<h2>News</h2>
 				<?php
 					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
-									article WHERE status_article = 1 AND type_article IN('N','E')";
+									article WHERE status_article = 1 AND type_article = 'E'";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{
 						$sql.=" AND EXTRACT(MONTH from date_article) = ".$_REQUEST['search_month'];
 					}
+          elseif(isset($_GET['month']) && isset($_GET['day']) && isset($_GET['year']))
+          {
+            $sql.=" AND EXTRACT(MONTH from date_article) = ".$_GET['month'];
+            $sql.=" AND EXTRACT(DAY from date_article) = ".$_GET['day'];
+            $sql.=" AND EXTRACT(YEAR from date_article) = ".$_GET['year'];
+          }
 					$sql.=" ORDER BY id DESC";
+          
 					$pager = new PS_Pagination($conn,$sql,5,3);
 					$result = $pager->paginate();
 					$no_rows=mysql_num_rows($result);
@@ -77,7 +84,7 @@
 					elseif($no_rows == 0)
 					{
 						?>
-						<div align="center"><b>No news for the selected month</b></div>
+						<div align="center"><b>No news for the selected date</b></div>
 						<?php
 					}
 					?>
@@ -95,7 +102,7 @@
 						<img src="images/1px.gif" alt="" height="6" />
 					</div>
 					<div class="news_content event_box">
-						<h2>Event Calendar</h2>
+						<h2>Events Calendar</h2>
 						<div class="calendar_box">
 							<?php include("functions/jcalendar.php");?>		
 						</div>
