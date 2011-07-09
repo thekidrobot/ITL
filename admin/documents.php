@@ -37,15 +37,7 @@ if (isset($_GET['id']))
 						<td align="right"><b>Actions</b></td>
           </tr>     
 					<?php
-						//check if user type = admin or superadmin
-						$type_query=mysql_query("SELECT type FROM user WHERE login='".$_SESSION['member']."'");
-						$type_user=mysql_fetch_object($type_query);
-						
-						//get data and list them
-						if($type_user->type==0)
-							$query="select * from document";
-						elseif($type_user->type==1)
-							$query="SELECT d.* FROM document as d,user as u WHERE u.type=2 AND u.id=d.user_id";
+						$query="select * from document";
 						
 						$pager = new PS_Pagination($conn,$query,10,3);
 						$result = $pager->paginate();
@@ -60,9 +52,12 @@ if (isset($_GET['id']))
 									<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo "<b>".$counter."</b>"?></td>
 									<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row->title?></td>  
 									<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php
-										$get_client=mysql_query("SELECT other_name,surname FROM user WHERE id=$row->user_id");
+										$get_client=mysql_query("SELECT firstname,middlename FROM contact WHERE id=$row->user_id");
 										$userid=mysql_fetch_object($get_client);
-										echo $userid->other_name." ".$userid->surname;
+                    
+                    if (trim($userid->firstname." ".$userid->middlename)== "") echo "All";
+                    else echo $userid->firstname." ".$userid->middlename;
+                    
 									?></td>  
 									<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row->date?></td>  
 									<td class="action">

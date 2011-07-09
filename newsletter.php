@@ -11,7 +11,10 @@
   {
     redirect('signin.php');
   }
-  
+  else
+  {
+    $subscriber_id = $_SESSION['subscriber_id'];
+  }
   ?>
 	<!--end_header-->
 	<!--content-->
@@ -51,11 +54,11 @@
 				<h2>Newsletter</h2>
 				<?php
 					$sql = "SELECT path, title, description ,EXTRACT(MONTH from date) as month, date FROM
-									document ";
+									document where user_id IN(0,$subscriber_id)";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{
-						$sql.=" WHERE EXTRACT(MONTH from date) = ".$_REQUEST['search_month'];
+						$sql.=" AND EXTRACT(MONTH from date) = ".$_REQUEST['search_month'];
 					}
 					$sql.=" ORDER BY date DESC";
 					$pager = new PS_Pagination($conn,$sql,5,3);
@@ -64,7 +67,6 @@
 					while($row = mysql_fetch_assoc($result))
 					{
 						?>
-
 						<div class="news_listing">
 							<p class="listing_date"><?=$row['date']?></p>
 							<h3><?=$row['title'];?></h3>

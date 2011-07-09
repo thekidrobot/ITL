@@ -1,0 +1,58 @@
+Cambios pendientes: 
+
+Front: 
+
+Mostrar "Eventos" (El layout esta descuadrado) --> Hecho
+Newsletter solamente con login --> Hecho
+Mostrar "Newsletter" y "Factsheet" --> Factsheet, falta newsletter
+Sistema de login en el frente --> Hecho
+Revisar cual es el problema con el reloj en IE (IE6 - 8)
+
+Back: 
+
+The userlevel is ok now. --> Hecho
+
+Things to change:
+
+When I edit a user, the type is always set to "superadmin" even when the user is of type "Customer". Remove the type subscriber here.  --> Hecho
+
+Things to add:
+
+Now I need a "Contact Management" available to both superadmin & normal admin. When a user register, the data is saved in the table "contact". Don’t mix with "user". When the contact registers, the status is set to inactive (status = 0). The admin will activate the contact. When editing a contact, the admin user can activate the contact (use field "status = 1"). --> Hecho
+
+In the table contact, there is a field "type". When user register from website, set this field to "1" which means "Website".  -> Hecho
+
+===========================================================
+
+Andrés González Vargas: hi Vick, what is factsheet and newsletter?
+Andrés González Vargas: for news/events i was about to create a filter
+T10 - Vick Navjee: newsletter is newsletter in pdf
+Andrés González Vargas: ok
+Andrés González Vargas: and factsheet?
+T10 - Vick Navjee: factsheet is the information displayed in the yellow box.. there is one on homepage
+Andrés González Vargas: oh ok
+Andrés González Vargas: is the newsletter linked to the menu somehow?
+T10 - Vick Navjee: yes..
+T10 - Vick Navjee: under resources --> newsletter
+Andrés González Vargas: ok, and i guess they will upload pdf files in a regular basis
+T10 - Vick Navjee: yes
+Andrés González Vargas: ok
+T10 - Vick Navjee: newsletter is available only to logged users
+Andrés González Vargas: ok
+T10 - Vick Navjee: Did I give u a a table for newsletter?
+Andrés González Vargas: let me see
+T10 - Vick Navjee: yes its called "document"
+Andrés González Vargas:  oh ok
+
+T10 - Vick Navjee: there is a problem with the clock on IE
+Andrés González Vargas: which version of IE?
+T10 - Vick Navjee: 6 & 8
+Andrés González Vargas: ok, what's the problem?
+T10 - Vick Navjee: the clock does not work
+Andrés González Vargas: oh really? at all? :o
+T10 - Vick Navjee: doesnt work at all
+Andrés González Vargas: wow, i'll check today what's going on then
+T10 - Vick Navjee: ok
+Andrés González Vargas: i'm finishing the changes in the admin part, i expect to finish them by today, i'll keep you updated
+T10 - Vick Navjee: ok good
+

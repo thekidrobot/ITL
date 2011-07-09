@@ -23,10 +23,20 @@ include('../functions/ps_pagination.php');
       }
       else
       {
-        //get folder name of the client
-        $login_query=mysql_query("SELECT login,type FROM user WHERE id='".$client."'");
-        $loginname=mysql_fetch_object($login_query);
-        $documents_path = "documents/".$loginname->login;
+		
+		//Client id 0 = all clients
+		
+		if ($client == 0)
+		{
+		  $documents_path = "documents/all";
+		}
+		else
+		{
+		  //get folder name of the client
+		  $login_query=mysql_query("SELECT email,type FROM contact WHERE id='".$client."'");
+		  $loginname=mysql_fetch_object($login_query);
+		  $documents_path = "documents/".$loginname->login;		  
+		}
          
         //check if dir with loginname exists else create one
         if(!is_dir($documents_path)) mkdir($documents_path,0777);
@@ -43,7 +53,7 @@ include('../functions/ps_pagination.php');
               if($msg=="")
               {
                 $query="INSERT INTO document(user_id,type,path,title,description,date,datevalidfrom,datevalidto,createdby)
-                        VALUES ('$client',$type,'documents/".$loginname->login."/".$_FILES["file"]["name"]."','$title','$description',now(),'$fromDate','$toDate','$created_by')";
+                        VALUES ('$client',$type,'".$documents_path."/".$_FILES["file"]["name"]."','$title','$description',now(),'$fromDate','$toDate','$created_by')";
                 $r= mysql_query($query);
                 $id =mysql_insert_id();
                 //insert into log file
@@ -54,7 +64,7 @@ include('../functions/ps_pagination.php');
                 $email_query=mysql_query("SELECT email,other_name,surname FROM user WHERE id='$client'");
                 $email_res=mysql_fetch_object($email_query);
                 
-                $path=$_SERVER['HTTP_HOST']."/itl/admin/documents/".$loginname->login."/".$_FILES["file"]["name"];
+                $path=$_SERVER['HTTP_HOST']."/itl/admin/documents/".$documents_path."/".$_FILES["file"]["name"];
                 redirect('documents.php');
               }
             }
@@ -90,7 +100,7 @@ include('../functions/ps_pagination.php');
       {
         if (move_uploaded_file($_FILES["file"]["tmp_name"],$documents_path."/".$_FILES["file"]["name"]))
         {
-          $query.=",path='documents/".$loginname->login."/".$_FILES["file"]["name"]."'";    
+          $query.=",path='".$documents_path."/".$_FILES["file"]["name"]."'";    
         }
       }
     }
@@ -105,51 +115,48 @@ include('../functions/ps_pagination.php');
 ?>
 
 <body>
-	<div id="wrapper">
-    <h1><a href="index.php"><span><?=$website_name?></span></a></h1>
-    <?php include("includes/menu.php"); ?>
-		<div id="containerHolder">
-			<div id="container">
-        <div id="sidebar"><?php include('includes/side_menu.php'); ?></div>    
-				<div id="main">
-          <?php
-            if($_REQUEST['id']=="")
-             	echo "<h2>Add a Document</h2>";
-            else
-              echo "<h2>Edit Document</h2>";			  
+  <div id="wrapper">
+  <h1><a href="index.php"><span><?=$website_name?></span></a></h1>
+  <?php include("includes/menu.php"); ?>
+	<div id="containerHolder">
+	  <div id="container">
+	    <div id="sidebar"><?php include('includes/side_menu.php'); ?></div>    
+	      <div id="main">
+	      <?php
+            if($_REQUEST['id']=="") echo "<h2>Add a Document</h2>";
+            else echo "<h2>Edit Document</h2>";			  
           ?>	
-					<form method="post" name="doc_form" enctype="multipart/form-data" action="add_document.php" onsubmit="return doc_validation()">
-            <?
-            if($msg!="")
-					  echo "<font color='red'>$msg</font>";
+		  <form method="post" name="doc_form" enctype="multipart/form-data" action="add_document.php" onsubmit="return doc_validation()">
+          <?
+			if($msg!="") echo "<font color='red'>$msg</font>";
             //check if admin or superadmin 
             $type_user=$_SESSION['type'];
-            ?>
-            <div id="errorDate2"></div>
+          ?>
+			<div id="errorDate2"></div>
             <table cellpadding="0" cellspacing="0">
             <?php
               if($type_user==2) echo "<input type='hidden' name='client' value='".$_SESSION['id']."'>";
               else
               {
-                ?>	
+				?>	
                 <tr>
                   <td><b>Client:</b></td>
                   <td>
                     <select name="client">
+					<option value="0">All Clients</option>
                     <?
-                    if($type_user == 0) 
-                      $cquery="SELECT id,other_name,surname FROM user";
-                    elseif($type_user == 1)
-                      $cquery="SELECT id,other_name,surname FROM user WHERE type=2";
-                    
-                    $client_query=mysql_query($cquery);
-                    while($client=mysql_fetch_object($client_query))
-                    {
-                      echo "<option value='".$client->id."'";
-                      if($client->id==$res->user_id)
-                        echo "selected";
-                      echo " >".$client->other_name." ".$client->surname."</option>";
-                    }
+                      $cquery="SELECT id,firstname,middlename FROM contact where status = 1";
+					  $client_query=mysql_query($cquery);
+					  while($client_obj=mysql_fetch_object($client_query))
+					  {
+						?>
+						<option value="<?=$client_obj->id?>"
+						<?php 
+						  if($client_obj->id==$res->user_id) echo "selected";
+						?>
+						><?=$client_obj->firstname." ".$client_obj->middlename?></option>
+						<?
+					  }
                     ?>
                     </select>
                   </td>
@@ -159,7 +166,7 @@ include('../functions/ps_pagination.php');
               <tr>
                 <td><b>Title: </b></td><td><input type="text" name="title" value="<?=$res->title?>" /></td>
               </tr>
-  					  <tr>
+  		  	  <tr>
                 <td><b>Description: </b></td>
                 <td><textarea name="description" rows="5" cols="20"><?=$res->description?></textarea></td>
               </tr>

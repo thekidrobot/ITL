@@ -19,7 +19,7 @@
 					<form name="news_form">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-							<td>Search News by month:</td>
+							<td>Search events by month:</td>
 						<td>
 							<select name="search_month">
 							  <option>All</option>
@@ -42,7 +42,7 @@
 					</form>
 				</div>
 				
-				<h2>News</h2>
+				<h2>Events</h2>
 				<?php
 					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
 									article WHERE status_article = 1 AND type_article = 'E'";
@@ -84,7 +84,7 @@
 					elseif($no_rows == 0)
 					{
 						?>
-						<div align="center"><b>No news for the selected date</b></div>
+						<div align="center"><b>No events for the selected date</b></div>
 						<?php
 					}
 					?>

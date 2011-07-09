@@ -19,12 +19,19 @@ if($id=='') $id=1;
 	  <h2>View Document Details</h2>
 	   <?php 
 	   //get data and list them
-	   $query="select d.*,other_name,surname from document as d,user as u where d.id=$id AND d.user_id=u.id";
+	   $query="select d.*,c.firstname,c.middlename from document d,contact c where d.id=$id AND d.user_id=c.id";
+	   
 	   $result=mysql_query($query);
+	   if (mysql_num_rows($result) == 0)
+	   {
+		$query="select * from document where id=$id ";
+		$result=mysql_query($query);
+	   }
 	   $row=mysql_fetch_object($result)
+	   
 	  ?>
 	  <table cellpadding="0" cellspacing="0">
-	  <tr><td><b>Client: </b></td><td><?=$row->other_name." ".$row->surname?></td></tr>
+	  <tr><td><b>Client: </b></td><td><?php if(trim($row->other_name." ".$row->surname) == "") echo "All"; else echo $row->other_name." ".$row->surname ?></td></tr>
 	  <tr><td><b>Title: </b></td><td><?=$row->title?></td></tr>
 	  <tr><td><b>Description: </b></td><td><?=$row->description?></td></tr>
 	  <tr><td><b>Date created: </b></td><td><?=$row->date?></td></tr>
