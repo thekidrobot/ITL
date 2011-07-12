@@ -3,7 +3,9 @@ include('includes/header.php');
 include('../functions/ps_pagination.php');
 
 $type_user=$_SESSION['type'];
-if ($type_user!=1) redirect('index.php');
+$user_id = $_SESSION['id'];
+
+if ($type_user!=1 and $_GET['id'] != $user_id) redirect('index.php');
 
 $query=mysql_query("SELECT * FROM user WHERE id='".$_REQUEST['id']."'");
 $res=mysql_fetch_object($query);

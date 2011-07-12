@@ -418,6 +418,12 @@ span.read_more.news_more a {
 	color:#B3E0FF;
 	}
 	
+span.all_news a {
+	display:block;
+	color:#B3E0FF;
+	font-size:11px;
+	}	
+
 .partners_box {
 	background:url(../images/partners_bg.jpg) top left no-repeat;
 	height:47px;

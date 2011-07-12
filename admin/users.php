@@ -3,8 +3,7 @@ include('includes/header.php');
 include('../functions/ps_pagination.php');
 
 $type_user=$_SESSION['type'];
-
-if ($type_user!=1) redirect('index.php');
+$user_id = $_SESSION['id'];
 
 if (isset($_GET['id']))
 {
@@ -25,7 +24,12 @@ if (isset($_GET['id']))
     <div id="containerHolder">
       <div id="container">
         <div id="sidebar">
-					<?php include('includes/side_menu.php'); ?>
+					<?php
+            if ($type_user==1)
+            {
+              include('includes/side_menu.php');
+            }
+          ?>
         </div>
         <div id="main">
         <h2>All Users</h2>	
@@ -39,7 +43,13 @@ if (isset($_GET['id']))
             </tr>     
             <?php
               $cols = 5;
-              $query="select * from user";
+              $query="select * from user ";
+              
+              if ($type_use!=1)
+              {
+                $query.="where id = $user_id";  
+              }
+                
               $pager = new PS_Pagination($conn,$query,10,3);
               $result = $pager->paginate();
               $counter = 1;
@@ -56,9 +66,23 @@ if (isset($_GET['id']))
                   <td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?=$result1['name']?></td>
                   <td class="action">
                     <?php display_status($row->status) ?>
-                    <a href="view_user.php?id=<?php echo $row->id?>" class="view" id="view_<?php echo $row->id?>">View</a>
+                    
+                    <?php if ($type_user==1)
+                    {
+                      ?>
+                      <a href="view_user.php?id=<?php echo $row->id?>" class="view" id="view_<?php echo $row->id?>">View</a>
+                      <?php
+                    }
+                    ?>
                     <a href="add_user.php?id=<?php echo $row->id  ?>" class="edit">Edit</a>
-                    <a href="users.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to delete?')" class="delete" id="delete">Delete</a>
+                    <?php if ($type_user==1)
+                    {
+                      ?>
+                      <a href="users.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to delete?')" class="delete" id="delete">Delete</a>
+                      <?php
+                    }
+                    ?>
+                    
                 	</td>
                 </tr>                        
                 <?php

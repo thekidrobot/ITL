@@ -48,7 +48,7 @@ function auth_user($username,$password)
     $_SESSION['valid_subscriber'] = 1;
     $error = false;
     
-		redirect('index.php');
+		redirect($_SERVER['PHP_SELF']);
   }
   return $error;
 }

@@ -10,6 +10,7 @@
   if ($sub_logged_in == false)
   {
     redirect('signin.php');
+    exit();
   }
   else
   {

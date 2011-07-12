@@ -19,7 +19,7 @@
 					<form name="news_form">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-							<td>Search news by month:</td>
+							<td>Search events by month:</td>
 						<td>
 							<select name="search_month">
 							  <option>All</option>
@@ -42,10 +42,10 @@
 					</form>
 				</div>
 				
-				<h2>News</h2>
+				<h2>News &amp; Events</h2>
 				<?php
 					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
-									article WHERE status_article = 1 AND type_article = 'E'";
+									article WHERE status_article = 1 AND type_article IN ('N','E')";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{

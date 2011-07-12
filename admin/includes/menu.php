@@ -6,12 +6,13 @@
 <ul id="mainNav">
  <li><a href="index.php" <?php if ($curr_page == "index.php") echo "class='active'" ?>>Content Administration</a></li>
  <li><a href="documents.php" <?php if ($curr_page == "documents.php") echo "class='active'" ?>>Documents Administration</a></li>
- <li><a href="subscribers.php" <?php if ($curr_page == "subscribers.php") echo "class='active'" ?>>Subscribers Administration</a></li>
+ <li><a href="users.php" <?php if ($curr_page == "users.php") echo "class='active'" ?>>Users Administration</a></li>
  <?php
   if ($type_user==1)
   {
    ?>
-    <li><a href="users.php" <?php if ($curr_page == "users.php") echo "class='active'" ?>>Users Administration</a></li>
+    <li><a href="subscribers.php" <?php if ($curr_page == "subscribers.php") echo "class='active'" ?>>Subscribers Administration</a></li>
+    <li><a href="log.php" <?php if ($curr_page == "log.php") echo "class='active'" ?>>View Logs</a></li>
    <?php 
   }
  ?>

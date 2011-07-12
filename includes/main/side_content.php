@@ -9,7 +9,7 @@
 					$i = 1;
 					$class = "";
 					?>
-					<h2><a href="news.php" style="color:#fff">News &amp; Events &rsaquo;&rsaquo;</a></h2>
+					<h2><a href="events.php" style="color:#fff">News &amp; Events</a></h2>
 					<ul>
 						<?
 						while ($db_field = mysql_fetch_assoc($result))
@@ -34,7 +34,8 @@
 							$i++;
 						}
 						?>
-					</ul>		
+					</ul>
+					<span class="all_news"><a href="events.php">All News and Events &rsaquo;&rsaquo;</a></span>
 				</div>
 				<div class="news_btm"><img src="images/1px.gif" alt="" height="6" /></div>
 			</div>
