@@ -45,7 +45,7 @@ if (isset($_GET['id']))
               $cols = 5;
               $query="select * from user ";
               
-              if ($type_use!=1)
+              if ($type_user!=1)
               {
                 $query.="where id = $user_id";  
               }
