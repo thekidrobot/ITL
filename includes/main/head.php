@@ -35,6 +35,7 @@ companies Mauritius" />
 <!--for the clock-->
 <link href="css/clock.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="js/color.js"></script>
 <script src="js/clock.js" type="text/javascript"></script>
 <!--for the clock-->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -48,4 +49,49 @@ body{
 
 <script language="javascript" type="text/javascript" src="js/fixpng.js"></script>
 <![endif]-->
+
+<script type="text/javascript">
+	
+	// Custom overlay script
+	$(document).ready( function(){
+	
+		var slideSpeed = 150 / 0.5;	
+		
+		var cssObject = {
+			width 		: $('.content').width() ,
+			height		: $('.content').height(),
+			opacity		: 0,
+			'z-index'	: -1
+		};	
+			
+		// Append the overlay div and apply CSS Object to it
+		$('.content')
+					.prepend( $('<div class="content_overlay"></div>') );		
+					
+		$('.content_overlay') .css( cssObject );
+						
+		$('.menu ul li').hover(function(){							
+			
+			$(this).children('ul').slideDown( slideSpeed , function(){
+				$(this).children('ul').css( 'display', 'block' );
+			});
+			
+			$('.content_overlay').css('z-index', 1000 );
+			// Animating the overlay	
+			$('.content_overlay').stop().animate( {opacity : "0.8"}, 300 );
+			
+		},function(){
+	
+			$(this).children('ul').slideUp( slideSpeed , function(){
+				$(this).children('ul').css( 'display', 'none' );
+			});
+
+			$('.content_overlay').stop().animate( {opacity : "0"}, 300, function(){
+				$('.content_overlay').css('z-index', -1 );			
+			});
+
+		});
+
+	})
+</script>
 </head>

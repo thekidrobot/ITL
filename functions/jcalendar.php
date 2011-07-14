@@ -134,7 +134,7 @@ $evedate=$dd."-".get_month($month)."-".$year;
 ?>
 <a rel="lyteframe" href="event_view.php?date=<?=$evedate;?>" rev="width: 800px; height: 400px; scrolling: yes;"><?=$i;?></a>
 <?}else{?>
-<a href="<?=$_SERVER['PHP_SELF'] . '?month='. $month . '&day=' . $i . '&year=' . $year;?>&v=1"><?=$i;?></a>
+<a href="<?='news.php?month='. $month . '&day=' . $i . '&year=' . $year;?>&v=1"><?=$i;?></a>
 <?}?>
 </td>
 <?php

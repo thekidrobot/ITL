@@ -3,32 +3,34 @@
 			<div class="clock_box">
 			<table border="0" cellspacing="5" cellpadding="0" style="padding-top:5px;">
 			  <tr>
-					<td>
-						<iframe src="clock_mauritius.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
+			  	<td>
+						<iframe src="clock_san_francisco.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 					<td>
 						<iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 					<td>
+						<iframe src="clock_mauritius.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
+					</td>
+					<td>
 						<iframe src="clock_singapore.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
-			  	<td>
-						<iframe src="clock_san_francisco.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
-					</td>
+
 			  </tr>  
 			  <tr align="center">
-				<td>
-				Mauritius
+			  <td>
+				San Francisco
 				</td>
 				<td>
 				London
 				</td>
 				<td>
+				Mauritius
+				</td>
+				<td>
 				Singapore
 				</td>
-			  <td>
-				San Francisco
-				</td>
+
 			  </tr>  
 			</table>
 			</div>

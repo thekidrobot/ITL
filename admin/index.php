@@ -8,10 +8,28 @@ session_start();
 	if (isset($_GET['id']))
 	{
 		$id = escape_value($_GET['id']);
-		$query="delete from article where id = $id";
-		$r= mysql_query($query)or die(mysql_error()."cannot enter data");
-		$status= "Article Deleted Sucessfully";
-		redirect('index.php');
+		//$query="delete from article where id = $id";
+		//$r= mysql_query($query)or die(mysql_error()."cannot enter data");
+		//$status= "Article Deleted Sucessfully";
+		
+    $status_query = mysql_query("select status_article from article where id = $id");
+    $result = mysql_fetch_object($status_query);
+    
+    if($result->status_article == 0){
+      $query="update article set status_article = 1 where id = $id";
+      $r= mysql_query($query)or die(mysql_error()."cannot enter data");
+      //update log table
+    	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$id."',now(),'document activated')");
+      $status= "Article deactivated Sucessfully";  
+    }
+    elseif($result->status_article == 1){
+      $query="update article set status_article = 0 where id = $id";
+      $r= mysql_query($query)or die(mysql_error()."cannot enter data");
+      //update log table
+    	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$id."',now(),'document deactivated')");
+      $status= "Article activated Sucessfully";
+    } 
+    redirect('index.php');
 	}
 	
 	if($_POST['type']) $content_type = $_POST['type'];
@@ -90,10 +108,23 @@ session_start();
 							</td>  
 							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['date_article']?></td>  
 							<td class="action">
-								<?php echo display_status($row['status_article']) ?>
+								<?php //echo display_status($row['status_article']) ?>
 								<a href="review_article.php?id=<?php echo $row['id']?>" class="view" id="view_<?php echo $row['id']?>">View</a>
 								<a href="modify_article.php?id=<?php echo $row['id']?>" class="edit">Edit</a>
-								<a href="delete_article.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure do you want to delete?')">Delete</a>
+								<?php
+                if($row['status_article'] == 0)
+                {
+                  ?>
+                  <a href="index.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure do you want to activate?')">Activate</a>
+                  <?php
+                }
+                elseif($row['status_article'] == 1)
+                {
+                  ?>
+                  <a href="index.php?id=<?php echo $row['id']?>" onclick="return confirm('Are you sure do you want to deactivate?')">Deactivate</a>
+                  <?php
+                }
+                ?>
 							</td>
 						</tr>                        
 						<?php

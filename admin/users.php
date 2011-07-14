@@ -5,15 +5,29 @@ include('../functions/ps_pagination.php');
 $type_user=$_SESSION['type'];
 $user_id = $_SESSION['id'];
 
-if (isset($_GET['id']))
+if(isset($_GET['id']))
 {
 	$id = $_GET['id'];
-	$login_query=mysql_query("SELECT login FROM user WHERE id=$id");
-	$loginname=mysql_fetch_object($login_query);
-	if(is_dir("documents/".$loginname->login)) deleteDirectory("documents/".$loginname->login);
-	$query="delete from user where id = $id";
-	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
-	$status= "User Deleted Sucessfully";
+	//$login_query=mysql_query("SELECT login FROM user WHERE id=$id");
+	//$loginname=mysql_fetch_object($login_query);
+	//The user won't be deleted, just deactivated
+  //if(is_dir("documents/".$loginname->login)) deleteDirectory("documents/".$loginname->login);
+	//$query="delete from user where id = $id";
+  
+  $status_query = mysql_query("select status from user where id = $id");
+  $result = mysql_fetch_object($status_query);
+  
+  if($result->status == 0){
+    $query="update user set status = 1 where id = $id";
+    $r= mysql_query($query)or die(mysql_error()."cannot enter data");
+    $status= "User deactivated Sucessfully";  
+  }
+  elseif($result->status == 1){
+    $query="update user set status = 0 where id = $id";
+    $r= mysql_query($query)or die(mysql_error()."cannot enter data");
+    $status= "User activated Sucessfully";
+  }
+  
 	redirect('users.php');
 }
 ?>
@@ -77,9 +91,16 @@ if (isset($_GET['id']))
                     <a href="add_user.php?id=<?php echo $row->id  ?>" class="edit">Edit</a>
                     <?php if ($type_user==1)
                     {
+                      if($row->status == 0){
                       ?>
-                      <a href="users.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to delete?')" class="delete" id="delete">Delete</a>
-                      <?php
+                      <a href="users.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to activate?')" class="delete" id="delete">Activate</a>
+                      <?php  
+                      }
+                      elseif($row->status == 1){
+                      ?>
+                      <a href="users.php?id=<?php echo $row->id;?>"  onclick="return confirm('Are you sure do you want to deactivate?')" class="delete" id="delete">Deactivate</a>
+                      <?php  
+                      }
                     }
                     ?>
                     
