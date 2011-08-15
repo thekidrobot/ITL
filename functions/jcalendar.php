@@ -129,13 +129,24 @@ else
   $dd="0".$i;
 else
   $dd=$i; 
-if(check_event($month,$i,$year)==1){
-$evedate=$dd."-".get_month($month)."-".$year;
-?>
-<a rel="lyteframe" href="event_view.php?date=<?=$evedate;?>" rev="width: 800px; height: 400px; scrolling: yes;"><?=$i;?></a>
-<?}else{?>
-<a href="<?='news.php?month='. $month . '&day=' . $i . '&year=' . $year;?>&v=1"><?=$i;?></a>
-<?}?>
+if(check_event($month,$i,$year)==1)
+{
+  $evedate=$dd."-".get_month($month)."-".$year;
+  ?>
+  <a rel="lyteframe" href="event_view.php?date=<?=$evedate;?>" rev="width: 800px; height: 400px; scrolling: yes;"><?=$i;?></a>
+  <?
+}
+else
+{ 
+  if(check_event($month,$i,$year)==1)
+  {
+    ?><a href="<?='news.php?month='. $month . '&day=' . $i . '&year=' . $year;?>&v=1"><?=$i;?></a><?
+  }
+  else
+  {
+    echo $i;
+  }
+}?>
 </td>
 <?php
 }

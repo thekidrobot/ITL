@@ -2,6 +2,9 @@
 
 //EVERY FUNCTION HERE SHOULD BE COMMENTED.
 
+// set the default timezone to use. Available since PHP 5.1
+date_default_timezone_set('UTC');
+
 // Shows the name of the script in execution, used by menus and custom scripts
 $file = $_SERVER["SCRIPT_NAME"];
 $break = Explode('/', $file);

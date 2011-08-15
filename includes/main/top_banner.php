@@ -1,4 +1,7 @@
-	<div class="header">
+	<?php
+    $today = getdate();
+  ?>
+  <div class="header">
 		<div class="header_top">
 			<div class="clock_box">
 			<table border="0" cellspacing="5" cellpadding="0" style="padding-top:5px;">
@@ -7,7 +10,25 @@
 						<iframe src="clock_san_francisco.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
 					</td>
 					<td>
-						<iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
+						<?php
+              
+                $currdate=mktime(0,0,0,date('m'),date('d'),date('Y'));
+                $start_date='03/25/'.$today[year];
+                list($day,$mon,$year)=explode('/',$start_date);
+                $start_date=mktime(0,0,0,$mon,$day,$year);
+     
+                $end_date='10/25/'.$today[year];
+                list($day,$mon,$year)=explode('/',$end_date);
+                $end_date=mktime(0,0,0,$mon,$day,$year);
+
+                if ($currdate >= $start_date and $currdate <= $end_date)
+                {
+                  ?><iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
+                }else 
+                {
+                  ?><iframe src="clock_london_utc.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
+                }
+            ?>
 					</td>
 					<td>
 						<iframe src="clock_mauritius.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe>
@@ -19,7 +40,7 @@
 			  </tr>  
 			  <tr align="center">
 			  <td>
-				San Francisco
+				New York
 				</td>
 				<td>
 				London
@@ -28,7 +49,7 @@
 				Mauritius
 				</td>
 				<td>
-				Singapore
+				Hong Kong
 				</td>
 
 			  </tr>  

@@ -8,7 +8,7 @@
  
     function update_clock(width){
       var now = new Date();
-      var hours = now.getUTCHours() - 7;
+      var hours = now.getUTCHours();
       var minutes = now.getUTCMinutes();
       var seconds = now.getUTCSeconds();
       hour_hand.rotate(30*hours+(minutes/2.5), width/2, width/2);
