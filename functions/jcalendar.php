@@ -137,14 +137,14 @@ if(check_event($month,$i,$year)==1)
   <?
 }
 else
-{ 
-  if(check_event($month,$i,$year)==1)
+{
+  if(checkDay($month,$i,$year)==1)
   {
     ?><a href="<?='news.php?month='. $month . '&day=' . $i . '&year=' . $year;?>&v=1"><?=$i;?></a><?
   }
   else
   {
-    echo $i;
+    ?><span style="color:#999999"><?=$i;?></span><?
   }
 }?>
 </td>

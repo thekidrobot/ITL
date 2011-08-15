@@ -177,6 +177,43 @@ function hiLightEvt($eMonth,$eDay,$eYear)
 	return $aClass;
 }
 
+///////Function used to detect events.////////
+function checkDay($eMonth,$eDay,$eYear)
+{
+	$todaysDate = date("n/j/Y");
+	$dateToCompare = $eMonth . '/' . $eDay . '/' . $eYear;
+
+	if($eDay<=9) $artday="0".$eDay;
+	else $artday=$eDay;
+	
+	if($eMonth<=9) $eMonth="0".$eMonth;
+
+	$sql="select 	count(date_article) as eCount, title_article 
+				from 		article
+				where 	DATE_FORMAT(date_article, '%d-%m-%Y')  = '" . $artday. '-' . $eMonth . '-' . $eYear . "'
+				AND 		status_article = 1 
+				AND 		type_article IN('E')";
+
+	$hsql=mysql_query("SELECT title FROM holidays WHERE holiday_date= '" . $eYear . '/' . $eMonth . '/' . $eDay . "'");
+	$holiday_count=mysql_fetch_object($hsql);
+	
+	$result = mysql_query($sql);
+	
+	while($row= mysql_fetch_array($result))
+	{
+		if($row['eCount'] >=1 || $holiday_count->title!="")
+		{
+			if($row['eCount'] >=1) $eventType = 1; //Event
+			else $eventType = 2; //Holiday
+		}
+		elseif($row['eCount'] ==0)
+		{
+			$eventType = 0; //No Event;
+		}
+	}
+	return $eventType ;
+}
+
 function check_event($eMonth,$eDay,$eYear)
 {
 	$articlemonth=$eMonth;

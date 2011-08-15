@@ -91,10 +91,10 @@ class PS_Pagination {
 	 */
 	function renderFirst($tag='First') {
 		if($this->page == 1) {
-			return $tag;
+			return '<li class="active">'.$tag.'</li>';
 		}
 		else {
-			return '<a href="'.$this->php_self.'?page=1">'.$tag.'</a>';
+			return '<li class="active"><a href="'.$this->php_self.'?page=1">'.$tag.'</a></li>';
 		}
 	}
 	
@@ -107,10 +107,10 @@ class PS_Pagination {
 	 */
 	function renderLast($tag='Last') {
 		if($this->page == $this->max_pages) {
-			return $tag;
+			return '<li class="active">'.$tag.'</li>';
 		}
 		else {
-			return '<a href="'.$this->php_self.'?page='.$this->max_pages.'">'.$tag.'</a>';
+			return '<li class="active"><a href="'.$this->php_self.'?page='.$this->max_pages.'">'.$tag.'</a></li>';
 		}
 	}
 	
@@ -121,12 +121,12 @@ class PS_Pagination {
 	 * @param string $tag Text string to be displayed as the link. Defaults to '>>'
 	 * @return string
 	 */
-	function renderNext($tag=' &gt;&gt;') {
+	function renderNext($tag=' Next ') {
 		if($this->page < $this->max_pages) {
-			return '<a href="'.$this->php_self.'?page='.($this->page+1).'">'.$tag.'</a>';
+			return '<li><a href="'.$this->php_self.'?page='.($this->page+1).'">'.$tag.'</a></li>';
 		}
 		else {
-			return $tag;
+			return '<li>'.$tag.'</li>';
 		}
 	}
 	
@@ -137,12 +137,12 @@ class PS_Pagination {
 	 * @param string $tag Text string to be displayed as the link. Defaults to '<<'
 	 * @return string
 	 */
-	function renderPrev($tag='&lt;&lt;') {
+	function renderPrev($tag=' Prev ') {
 		if($this->page > 1) {
-			return '<a href="'.$this->php_self.'?page='.($this->page-1).'">'.$tag.'</a>';
+			return '<li><a href="'.$this->php_self.'?page='.($this->page-1).'">'.$tag.'</a></li>';
 		}
 		else {
-			return $tag;
+			return '<li>'.$tag.'</li>';
 		}
 	}
 	
@@ -171,10 +171,10 @@ class PS_Pagination {
 		
 		for( $i=$start ; $i<$end ; $i++) {
 			if($i == $this->page) {
-				$links .= " $i ";
+				$links .= "<li class='active'>".$i."</li>";
 			}
 			else {
-				$links .= ' <a href="'.$this->php_self.'?page='.$i.'">'.$i.'</a> ';
+				$links .= ' <li><a href="'.$this->php_self.'?page='.$i.'">'.$i.'</a></li> ';
 			}
 		}
 		
@@ -188,7 +188,7 @@ class PS_Pagination {
 	 * @return string
 	 */
 	function renderFullNav() {
-		return $this->renderFirst().'&nbsp;'.$this->renderPrev().'&nbsp;'.$this->renderNav().'&nbsp;'.$this->renderNext().'&nbsp;'.$this->renderLast();	
+		return '<div class="pagination"><ul>'.$this->renderFirst().'&nbsp;'.$this->renderPrev().'&nbsp;'.$this->renderNav().'&nbsp;'.$this->renderNext().'&nbsp;'.$this->renderLast().'</ul><div class="cleaner"></div></div>';	
 	}
 	
 	/**
