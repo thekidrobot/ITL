@@ -98,8 +98,14 @@ if($_POST['Add']!='')
 								<td>
 								<?php
               
-              $query=mysql_query("SELECT * FROM user_type");
-              ?>
+              if($type_user==1){
+								$query=mysql_query("SELECT * FROM user_type");
+							}
+							else{
+								$query=mysql_query("SELECT t.* FROM user u, user_type t where u.type = t.id and u.id = $user_id");
+							}
+							
+							?>
               <select name="type">
 				<?php
                 while($result = mysql_fetch_array($query))
@@ -144,7 +150,7 @@ if($_POST['Add']!='')
 								<tr>
 									<td>&nbsp;</td>
 									<td>
-										<input style="margin-top:5px" type="submit" class="button-submit" value="<?=$value ?>" name="Add" id ="add" />&nbsp;&nbsp;
+										<input type="submit" class="button-submit" value="<?=$value ?>" name="Add" id ="add" />&nbsp;&nbsp;
 										<input type="button" class="button-submit" value="Cancel" name="Cancel" onclick="confirm_msg('user')" />
 									</td>
 								</tr>	

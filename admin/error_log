@@ -1,0 +1,7 @@
+[09-Jun-2011 01:36:00] PHP Fatal error:  Call to undefined function  sendemail() in /home2/tonezerw/public_html/itl/admin/add_document.php on line 58
+[10-Jun-2011 02:46:12] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home2/tonezerw/public_html/itl/admin/users.php on line 49
+[10-Jun-2011 02:46:12] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home2/tonezerw/public_html/itl/admin/users.php on line 49
+[10-Jun-2011 02:46:12] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home2/tonezerw/public_html/itl/admin/users.php on line 49
+[28-Jul-2011 04:33:11] PHP Warning:  move_uploaded_file(/itl t10 test newsletter.pdf) [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: failed to open stream: Permission denied in /home2/tonezerw/public_html/itl/admin/add_document.php on line 101
+[28-Jul-2011 04:33:11] PHP Warning:  move_uploaded_file() [<a href='function.move-uploaded-file'>function.move-uploaded-file</a>]: Unable to move '/var/tmp/php8iYTs9' to '/itl t10 test newsletter.pdf' in /home2/tonezerw/public_html/itl/admin/add_document.php on line 101
+[28-Jul-2011 05:38:36] PHP Warning:  mysql_fetch_object(): supplied argument is not a valid MySQL result resource in /home2/tonezerw/public_html/itl/admin/users.php on line 70

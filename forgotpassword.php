@@ -51,7 +51,7 @@
               if (mysql_affected_rows() > 0){
               
                 $id =mysql_insert_id();
-                echo "<p><h2>Thank you for register with ITL.</h2>";
+                echo "<p><h2>Password request sent.</h2>";
                 echo "A change password request was sent to $email</p>
                       <br /><br />
                       <a href = 'index.php'>Go to the home page</a>
@@ -69,7 +69,7 @@
   
                 $msg="<p>Dear ".$fname." ".$lname.",<br />
                       <br />
-                      <p><h2>Thank you for register with ITL.</h2>
+                      <p><h2>Password change request.</h2>
                       As per your password reset request, your new pasword is:
                       $password. <br /><br />Note that the letters in the password are case sensitive. <br /> <br /> -- <br
                       /> Thanks,<br />

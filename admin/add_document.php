@@ -35,9 +35,8 @@ include('../functions/ps_pagination.php');
 		  //get folder name of the client
 		  $login_query=mysql_query("SELECT email,type FROM contact WHERE id='".$client."'");
 		  $loginname=mysql_fetch_object($login_query);
-		  $documents_path = "documents/".$loginname->login;		  
+		  $documents_path = "documents/".$loginname->email;		  
 		}
-         
         //check if dir with loginname exists else create one
         if(!is_dir($documents_path)) mkdir($documents_path,0777);
         if (file_exists($documents_path."/".$_FILES["file"]["name"]))
@@ -57,7 +56,7 @@ include('../functions/ps_pagination.php');
                 $r= mysql_query($query);
                 $id =mysql_insert_id();
                 //insert into log file
-                $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','$id',now(),'document added')");
+                $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','$id',now(),'document added')");
                 $status= "Document Added Sucessfully";
                 //send email to the client
                 //get email address
@@ -89,6 +88,22 @@ include('../functions/ps_pagination.php');
     $created_by = escape_value($postArray['created_by']);
     $type = escape_value($postArray['type']);
     
+	//Client id 0 = all clients
+		
+	if ($client == 0)
+	{
+	  $documents_path = "documents/all";
+	}
+	else
+	{
+	  //get folder name of the client
+	  $login_query=mysql_query("SELECT email,type FROM contact WHERE id='".$client."'");
+	  $loginname=mysql_fetch_object($login_query);
+	  $documents_path = "documents/".$loginname->email;		  
+	}
+	//check if dir with loginname exists else create one
+    if(!is_dir($documents_path)) mkdir($documents_path,0777);
+	
     $query="UPDATE document SET user_id='$client',type=$type,title='$title',description='$description',datevalidfrom='$fromDate',datevalidto='$toDate',createdby='$created_by'";
     if($_FILES["file"]["name"]!="")
     {
@@ -108,7 +123,7 @@ include('../functions/ps_pagination.php');
     
     mysql_query($query);
     //update log table
-    $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('$client','".$_REQUEST['id']."',now(),'document updated')");
+    $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$_REQUEST['id']."',now(),'document updated')");
     redirect('documents.php');
   }
   
@@ -185,7 +200,8 @@ include('../functions/ps_pagination.php');
                   <input name="fromDate" id="fromDate" type="text" value="<?=date('Y/m/d H:i:s')?>" readonly="readonly" /> 
                   <img src="images/calendar.jpg" onclick="displayDatePicker('fromDate', this, 'ymd', '/');" alt="calendar" /> 
                   <b>To: </b>
-                  <input name="toDate" id="toDate" type="text" value="<?=date('Y/m/d H:i:s')?>" readonly="readonly" />  
+				  <?php $nextyear = date("Y")+1; ?>
+                  <input name="toDate" id="toDate" type="text" value="<?=date("$nextyear/m/d H:i:s")?>" readonly="readonly" />  
                   <img src="images/calendar.jpg" onclick="displayDatePicker('toDate', this, 'ymd', '/');" alt="calendar"/>
                   <!-- Todo: error message when from date is greater than to date-->
                 </td>

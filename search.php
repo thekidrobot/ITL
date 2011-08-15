@@ -16,7 +16,7 @@
 				<h2>Search Results</h2>
 				<?php
 				$search = escape_value($_POST['search']);
-				$sql = "select * from article where content_article like '%$search%'";
+				$sql = "select * from article where content_article like '%$search%' and status_article = 1";
 				
 				$pager = new PS_Pagination($conn,$sql,5,3);
 				$result = $pager->paginate();

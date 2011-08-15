@@ -14,13 +14,18 @@ if ($_POST['Add']=='Add')
 	$status = escape_value($postArray['status']);
 	$type = escape_value($postArray['type']);
 	
-	$query="INSERT INTO article (date_article,type_article,title_article,content_article,content_plain,status_article)
-					VALUES ('$newdate','$type','$title','$content','$content_plain','$status')";
-	
-	$r= mysql_query($query)or die("Error : ".mysql_error());
-	$id =mysql_insert_id();
-	$status= "Article Added Sucessfully";
-	redirect('index.php');
+	if(trim($title) != "" and trim($content) != ""){
+		$query="INSERT INTO article (date_article,type_article,title_article,content_article,content_plain,status_article)
+						VALUES ('$newdate','$type','$title','$content','$content_plain','$status')";
+		
+		$r= mysql_query($query)or die("Error : ".mysql_error());
+		$id =mysql_insert_id();
+		$status= "Article Added Sucessfully";
+		redirect('index.php');
+	}
+	else{
+		$status= "Forgot title / article content?";	
+	}
 }
 
 ?>
@@ -36,7 +41,7 @@ if ($_POST['Add']=='Add')
         </div>    
 				<div id="main">
 					<h2>Add an Article</h2>
-					<h3><?php echo isset($_GET['status']) ? $_GET['status'] : ''; ?></h3>
+					<h3><?php echo isset($status) ? $status : ''; ?></h3>
 					<form method="post" name='myform'>
 						<fieldset>
 						<table>

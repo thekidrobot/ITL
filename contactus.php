@@ -111,7 +111,7 @@
                 $r= mysql_query($query)or die("Error : ".mysql_error());
                 $id =mysql_insert_id();
                 echo "<p><h2>Thank you for register with ITL.</h2>";
-                echo "Thanks you for your interest in Intercontinental Trust Ltd.<br />
+                echo "Thank you for your interest in Intercontinental Trust Ltd.<br />
                       Our staff will review your details and come back to you soon.<br /><br />
                       A mail will be sent to you to $email</p>
                       <br /><br />
@@ -152,14 +152,13 @@
             {
               //Setup Validations
               $validator = new FormValidator();
-              $validator->addValidation("fname","req","Please fill in Name");
-              $validator->addValidation("lname","req","Please fill in Surname");
-              $validator->addValidation("company","req","Please fill in Company");
-              $validator->addValidation("ophone","req","Please fill in Contact Phone");
-              $validator->addValidation("ophone","num","Only numbers are allowed in telephone field");
-              $validator->addValidation("email","email","The input for Email should be a valid email value");
-              $validator->addValidation("email","req","Please fill in Email");
-              $validator->addValidation("query_comments","req","Please Tell us your thoughts");
+              $validator->addValidation("fname","req","Please fill in First Name");
+              $validator->addValidation("lname","req","Please fill in Last Name");
+              $validator->addValidation("ophone","req","Please fill in Contact Number");
+              $validator->addValidation("ophone","num","Only numbers are allowed in Contact Number");
+              $validator->addValidation("email","email","Your E-Mail address should have a valid email format");
+              $validator->addValidation("email","req","Please fill in E-Mail address");
+              $validator->addValidation("query_comments","req","Please fill in Query");
             
               $email = trim($email);
               
@@ -189,8 +188,8 @@
                   
                   sendemail($email_admin,$subject,$msg);
 
-                  echo "<p><h2>Thank you for let us know your thoughts.</h2>";
-                  echo "Thanks you for your interest in Intercontinental Trust Ltd.<br />
+                  echo "<p><h2>Thank you for contacting ITL</h2>";
+                  echo "Thank you for your interest in Intercontinental Trust Ltd.<br />
                       Our staff will review your details and come back to you soon.<br /><br />
                       A mail will be sent to you to $email</p>
                       <br /><br />
@@ -225,21 +224,22 @@
               <p>
                 <label><strong>Title: </strong></label>
                 <select name="title">
-                  <option value="Mr">Mr.</option>
-                  <option value="Ms">Ms.</option>
-                  <option value="Miss">Miss.</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Ms">Ms</option>
+                  <option value="Mrs">Mrs</option>
                 </select>
                 <br class="clearAll" /><br />
               </p>
               
               <p>
-                <label><strong>First Name: </strong></label>
+                <label><strong>First Name: <span style="color:red">*</span></strong></label>
                 <input name="fname" type="text" value="<?=$fname ?>" />
                 <br class="clearAll" /><br />
               </p>
           
               <p>
-                <label><strong>Last Name: </strong></label>
+                <label><strong>Last Name: <span style="color:red">*</span></strong></label>
                 <input name="lname" type="text" value="<?=$lname ?>" />
                 <br class="clearAll" /><br />
               </p>
@@ -251,13 +251,13 @@
               </p>              
               
               <p>
-                <label><strong>E-Mail Address: </strong></label>
+                <label><strong>E-Mail Address: <span style="color:red">*</span></strong></label>
                 <input name="email" type="text" value="<?=$email ?>" />
                 <br class="clearAll" /><br />
               </p>  
             
               <p>
-                <label><strong>Contact Number: </strong>
+                <label><strong>Contact Number: <span style="color:red">*</span></strong>
                 </label><input name="ophone" type="text" value="<?=$ophone ?>" />
                 <br class="clearAll" /><br />
               </p>
@@ -314,12 +314,12 @@
               </p>
 
               <p>
-                <label><strong>Your Query: </strong></label>
+                <label><strong>Your Query: <span style="color:red">*</span></strong></label>
                  <textarea rows="5" wrap="physical" name="query_comments"><?=$query_comments ?></textarea>
                 <br class="clearAll" /><br />
               </p>
             
-              <p><input type="submit" value="Register" name="Submit" /></p>
+              <p><input type="submit" value="Submit" name="Submit" /></p>
             </form>
           </div>
           <?php

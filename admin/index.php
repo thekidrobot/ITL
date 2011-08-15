@@ -18,15 +18,11 @@ session_start();
     if($result->status_article == 0){
       $query="update article set status_article = 1 where id = $id";
       $r= mysql_query($query)or die(mysql_error()."cannot enter data");
-      //update log table
-    	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$id."',now(),'document activated')");
       $status= "Article deactivated Sucessfully";  
     }
     elseif($result->status_article == 1){
       $query="update article set status_article = 0 where id = $id";
       $r= mysql_query($query)or die(mysql_error()."cannot enter data");
-      //update log table
-    	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$id."',now(),'document deactivated')");
       $status= "Article activated Sucessfully";
     } 
     redirect('index.php');
@@ -106,7 +102,7 @@ session_start();
 									elseif($row['type_article']=="F") echo "Factsheet";
 								?>
 							</td>  
-							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['date_article']?></td>  
+							<td <?php if ($counter%2!=0) echo"class='odd'" ; ?>><?php echo $row['creation_article']?></td>  
 							<td class="action">
 								<?php //echo display_status($row['status_article']) ?>
 								<a href="review_article.php?id=<?php echo $row['id']?>" class="view" id="view_<?php echo $row['id']?>">View</a>

@@ -11,6 +11,8 @@ if (isset($_GET['id']))
 	$query="delete from document where id = $id";
 	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
 	$status= "Document Deleted Sucessfully";
+  //Write Log
+  $query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$_REQUEST['id']."',now(),'document deleted')");
 	redirect('documents.php');
 }
 ?>
@@ -32,7 +34,7 @@ if (isset($_GET['id']))
 					<tr>
 						<td><b>No.</b></td>
 						<td><b>Title</b></td>
-						<td><b>Client</b></td>
+						<td><b>Visible by</b></td>
 						<td><b>Date</b></td>
 						<td align="right"><b>Actions</b></td>
           </tr>     

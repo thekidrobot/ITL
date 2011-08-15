@@ -33,6 +33,11 @@ if($id=='') $id=1;
 	  <table cellpadding="0" cellspacing="0">
 	  <tr><td><b>Client: </b></td><td><?php if(trim($row->other_name." ".$row->surname) == "") echo "All"; else echo $row->other_name." ".$row->surname ?></td></tr>
 	  <tr><td><b>Title: </b></td><td><?=$row->title?></td></tr>
+	  <tr><td><b>Type: </b></td><td><?php
+									 if($row->type == 1) echo "Newsletter";
+									 elseif($row->type == 2) echo "Updates";
+									 elseif($row->type == 3) echo "IPPAs";
+									?></td></tr>
 	  <tr><td><b>Description: </b></td><td><?=$row->description?></td></tr>
 	  <tr><td><b>Date created: </b></td><td><?=$row->date?></td></tr>
 	  <tr><td><b>Date valid from: </b></td><td><?=$row->datevalidfrom?></td></tr>
@@ -46,7 +51,7 @@ if($id=='') $id=1;
 	</div>	
     <?php 
 	//update log table
-	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$row->user_id."','".$row->id."',now(),'document viewed')");
+	$query=mysql_query("INSERT INTO log(document_user_id,document_id,date,status)VALUES('".$_SESSION['id']."','".$row->id."',now(),'document viewed')");
 	include('includes/footer.php');?> 
    </div>
   </div>

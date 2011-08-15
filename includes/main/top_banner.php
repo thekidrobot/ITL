@@ -114,6 +114,132 @@
 		<?php include("top_menu.php"); ?>
 		<div class="banner">
 			<div class="banner_btm"><img src="images/banner_bg_btm.png" alt="" /></div>
-			<div class="logo"><a href="#"><img src="images/logo_itl.jpg" alt="" /></a></div>
+			<div class="slider_container">
+				<div class="wt-rotator">
+					<div class="screen">
+						<noscript>
+							<!-- placeholder 1st image when javascript is off -->
+							<img src="images/madness_arch2.jpg"/>
+						</noscript>
+					</div>
+					<div class="c-panel">
+						<div class="buttons">
+							<div class="prev-btn"></div>
+							<div class="play-btn"></div>    
+							<div class="next-btn"></div>               
+						</div>
+						<div class="thumbnails">
+							<ul>
+								<li>
+									<a href="images/itl.jpg" title="solidarity"></a>
+									
+								</li>
+								<li>
+									<a href="images/itl2.jpg" title="Team spirit"></a>
+									
+								</li>
+								
+							</ul>
+						</div>     
+					</div>
+				</div>	
+			</div>
+			<!--<div class="logo"><a href="#"><img src="images/logo_itl.jpg" alt="" /></a></div>-->
 		</div>
 	</div>
+	
+	<script src="js/jquery.easing.1.2.js" type="text/javascript"></script>
+
+<script type="text/javascript" src="js/jquery.wt-rotator.min.js"></script>
+
+<script type="text/javascript">
+
+
+
+      
+
+
+
+	
+
+        jQuery(function () {
+
+				jQuery(".slider_container").wtRotator({
+
+					width:998,
+
+					height:243,
+
+					button_width:24,
+
+					button_height:24,
+
+					button_margin:5,
+
+					auto_start:true,
+
+					delay:5000,
+
+					play_once:false,
+
+					transition:"fade",
+
+					transition_speed:800,
+
+					auto_center:true,
+
+					
+
+					cpanel_position:"inside",
+
+					cpanel_align:"BR",
+
+					timer_align:"top",
+
+					display_thumbs:false,
+
+					display_dbuttons:false,
+
+					display_playbutton:false,
+
+					display_numbers:false,
+
+					display_timer:true,
+
+					mouseover_pause:false,
+
+					cpanel_mouseover:false,
+
+					text_mouseover:false,
+
+					text_effect:"fade",
+
+					text_sync:true,
+
+					tooltip_type:"image",
+
+					lock_tooltip:true,
+
+					shuffle:false,
+
+					block_size:75,
+
+					vert_size:55,
+
+					horz_size:50,
+
+					block_delay:25,
+
+					vstripe_delay:75,
+
+					hstripe_delay:180			
+
+				});
+
+          
+
+        });
+
+		
+
+</script>

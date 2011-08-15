@@ -8,7 +8,7 @@ $break = Explode('/', $file);
 $curr_page = $break[count($break) - 1];
 
 //Sets name of the website, used for page titles.
-$website_name = "ITL";
+$website_name = "ITL - Intercontinental Trust Limited";
 
 ////////////////USED BY FRONT////////////////////////
 
@@ -190,7 +190,7 @@ function check_event($eMonth,$eDay,$eYear)
 ///////End functions used by the calendar in event search.////////
 
 //Generic function to send mails
-//TODO : Make this function safer
+//TODO : Make this function even safer
 function sendemail($to,$subject,$msg)
 {
   
@@ -202,6 +202,13 @@ function sendemail($to,$subject,$msg)
   else{
     $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
     $headers.='From:'. $email_admin ."\r\n";
+    
+    $subject.="<br /><br /><pre>Intercontinental Trust Ltd is regulated by the
+    Financial Services Commission in Mauritius. If you are not the intended
+    recipient, please advise the sender immediately and delete this message. See
+    http://www.intercontinentaltrust.com/disclaimer.htm for further information
+    on confidentiality and the risks inherent in electronic communication</pre>";
+
     mail( $to, $subject, $msg, $headers );	  
   }
   

@@ -55,13 +55,14 @@
 				<h2>Newsletter</h2>
 				<?php
 					$sql = "SELECT path, title, description ,EXTRACT(MONTH from date) as month, date FROM
-									document where user_id IN(0,$subscriber_id)";
+									document where user_id IN(0,$subscriber_id) and datevalidto > '".date('Y/m/d H:i:s') ."' and type = 1 ";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{
 						$sql.=" AND EXTRACT(MONTH from date) = ".$_REQUEST['search_month'];
 					}
 					$sql.=" ORDER BY date DESC";
+          
 					$pager = new PS_Pagination($conn,$sql,5,3);
 					$result = $pager->paginate();
 					$no_rows=mysql_num_rows($result);

@@ -40,20 +40,20 @@
 				<div class="news_btm"><img src="images/1px.gif" alt="" height="6" /></div>
 			</div>
 			<?php 
-			$result = mysql_query("SELECT * FROM article WHERE type_article = 'F' order by date_article desc limit 1");
+			$result = mysql_query("SELECT * FROM article WHERE type_article = 'F' and status_article = 1 order by creation_article desc limit 1");
 			
 			while ($row = mysql_fetch_array($result))
 			{
 				$factsheet_id = $row['id'];
 				$factsheet_title = $row['title_article'];
-				$factsheet_text = $row['content_plain'];
+				$factsheet_text = $row['content_article'];
 			}
 			
 			?>
 			
 			<div class="factsheet_box">
-				<h2><?=$factsheet_title ?></h2>
-				<p><?=substr($factsheet_text,0,100); ?>...<br /><br /></p>
+				<h2><?=substr(strip_tags($factsheet_title),0,20); ?></h2>
+				<p><?=substr(strip_tags($factsheet_text),0,80); ?>...<br /><br /></p>
 				<span class="read_more fact_more"><a href="content.php?art_id=<?=$factsheet_id ?>">Read More</a></span>
 				<div class="cleaner"></div>
 			</div>

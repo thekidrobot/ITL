@@ -19,8 +19,8 @@
 management services, trust fund Mauritius, legal system Mauritius, company
 law Mauritius, companies law Mauritius, double tax treaties, global
 companies Mauritius" /> 
-<meta http-equiv="Content-Type" content="text/html; charset=ISO 8859-1" />
-<title>ITL</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title><?=$website_name?></title>
 <!--For the contact form-->
 <script type="text/javascript" src="js/prettyForms.js"></script>
 <!--[if IE]>
@@ -34,12 +34,14 @@ companies Mauritius" />
 
 <!--for the clock-->
 <link href="css/clock.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="js/jquery-1.2.6.min.js"></script>
+<script src="js/jquery.1.5.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/color.js"></script>
 <script src="js/clock.js" type="text/javascript"></script>
 <!--for the clock-->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
 <script src="js/general.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="css/wt-rotator.css"/>
+
 <!--[if IE 6]>
 <style type="text/css" media="screen">
 body{
@@ -79,7 +81,7 @@ body{
 			$('.content_overlay').css('z-index', 1000 );
 			// Animating the overlay	
 			$('.content_overlay').stop().animate( {opacity : "0.8"}, 300 );
-			
+			$('.banner').stop().animate( {opacity : "0.2"}, 300 );
 		},function(){
 	
 			$(this).children('ul').slideUp( slideSpeed , function(){
@@ -89,6 +91,8 @@ body{
 			$('.content_overlay').stop().animate( {opacity : "0"}, 300, function(){
 				$('.content_overlay').css('z-index', -1 );			
 			});
+			
+			$('.banner').stop().animate( {opacity : "1"}, 300 );
 
 		});
 

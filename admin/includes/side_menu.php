@@ -13,7 +13,6 @@
       ?>
     	<li><a href="index.php">View all</a></li>
     	<li><a href="review_article.php?id=<?=$_GET['id'] ?>">View Current</a></li>
-     	<li><a href="index.php?id=<?=$_GET['id']?>">Delete Current</a></li>
       <?php
     }
     if($curr_page == "review_article.php")
@@ -21,7 +20,6 @@
       ?>
     	<li><a href="index.php">View all</a></li>
     	<li><a href="modify_article.php?id=<?=$_GET['id'] ?>">Edit Current</a></li>
-     	<li><a href="index.php?id=<?=$_GET['id']?>">Delete Current</a></li>
       <?php
     }
     if($curr_page == "documents.php" or $curr_page == "add_document.php" or $curr_page == "view_document.php")

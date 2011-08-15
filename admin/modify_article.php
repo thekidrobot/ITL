@@ -14,18 +14,24 @@ if ($_POST['Edit']=='Edit')
 	$newdate = escape_value($postArray['article_date']);
 	$status = escape_value($postArray['status']);
 	$type = escape_value($postArray['type']);
-	
-	$query="UPDATE article SET
-					type_article ='$type',
-					title_article='$title',
-					content_article='$content',
-					content_plain='$content_plain',
-					status_article='$status',
-					date_article='$newdate'
-					WHERE id = $id";
-	
-	$r= mysql_query($query)or die(mysql_error()."cannot enter data");
-	$status= "Article Modified Sucessfully";
+
+	if(trim($title) != "" and trim($content) != ""){		
+		$query="UPDATE article SET
+						type_article ='$type',
+						title_article='$title',
+						content_article='$content',
+						content_plain='$content_plain',
+						status_article='$status',
+						date_article='$newdate'
+						WHERE id = $id";
+		
+		$r= mysql_query($query)or die(mysql_error()."cannot enter data");
+		$status= "Article Modified Sucessfully";
+	}
+	else
+	{
+		$status= "Forgot title / article content?";	
+	}
 }
 
  ?>

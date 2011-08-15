@@ -50,7 +50,7 @@ function get_children($parent)
 		if(trim($row['link_url']) != '')
 		{
 			?>
-			<li <?=$class?>><a href="<?=$row['link_url']?>&parent=<?=$parent?>"><?=$row['name'] ?></a></li>
+			<li <?=$class?>><a href="<?=$row['link_url']?>"><?=$row['name'] ?></a></li>
 			<?php
 		}
 		else

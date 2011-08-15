@@ -1,0 +1,196 @@
+/*I'm sure this can be improved, but by now, every clock should have a separate style and a separate scripting*/
+
+/*Clock 1*/
+
+#clock1
+{
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0px auto 0 auto;
+	background: url(../images/clock/clockface.jpg) center no-repeat;
+	list-style: none;
+}
+
+#sec1, #min1, #hour1
+{
+	position: absolute;
+	width: 3px;
+	height: 60px;
+	top: 0px;
+	left: 28px;
+}
+
+#sec1
+{
+	background: url(../images/clock/sechand.png) center no-repeat;
+	z-index: 3;
+}
+	 
+#min1
+{
+	background: url(../images/clock/minhand.png) center no-repeat;
+	z-index: 2;
+}
+	 
+#hour1
+{
+	background: url(../images/clock/hourhand.png) center no-repeat;
+	z-index: 1;
+}
+
+/*Clock 2*/
+
+#clock2
+{
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0px auto 0 auto;
+	background: url(../images/clock/clockface.jpg) center no-repeat;
+	list-style: none;
+}
+
+#sec2, #min2, #hour2
+{
+	position: absolute;
+	width: 3px;
+	height: 60px;
+	top: 0px;
+	left: 28px;
+}
+
+#sec2
+{
+	background: url(../images/clock/sechand.png) center no-repeat;
+	z-index: 3;
+}
+	 
+#min2
+{
+	background: url(../images/clock/minhand.png) center no-repeat;
+	z-index: 2;
+}
+	 
+#hour2
+{
+	background: url(../images/clock/hourhand.png) center no-repeat;
+	z-index: 1;
+}
+
+/* Clock 3*/
+
+#clock3
+{
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0px auto 0 auto;
+	background: url(../images/clock/clockface.jpg) center no-repeat;
+	list-style: none;
+}
+
+#sec3, #min3, #hour3
+{
+	position: absolute;
+	width: 3px;
+	height: 60px;
+	top: 0px;
+	left: 28px;
+}
+
+#sec3
+{
+	background: url(../images/clock/sechand.png) center no-repeat;
+	z-index: 3;
+}
+	 
+#min3
+{
+	background: url(../images/clock/minhand.png) center no-repeat;
+	z-index: 2;
+}
+	 
+#hour3
+{
+	background: url(../images/clock/hourhand.png) center no-repeat;
+	z-index: 1;
+}
+
+/*Clock 4*/
+
+#clock4
+{
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0px auto 0 auto;
+	background: url(../images/clock/clockface.jpg) center no-repeat;
+	list-style: none;
+}
+
+#sec4, #min4, #hour4
+{
+	position: absolute;
+	width: 3px;
+	height: 60px;
+	top: 0px;
+	left: 28px;
+}
+
+#sec4
+{
+	background: url(../images/clock/sechand.png) center no-repeat;
+	z-index: 3;
+}
+	 
+#min4
+{
+	background: url(../images/clock/minhand.png) center no-repeat;
+	z-index: 2;
+}
+	 
+#hour4
+{
+	background: url(../images/clock/hourhand.png) center no-repeat;
+	z-index: 1;
+}
+
+/*Clock 5*/
+
+#clock5
+{
+	position: relative;
+	width: 60px;
+	height: 60px;
+	margin: 0px auto 0 auto;
+	background: url(../images/clock/clockface.jpg) center no-repeat;
+	list-style: none;
+}
+
+#sec5, #min5, #hour5
+{
+	position: absolute;
+	width: 3px;
+	height: 60px;
+	top: 0px;
+	left: 28px;
+}
+
+#sec5
+{
+	background: url(../images/clock/sechand.png) center no-repeat;
+	z-index: 3;
+}
+	 
+#min5
+{
+	background: url(../images/clock/minhand.png) center no-repeat;
+	z-index: 2;
+}
+	 
+#hour5
+{
+	background: url(../images/clock/hourhand.png) center no-repeat;
+	z-index: 1;
+}

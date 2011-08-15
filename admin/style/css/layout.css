@@ -53,6 +53,8 @@ h1 span { display: none; }
 
 #mainNav li a {
 	display: block;
+	text-align:center;
+	width: 80px;
 	float: left;
 	height: 37px;
 	font-weight: normal;
@@ -66,6 +68,12 @@ h1 span { display: none; }
 	float: right;
 	border-left: 1px solid #ddd;
 	border-right: none;
+	width: auto;
+	padding:0px 5px 0px 5px;
+}
+
+#mainNav li.logout a{
+	width: auto;
 	font-size:12px;
 	font-weight: bold;
 }
@@ -208,7 +216,7 @@ h3 {
 
 #main table tr td {
 	background: #f6f6f6;
-	padding: 0px 10px;
+	padding: 2px 10px 2px 10px;
 	height: 29px;
 	line-height: 29px;
 	border-bottom: 1px solid #ddd;
@@ -308,7 +316,6 @@ h3 {
 	cursor: pointer;
 	border: none;
 	background: url(../img/button-submit.gif) no-repeat left top;
-	margin:5px 0px 5px 0px;
 }
 
 /* Footer ---------------------------------------- */

@@ -18,7 +18,7 @@
 					<form name="news_form">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-							<td>Search Newsletter by month:</td>
+							<td>Search IPPAs by month:</td>
 						<td>
 							<select name="search_month">
 							  <option>All</option>
@@ -44,7 +44,7 @@
 				<h2>IPPAs</h2>
 				<?php
 					$sql = "SELECT path, title, description ,EXTRACT(MONTH from date) as month, date FROM
-									document where type = 3 ";
+									document where type = 3 and datevalidto > '".date('Y/m/d H:i:s') ."'";
 
 					if(isset($_REQUEST['search_month'])&& $_REQUEST['search_month']!="All")
 					{

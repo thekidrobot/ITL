@@ -11,7 +11,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <link rel="SHORTCUT ICON" href="../favicon.ico" type="image/x-icon"> 
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO 8859-1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
     <title><?=$website_name?></title>
     <!-- CSS -->
     <link href="style/css/transdmin.css" rel="stylesheet" type="text/css" media="screen" />
