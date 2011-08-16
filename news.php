@@ -42,7 +42,7 @@
 					</form>
 				</div>
 				
-				<h2>News</h2>
+				<h1>News</h1>
 				<?php
 					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
 									article WHERE status_article = 1 AND type_article = 'E'";

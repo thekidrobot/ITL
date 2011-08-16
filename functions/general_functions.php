@@ -18,12 +18,23 @@ $website_name = "ITL - Intercontinental Trust Limited";
 //Prints the article contents for the front page
 function get_inner_article($id_article)
 {
-	$SQL = "SELECT content_article FROM article where id = $id_article";
+	$SQL = "SELECT * FROM article where id = $id_article";
 	$result = mysql_query($SQL) or die(mysql_error());
 
-	while ($db_field = mysql_fetch_assoc($result)) {
-		print $db_field['content_article'];
+	while ($db_field = mysql_fetch_assoc($result))
+	{
+		$type_article = $db_field['type_article'];
+		$title_article = $db_field['title_article'];
+		$date_article = $db_field['date_article'];
+		$content_article = $db_field['content_article'];
 	}
+	if ($type_article == 'A'){
+		echo "<div><h1>".$title_article."</h1><br /><br />".$content_article."</div>";	
+	}
+	else{
+		echo "<div><h1>".$title_article."</h1>".$date_article."<br /><br />".$content_article."</div>";	
+	}
+	
 }
 
 //Constructs the top menu

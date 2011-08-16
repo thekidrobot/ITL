@@ -16,13 +16,14 @@
 			<div class="core_content">
 				
 				<div class="news_filter">
-					<form name="news_form">
+					<form name="news_form" action="<?=$_SERVER['PHP_SELF']?>">
 					<table border="0" cellspacing="0" cellpadding="0">
 					  <tr>
-							<td>Search events by month:</td>
+							<td>Search news &amp; events by month:</td>
 						<td>
-							<select name="search_month">
-							  <option>All</option>
+							<select name="search_month" onchange="news_form.submit()">
+							  <option>Select</option>
+							  <option value="All">All</option>
 								<?php
 									$month_number = 1;
 									$month_arr=array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
@@ -36,13 +37,13 @@
 								?>
 							</select>
 						</td>
-						<td><input name="" type="submit" value="GO" /></td>
+						<!--<td><input name="" type="submit" value="GO" /></td>-->
 					  </tr>
 					</table>
 					</form>
 				</div>
 				
-				<h2>News &amp; Events</h2>
+				<h1>News &amp; Events</h1>
 				<?php
 					$sql = "SELECT id, date_article, title_article, content_plain,EXTRACT(MONTH from date_article) as month FROM
 									article WHERE status_article = 1 AND type_article IN ('N','E')";
