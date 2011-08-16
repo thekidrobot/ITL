@@ -73,7 +73,7 @@
 						<?php
             
             if ($sub_logged_in == true){ ?>
-              <td class="pass_forgot" colspan="2">Welcome <?=$_SESSION['subscriber_firstame']?> - <a href="logout.php">Logout</a></td>
+              <td class="pass_forgot" colspan="2">Welcome <?=$_SESSION['subscriber_firstname']?> - <a href="logout.php">Logout</a></td>
 						<?php
 						}
 						else

@@ -36,7 +36,7 @@ function auth_user($username,$password)
 			//PULL IT FROM HERE, DONT PUT CRAP IN THE CODE.
 			//SESSION VARIABLES WERE INVENTED WITH THIS PURPOSE.
 			$_SESSION['subscriber_id'] = $row->id;
-			$_SESSION['subscriber_firstame'] = $row->firstname;
+			$_SESSION['subscriber_firstname'] = $row->firstname;
 			$_SESSION['subscriber_middlename'] = $row->middlename;
 			$_SESSION['subscriber_company'] = $row->company;
 			$_SESSION['subscriber_surname'] = $row->surname;

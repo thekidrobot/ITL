@@ -48,8 +48,8 @@ session_start();
 				</div>    
 				<div id="main">
 				<h2>All Articles</h2>
-				<form name="content" action="<?=$_SERVER['PHP_SELF']?>" method="post" onchange="content.submit()" >
-					<select name="type">
+				<form name="content" action="<?=$_SERVER['PHP_SELF']?>" method="post">
+					<select name="type" onchange="content.submit()">
 						<option value="">--Select a Type--</option>
 						<?php
 						if ($user_type == 1)

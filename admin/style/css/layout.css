@@ -376,3 +376,49 @@ color:red;
 .calendar_icon{
 vertical-align:middle;
 }
+
+/*-----------------Pagination-------------------*/	
+
+.pagination {
+	/*padding:8px 15px;*/
+	/*padding-bottom:5px;	*/
+	padding-right:0px;
+	width:693px;
+	}
+	
+.pagination ul {
+	float:right;
+	}	
+	
+.pagination ul li {
+	background:#f1f1f1;
+	color:#333;
+	float:left;
+	margin:2px;
+	border:1px solid #ccc;
+	font-size:11px;
+	list-style:none;
+	width:auto;
+	/*height:12px;*/
+	padding:0px 5px 0px 5px;
+	}
+	
+.pagination ul li a {
+	/*width:100%;*/
+	color:#666;
+	padding:1px 4px;
+	}
+	
+.pagination ul li.sep, .pagination ul li.sep:hover {
+	background:none;
+	border:none;
+	}		
+	
+.pagination ul li:hover, .pagination ul li.active {
+	background:#cbc9c9;
+	}
+	
+.pagination ul li:hover a, .pagination ul li.active a {
+	color:#fff;
+	}							
+			

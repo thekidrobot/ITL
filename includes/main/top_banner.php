@@ -94,7 +94,7 @@
 						<?php
             
             if ($sub_logged_in == true){ ?>
-              <td class="pass_forgot" colspan="2">Welcome <?=$_SESSION['subscriber_firstame']?> - <a href="logout.php">Logout</a></td>
+              <td class="pass_forgot" colspan="2">Welcome <?=$_SESSION['subscriber_firstname']?> - <a href="logout.php">Logout</a></td>
 						<?php
 						}
 						else
@@ -118,6 +118,14 @@
 				  </tr>
 				</table>
 				</form>
+				<?php
+				if ($sub_logged_in == true)
+				{
+					?>
+					<div class="user_info">Welcome <a href="personal_data.php"><?=$_SESSION['subscriber_firstname']." ".$_SESSION['subscriber_middlename']?></a></div>
+					<?php
+				}
+				?>
 			</div>
 			<script type="text/javascript">
 				$('div.login_box a').click(function(){

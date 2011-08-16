@@ -845,4 +845,20 @@ p.news_read_more a {
 .pagination ul li:hover a, .pagination ul li.active a {
 	color:#fff;
 	}							
-			
+
+/*------------User Info------------------*/
+
+.user_info{
+	padding-top:20px;
+	color:#ffffff;
+	text-align:left;
+}
+
+.user_info a{
+	color:#ffffff;
+}
+
+.user_info a:hover{
+	color:#ffffff;
+	text-decoration:underline;
+}
