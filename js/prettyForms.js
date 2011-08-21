@@ -17,6 +17,7 @@ Feel free to use this however you like.  Credit is always appreciated.
 
 	function prettyForms(){
 		fixTextBoxes();
+		fixFileBoxes();
 		fixTextPasswords();
 		fixTextareas();
 		fixSelects();
@@ -72,6 +73,16 @@ Feel free to use this however you like.  Credit is always appreciated.
 		inputs = document.getElementsByTagName("input");
 		for(i=0;i<inputs.length;i++){
 			if(inputs[i].type=="text"){
+				appendParentsTo(inputs[i]);
+			}
+		}
+	}
+
+	//apply look to text boxes
+	function fixFileBoxes(){
+		inputs = document.getElementsByTagName("input");
+		for(i=0;i<inputs.length;i++){
+			if(inputs[i].type=="file"){
 				appendParentsTo(inputs[i]);
 			}
 		}

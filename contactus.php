@@ -280,6 +280,24 @@
               </p>
        
               <p>
+                <label><strong>You are contacting us about: </strong></label>
+                <select name="query_type">
+                  <option value="Company_Formation">Company Formation</option>
+                  <option value="Fund Formation_Formation">Fund Formation/Fund Administration</option>
+                  <option value="Accounting_Tax">Accounting/Tax Services</option>
+                  <option value="Trust">Trust Formation</option>
+                  <option value="Other">Other</option>
+                </select>
+                <br class="clearAll" /><br />
+              </p>
+
+              <p>
+                <label><strong>Your Query: <span style="color:red">*</span></strong></label>
+                 <textarea rows="5" wrap="physical" name="query_comments"><?=$query_comments ?></textarea>
+                <br class="clearAll" /><br />
+              </p>
+              
+              <p>
                 <label><strong>Sign up for newsletters: </strong></label>
                 <input type="checkbox" name="newsletter" value="yes" onchange="showHide('showhide');" />
                 <br class="clearAll" /><br />
@@ -300,24 +318,6 @@
               </p>
               
               </div>
-
-              <p>
-                <label><strong>You are contacting us about: </strong></label>
-                <select name="query_type">
-                  <option value="Company_Formation">Company Formation</option>
-                  <option value="Fund Formation_Formation">Fund Formation/Fund Administration</option>
-                  <option value="Accounting_Tax">Accounting/Tax Services</option>
-                  <option value="Trust">Trust Formation</option>
-                  <option value="Other">Other</option>
-                </select>
-                <br class="clearAll" /><br />
-              </p>
-
-              <p>
-                <label><strong>Your Query: <span style="color:red">*</span></strong></label>
-                 <textarea rows="5" wrap="physical" name="query_comments"><?=$query_comments ?></textarea>
-                <br class="clearAll" /><br />
-              </p>
             
               <p><input type="submit" value="Submit" name="Submit" /></p>
             </form>
