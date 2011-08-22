@@ -254,7 +254,7 @@ function sendemail($to,$subject,$msg)
     $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
     $headers.='From:'. $email_admin ."\r\n";
     
-    $subject.="<br /><br /><pre>Intercontinental Trust Ltd is regulated by the
+    $msg.="<br /><br /><pre>Intercontinental Trust Ltd is regulated by the
     Financial Services Commission in Mauritius. If you are not the intended
     recipient, please advise the sender immediately and delete this message. See
     http://www.intercontinentaltrust.com/disclaimer.htm for further information
