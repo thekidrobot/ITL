@@ -36,6 +36,7 @@ if($id=='') $id=1;
 	   <tr><td><b>Mobile: </b></td><td><?=$row->mobile?></td></tr>
 	   <tr><td><b>Email: </b></td><td><?=$row->email?></td></tr>
 	   <tr><td><b>Status: </b></td><td><?=display_status($row->status)?></td></tr>
+	   <tr><td><b>Registration IP Address: </b></td><td><?=$row->ip_addr?></td></tr>
 	  </table>
 	 </div>
 	 <div class="clear"></div>

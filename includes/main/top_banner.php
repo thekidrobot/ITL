@@ -23,10 +23,10 @@
 
                 if ($currdate >= $start_date and $currdate <= $end_date)
                 {
-                  ?><iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
+                  ?><iframe src="clock_london_utc.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
                 }else 
                 {
-                  ?><iframe src="clock_london_utc.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
+                  ?><iframe src="clock_london.html" frameborder="0" height="70px" width="70px" scrolling="no"></iframe><?
                 }
             ?>
 					</td>

@@ -17,6 +17,7 @@
     $email = escape_value($postArray['email']);
     $password1 = escape_value($postArray['password1']);
     $password2 = escape_value($postArray['password2']);
+		$ip_addr = $_SERVER['REMOTE_ADDR'];
   ?>
 	<!--end_header-->
 	<!--content-->
@@ -74,9 +75,9 @@
               $password1 = md5($password1);
               
               $query="INSERT INTO contact 
-                      (firstname,middlename,company,tel,mobile,email,password,status,type)
+                      (firstname,middlename,company,tel,mobile,email,password,status,type,ip_addr)
                       VALUES
-                      ('$fname','$lname','$company',$ophone,$mphone,'$email','$password1','0','1')";
+                      ('$fname','$lname','$company',$ophone,$mphone,'$email','$password1','0','1','$ip_addr')";
                       
               $r= mysql_query($query)or die("Error : ".mysql_error());
               $id =mysql_insert_id();

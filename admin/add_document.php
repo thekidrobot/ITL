@@ -217,6 +217,7 @@ include('../functions/ps_pagination.php');
                   <option value="1" <?php if($res->type==1) echo "selected"; ?> >Newsletter</option>
                   <option value="2" <?php if($res->type==2) echo "selected"; ?> >Updates</option>
                   <option value="3" <?php if($res->type==3) echo "selected"; ?> >IPPAs</option>
+                  <option value="4" <?php if($res->type==4) echo "selected"; ?> >Press Releases</option>
                 </select>  
                 </td>
               </tr>

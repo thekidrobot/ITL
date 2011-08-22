@@ -28,6 +28,7 @@
     $password2 = escape_value($postArray['password2']);
     $query_type = escape_value($postArray['query_type']);
     $query_comments = escape_value($postArray['query_comments']);
+		$ip_addr = $_SERVER['REMOTE_ADDR'];
     
   ?>
 	<!--end_header-->
@@ -104,9 +105,9 @@
                 $password1 = md5($password1);
                 
                 $query="INSERT INTO contact 
-                        (firstname,middlename,company,tel,mobile,email,password,status,type)
+                        (firstname,middlename,company,tel,mobile,email,password,status,type,ip_addr)
                         VALUES
-                        ('$fname','$lname','$company',$ophone,$ophone,'$email','$password1','0','1')";
+                        ('$fname','$lname','$company',$ophone,$ophone,'$email','$password1','0','1','$ip_addr')";
                         
                 $r= mysql_query($query)or die("Error : ".mysql_error());
                 $id =mysql_insert_id();
@@ -218,6 +219,25 @@
           if ($show_form==true){
           ?>
           <h2>Contact Us</h2>
+					<p>
+						<h3>Mauritius Office</h3>
+						<br />Level 3, Alexander House.<br />
+						35 Cybercity, Ebene, <br />
+						Mauritius <br />
+						Tel: (230)403 0800<br />
+						Fax: (230) 403 0801<br /><br />
+						<h3>Seychelles Office</h3>
+						<br />1st Floor, # 5 DEKK House, De Zippora Street, P.O. Box 456, <br />
+						Providence Industrial Estate, Mahé,  Republic of Seychelles<br />
+						Tel: (248) 437 3689 - Fax: (248) 437 3299<br />
+						Email: seychelles@intercontinentaltrust.sc<br /><br />
+						<h3>South Africa Office</h3>
+						<br />SA Representative Office, World Trade Center Johannesburg,<br />
+						Crn West Road South and Lower Road, <br />
+						Morningside 2196, Sandton, South Africa  <br />
+						Tel: (27) 83 707 7269 <br /><br />
+						Or write us using the form below
+					</p>
           <div class="form_container">
             <form id="myForm" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 
