@@ -223,7 +223,7 @@
           <?php
           if ($show_form==true){
           ?>
-          <h2>Contact Us</h2>
+          <h2>Join Us</h2>
           <div class="form_container">
             <p>
               We endeavor to provide at all times first class services to our
@@ -243,7 +243,7 @@
                 <li>Administration</li>
               </ul>
               <br /><br />
-              Please upload you CV here
+              Please upload your CV here
               <br /><br /><br />
             </p>
             <form id="myForm" action="<?=$_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
@@ -270,13 +270,7 @@
                 <input name="lname" type="text" value="<?=$lname ?>" />
                 <br class="clearAll" /><br />
               </p>
-              
-              <p>
-                <label><strong>Company Name: </strong></label>
-                <input name="company" type="text" value="<?=$company ?>" />
-                <br class="clearAll" /><br />
-              </p>              
-              
+
               <p>
                 <label><strong>E-Mail Address: <span style="color:red">*</span></strong></label>
                 <input name="email" type="text" value="<?=$email ?>" />

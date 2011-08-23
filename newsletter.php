@@ -7,15 +7,14 @@
 <div class="container">
 	<?php include("includes/main/top_banner.php");
   
-  if ($sub_logged_in == false)
-  {
-    redirect('signin.php');
-    exit();
-  }
-  else
+  if ($sub_logged_in == true)
   {
     $subscriber_id = $_SESSION['subscriber_id'];
   }
+	else
+	{
+		$subscriber_id = 0;
+	}
   ?>
 	<!--end_header-->
 	<!--content-->
@@ -73,7 +72,23 @@
 							<p class="listing_date"><?=$row['date']?></p>
 							<h3><?=$row['title'];?></h3>
 							<p class="news_detail"><?=substr($row['description'], 0, 376)?></p>
-							<p class="news_read_more"><a href="<?="admin/".$row['path']?>">View Document >></a></p>
+							
+							<?php
+								//document visible only on signin
+								if ($sub_logged_in == true)
+								{
+									?>
+									<p class="news_read_more"><a href="<?="admin/".$row['path']?>">View Document >></a></p>
+									<?
+								}
+								else
+								{
+									?>
+									<p class="news_read_more"><a href="signin.php">View Document >></a></p>
+									<?
+								}
+							?>
+							
 						</div>
 						<?php
 						$counter++;

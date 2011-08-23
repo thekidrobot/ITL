@@ -219,26 +219,7 @@
           if ($show_form==true){
           ?>
           <h2>Contact Us</h2>
-					<p>
-						<h3>Mauritius Office</h3>
-						<br />Level 3, Alexander House.<br />
-						35 Cybercity, Ebene, <br />
-						Mauritius <br />
-						Tel: (230)403 0800<br />
-						Fax: (230) 403 0801<br /><br />
-						<h3>Seychelles Office</h3>
-						<br />1st Floor, # 5 DEKK House, De Zippora Street, P.O. Box 456, <br />
-						Providence Industrial Estate, Mahé,  Republic of Seychelles<br />
-						Tel: (248) 437 3689 - Fax: (248) 437 3299<br />
-						Email: seychelles@intercontinentaltrust.sc<br /><br />
-						<h3>South Africa Office</h3>
-						<br />SA Representative Office, World Trade Center Johannesburg,<br />
-						Crn West Road South and Lower Road, <br />
-						Morningside 2196, Sandton, South Africa  <br />
-						Tel: (27) 83 707 7269 <br /><br />
-						Or write us using the form below
-					</p>
-          <div class="form_container">
+					<div class="form_container">
             <form id="myForm" action="<?=$_SERVER['PHP_SELF']?>" method="post">
 
               <p>
@@ -353,7 +334,7 @@
 		</div>
 		<!-- end main content -->
 		<!-- side content-->
-		<?php include("includes/main/side_content.php"); ?>		
+		<?php include("includes/main/side_content_contact.php"); ?>		
 		<!-- end side content-->
 		<div class="cleaner"></div>
 	</div>
