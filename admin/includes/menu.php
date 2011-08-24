@@ -16,5 +16,6 @@
    <?php 
   }
  ?>
+ <li><a href="mailer.php" <?php if ($curr_page == "mailer.php") echo "class='active'" ?>>Mailer</a></li>
  <li class="logout"><a href="logout.php">WELCOME <?=strtoupper($username) ?> - LOGOUT</a></li>
 </ul>

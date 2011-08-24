@@ -9,7 +9,7 @@
 							<p>
 								Level 3, Alexander House.<br />
 								35 Cybercity, Ebene, Mauritius <br />
-								Tel: (230)403 0800<br />
+								Tel: (230) 403 0800<br />
 								Fax: (230) 403 0801
 							</p>
 							<div class="cleaner"></div>

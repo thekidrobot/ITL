@@ -280,5 +280,28 @@ function spamcheck($field)
   }
 }
 
+//To upload and process CSV files. Used by mailer. 
+//function csv_file_to_mysql_table($source_file, $target_table, $max_line_length=10000)
+//{
+//  if (($handle = fopen("$source_file", "r")) !== FALSE)
+//  {
+//    $columns = fgetcsv($handle, $max_line_length, ",");
+//    foreach ($columns as &$column)
+//    {
+//        $column = strtolower(str_replace(".","",$column));
+//    }
+//    
+//    mysql_query("delete from $target_table");
+//    
+//    $insert_query_prefix = "INSERT IGNORE INTO $target_table (".join(",",$columns).")\nVALUES";
+//    while (($data = fgetcsv($handle, $max_line_length, ",")) !== FALSE)
+//    {
+//        while (count($data)<count($columns)) array_push($data, NULL);
+//        $query = "$insert_query_prefix ('".join("','",$data)."');";
+//        mysql_query($query);
+//    }
+//    fclose($handle);
+//  }
+//}
 
 ?>
