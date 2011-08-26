@@ -250,17 +250,20 @@ function sendemail($to,$subject,$msg)
   if ($mailcheck==FALSE){
     echo "Invalid email format";
   }
-  else{
-    $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
+  else
+	{
+	  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
     $headers.='From:'. $email_admin ."\r\n";
     
-    $msg.="<br /><br /><pre>Intercontinental Trust Ltd is regulated by the
-    Financial Services Commission in Mauritius. If you are not the intended
-    recipient, please advise the sender immediately and delete this message. See
-    http://www.intercontinentaltrust.com/disclaimer.htm for further information
-    on confidentiality and the risks inherent in electronic communication</pre>";
+    $msg.="<br />
+					 <pre style='font-size:10px;'>
+					 Intercontinental Trust Ltd is regulated by the Financial Services Commission in Mauritius. 
+					 If you are not the intended recipient, please advise the sender immediately and delete this message.
+					 See http://www.intercontinentaltrust.com/disclaimer.htm for further information on confidentiality
+					 and the risks inherent in electronic communication</pre>";
 
-    mail( $to, $subject, $msg, $headers );	  
+    mail( $to, $subject, $msg, $headers );
+		
   }
   
 }
@@ -279,29 +282,5 @@ function spamcheck($field)
     return FALSE;
   }
 }
-
-//To upload and process CSV files. Used by mailer. 
-//function csv_file_to_mysql_table($source_file, $target_table, $max_line_length=10000)
-//{
-//  if (($handle = fopen("$source_file", "r")) !== FALSE)
-//  {
-//    $columns = fgetcsv($handle, $max_line_length, ",");
-//    foreach ($columns as &$column)
-//    {
-//        $column = strtolower(str_replace(".","",$column));
-//    }
-//    
-//    mysql_query("delete from $target_table");
-//    
-//    $insert_query_prefix = "INSERT IGNORE INTO $target_table (".join(",",$columns).")\nVALUES";
-//    while (($data = fgetcsv($handle, $max_line_length, ",")) !== FALSE)
-//    {
-//        while (count($data)<count($columns)) array_push($data, NULL);
-//        $query = "$insert_query_prefix ('".join("','",$data)."');";
-//        mysql_query($query);
-//    }
-//    fclose($handle);
-//  }
-//}
 
 ?>
