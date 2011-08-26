@@ -128,19 +128,26 @@ if(isset($_POST['Process']))
           }
           else
           {
+            
             $path_only_attachments = "http://".$_SERVER["SERVER_NAME"].implode("/", (explode('/', $_SERVER["SCRIPT_NAME"], -1)));
             
             $filepath_attachments = $path_only_attachments.'/'.$documents_path.'/'.$filename_attachments;
             
-            $attachment_link = "<br /><br />
+            $attachment_link = "<br />
                                 <p>There is a file attached to this message. To see it, visit 
-                                <a href='$filepath_attachments'>$filepath_attachments</a><br /><br /></p>";
+                                <a href='$filepath_attachments'>$filepath_attachments</a><br /></p>";
           }
         }
 
+        //Extra text addition to Content
+        
         if(trim($attachment_link) != '')
         {
-          $content= nl2br($content).$attachment_link;
+          $content= nl2br($content).$attachment_link."<br /><p>Kind regards,<br /><br />ITL</p>";
+        }
+        else
+        {
+          $content= nl2br($content).$content.="<br /><p>Kind regards,<br /><br />ITL</p>";
         }
         
         if (($handle = fopen($filepath_mailer, "r")) !== FALSE)
@@ -160,6 +167,12 @@ if(isset($_POST['Process']))
             while (count($data)<count($columns)) array_push($data, NULL);
             $query = "$insert_query_prefix ('".join("','",$data)."');";
             mysql_query($query);
+
+            //More text additions
+        
+            $recipient = $data[0].' '.$data[1];
+
+            $content = "<p>Dear $recipient : </p>".$content;
 
             //Send Mail
             sendemail(escape_value($data[2]),escape_value($subject),$content);
