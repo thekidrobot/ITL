@@ -244,7 +244,6 @@ function check_event($eMonth,$eDay,$eYear)
 //TODO : Make this function even safer
 function sendemail($to,$subject,$msg)
 {
-  
   $mailcheck = spamcheck($to);
   
   if ($mailcheck==FALSE){
@@ -256,16 +255,14 @@ function sendemail($to,$subject,$msg)
     $headers.='From:'. $email_admin ."\r\n";
     
     $msg.="<br />
-					 <pre style='font-size:10px;'>
+					 <pre style='font-size:10px; text-align:justify;'>
 					 Intercontinental Trust Ltd is regulated by the Financial Services Commission in Mauritius. 
 					 If you are not the intended recipient, please advise the sender immediately and delete this message.
 					 See http://www.intercontinentaltrust.com/disclaimer.htm for further information on confidentiality
 					 and the risks inherent in electronic communication</pre>";
 
     mail( $to, $subject, $msg, $headers );
-		
   }
-  
 }
 
 

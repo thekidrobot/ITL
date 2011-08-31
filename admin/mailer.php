@@ -147,7 +147,7 @@ if(isset($_POST['Process']))
         }
         else
         {
-          $content= nl2br($content).$content.="<br /><p>Kind regards,<br /><br />ITL</p>";
+          $content= nl2br($content)."<br /><p>Kind regards,<br /><br />ITL</p>";
         }
         
         if (($handle = fopen($filepath_mailer, "r")) !== FALSE)
@@ -169,13 +169,13 @@ if(isset($_POST['Process']))
             mysql_query($query);
 
             //More text additions
-        
+            $message = "";
+            
             $recipient = $data[0].' '.$data[1];
-
-            $content = "<p>Dear $recipient : </p>".$content;
+            $message = "<p>Dear $recipient : </p>".$content;
 
             //Send Mail
-            sendemail(escape_value($data[2]),escape_value($subject),$content);
+            sendemail(escape_value($data[2]),escape_value($subject),$message);
             
             $msg = "File processed sucessfully";
             

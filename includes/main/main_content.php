@@ -1,9 +1,10 @@
 		<div class="core">
-			<div class="core_top"><img src="images/content_top.jpg" alt="" /></div>
+			<div class="core_top"></div>
 			<div class="core_content">
 				<div class="welcome_txt">
+					<img src="images/home-top_right.jpg" alt="" class="flt_rgt" />
 					<h1>Welcome</h1>
-					<p>Intercontinental Trust Limited ("ITL") is licenced by the Mauritius
+					<p>Intercontinental Trust Limited ("ITL") is licensed by the Mauritius
 					Financial Services Commission to provide a comprehensive range of
 					financial and fiduciary services to international businesses. We
 					endeavour to provide at all times first class service to our clients
@@ -20,10 +21,11 @@
 					advisory network by combined fee income of its independent members. It is
 					represented by 150 independent firms in 120 countries with combined fee income
 					of US$3.07bn and 25,000 people worldwide.
+					<br /><br />
 				</p>
 				</div>
 				<h2>About Us</h2>
-				<img src="images/hm_about_pix.jpg" alt="" class="flt_lft" />
+				<img src="images/home_left_btm.jpg" alt="" class="flt_lft" />
 				<p align="justify">The Mauritius international financial services sector offers two types of companies namely the Category 1 Global Business Company ("GBC1") and the Category 2 Global Business Company ("GBC2").
 					Both entities offer the highest degree of confidentiality and the choice between
 					the two types will depend on a number of factors namely the proposed activities

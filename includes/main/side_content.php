@@ -1,9 +1,25 @@
 		<div class="side_col">
+			<?php 
+			$result = mysql_query("SELECT * FROM article WHERE type_article = 'F' and status_article = 1 order by creation_article desc limit 1");
+			while ($row = mysql_fetch_array($result))
+			{
+				$factsheet_id = $row['id'];
+				$factsheet_title = $row['title_article'];
+				$factsheet_text = $row['content_article'];
+			}
+			?>
+			<div class="factsheet_box">
+				<h2><?=substr(strip_tags($factsheet_title),0,20); ?></h2>
+				<p><?=substr(strip_tags($factsheet_text),0,80); ?>...<br /><br /></p>
+				<span class="read_more fact_more"><a href="content.php?art_id=<?=$factsheet_id ?>">Read More</a></span>
+				<div class="cleaner"></div>
+			</div>
+
 			<div class="news_box">
 				<div class="news_top"><img src="images/1px.gif" alt="" height="6" /></div>
 				<div class="news_content">
 				<?php			
-					$SQL = "SELECT * FROM article where type_article in('N','E') order by date_article limit 2";
+					$SQL = "SELECT * FROM article where type_article in('N','E') and status_article = 1 order by date_article limit 2";
 					$result = mysql_query($SQL) or die(mysql_error());
 					$total_rows = mysql_num_rows($result);
 					$i = 1;
@@ -39,25 +55,8 @@
 				</div>
 				<div class="news_btm"><img src="images/1px.gif" alt="" height="6" /></div>
 			</div>
-			<?php 
-			$result = mysql_query("SELECT * FROM article WHERE type_article = 'F' and status_article = 1 order by creation_article desc limit 1");
-			
-			while ($row = mysql_fetch_array($result))
-			{
-				$factsheet_id = $row['id'];
-				$factsheet_title = $row['title_article'];
-				$factsheet_text = $row['content_article'];
-			}
-			
-			?>
-			
-			<div class="factsheet_box">
-				<h2><?=substr(strip_tags($factsheet_title),0,20); ?></h2>
-				<p><?=substr(strip_tags($factsheet_text),0,80); ?>...<br /><br /></p>
-				<span class="read_more fact_more"><a href="content.php?art_id=<?=$factsheet_id ?>">Read More</a></span>
-				<div class="cleaner"></div>
-			</div>
 			<div class="partners_box">
 				<img src="images/baker_tilly_logo.jpg" alt="" /><img src="images/sas70_logo.jpg" alt="" /><img src="images/partner_logo.jpg" alt="" />
 			</div>
 		</div>
+		<div class="cleaner"></div>

@@ -50,5 +50,17 @@ this.className+=" over";
  }
 }
 window.onload=startList;  
+
+
+
+  $(function() {
+    $('#slideshow').after('<div id="nav-slider" class="nav-slider">').cycle({
+        fx:     'fade',
+        speed:  'slow',
+        timeout: 3500,
+        pager:  '#nav-slider',
+        before: function() { if (window.console) console.log(this.src); }
+    });
+});  
    
    

@@ -35,10 +35,11 @@ companies Mauritius" />
 <!--for the clock-->
 <link href="css/clock.css" rel="stylesheet" type="text/css" />
 <script src="js/jquery.1.5.1.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="js/color.js"></script>
 <script src="js/clock.js" type="text/javascript"></script>
 <!--for the clock-->
 <link href="css/style.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="js/jquery_main_gal.js" type="text/javascript"></script>
 <script src="js/general.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="css/wt-rotator.css"/>
 
@@ -48,7 +49,6 @@ body{
 	behavior:url(js/csshover.htc);
 }
 </style>
-
 <script language="javascript" type="text/javascript" src="js/fixpng.js"></script>
 <![endif]-->
 
