@@ -27,7 +27,7 @@
 	<div class="content">
 		<!-- main content -->
 		<div class="core">
-			<div class="core_top"><img src="images/content_top.jpg" alt="" /></div>
+			<div class="core_top"></div>
 			<div class="core_content">
 				<div class="welcome_txt">
           <?php 
@@ -225,6 +225,7 @@
           ?>
           <h2>Join Us</h2>
           <div class="form_container">
+            <img src="images/career_pix" alt="" class="flt_rgt" />    
             <p>
               We endeavor to provide at all times first class services to our
               client in structuring their international affairs and using

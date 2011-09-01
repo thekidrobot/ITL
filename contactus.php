@@ -38,7 +38,7 @@
 		<div class="core">
 			<div class="core_top"><img src="images/content_top.jpg" alt="" /></div>
 			<div class="core_content">
-				<div class="welcome_txt">
+				<div class="welcome_txt" style="background:url('images/contact_pix.jpg') bottom right no-repeat";>
           <?php 
           if(isset($_POST['Submit']))
           {// The form is submitted

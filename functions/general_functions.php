@@ -255,11 +255,26 @@ function sendemail($to,$subject,$msg)
     $headers.='From:'. $email_admin ."\r\n";
     
     $msg.="<br />
-					 <pre style='font-size:10px; text-align:justify;'>
-					 Intercontinental Trust Ltd is regulated by the Financial Services Commission in Mauritius. 
-					 If you are not the intended recipient, please advise the sender immediately and delete this message.
-					 See http://www.intercontinentaltrust.com/disclaimer.htm for further information on confidentiality
-					 and the risks inherent in electronic communication</pre>";
+           <pre style='font-size:10px; text-align:justify;'> NOTICE TO RECIPIENT:
+           Confidential/Privileged Information may be contained in
+           this message and is intended only for the use of the intended
+           recipient(s). If you are not the intended recipient(s) of this
+           communication or responsible for delivery of the message to such
+           person, you may not copy, review, disseminate or disclose this
+           message to anyone and the taking of any action in reliance on this
+           communication is expressly prohibited. You are hereby notified that
+           you have received this message in error and requested to delete this
+           message and all of its attachments and to notify the sender by reply
+           email.<br /><br />
+           Every effort is made to keep our network free from viruses. You
+           should, however, review this e-mail message, as well as any
+           attachment thereto, for viruses. E-mail messages may not be
+           accurately replicated on other systems, or may be intercepted,
+           deleted or interfered with without the knowledge of the sender or the
+           intended recipient. We take no responsibility and have no liability
+           for any computer virus which may be transferred via this e-mail
+           message.<br /><br />
+           Go back to Main Page <a href='http://www.intercontinentaltrust.com'>http://www.intercontinentaltrust.com</a></pre>";
 
     mail( $to, $subject, $msg, $headers );
   }

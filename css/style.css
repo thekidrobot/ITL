@@ -913,7 +913,7 @@ p.news_read_more a {
 /*---- Content Overlay ----*/
 .content_overlay{
 	position: absolute;
-	right:132px;
+	right:134px;
 	z-index:1000;
 	background:#000;
 }
