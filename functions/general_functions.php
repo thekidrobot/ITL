@@ -253,30 +253,30 @@ function sendemail($to,$subject,$msg)
 	{
 	  $headers='Content-type: text/html; charset=iso-8859-1'."\r\n";
     $headers.='From:'. $email_admin ."\r\n";
-    
-    $msg.="<br />
-           <pre style='font-size:10px; text-align:justify;'> NOTICE TO RECIPIENT:
-           Confidential/Privileged Information may be contained in
-           this message and is intended only for the use of the intended
-           recipient(s). If you are not the intended recipient(s) of this
-           communication or responsible for delivery of the message to such
-           person, you may not copy, review, disseminate or disclose this
-           message to anyone and the taking of any action in reliance on this
-           communication is expressly prohibited. You are hereby notified that
-           you have received this message in error and requested to delete this
-           message and all of its attachments and to notify the sender by reply
-           email.<br /><br />
-           Every effort is made to keep our network free from viruses. You
-           should, however, review this e-mail message, as well as any
-           attachment thereto, for viruses. E-mail messages may not be
-           accurately replicated on other systems, or may be intercepted,
-           deleted or interfered with without the knowledge of the sender or the
-           intended recipient. We take no responsibility and have no liability
-           for any computer virus which may be transferred via this e-mail
-           message.<br /><br />
-           Go back to Main Page <a href='http://www.intercontinentaltrust.com'>http://www.intercontinentaltrust.com</a></pre>";
 
-    mail( $to, $subject, $msg, $headers );
+    $path_only = implode("/", (explode('/', $_SERVER["PHP_SELF"], -1)));
+
+    $img_path = $path_only.'/images/signature.gif';
+    
+    $msg.="<br /><br /><p><span style='font-size:10.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>Kind regards, </span>
+          <span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'><br />
+          Intercontinental Trust Ltd, Level 3, Alexander House, 35 Cybercity, Ebene, Mauritius<br />
+          <b>Tel:</b> (230) 403 0800 <b> | Fax:</b> (230) 403 0801 | | <b>E:</b>&nbsp;<a href='mailto:itl@intercontinentaltrust.com'>
+          itl@intercontinentaltrust.com</a> | <b>W:</b> <a href='http://www.intercontinentaltrust.com/'>www.intercontinentaltrust.com</a> | <b>BRN:</b> C07023546<br></span>
+          <i><span style='font-size:8.0pt;color:red'>An independent member of Baker Tilly International</span></i>
+          <i><span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>
+          <br></span></i><i><span style='font-size:8.0pt;color:red'><img src='$img_path' alt='ISAE 3402'></span></i>
+          <span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>
+          <br>Intercontinental Trust Ltd is regulated by the Financial Services Commission in Mauritius.&nbsp;
+          If you are not the intended recipient,please advise the sender immediately and delete this message. See
+          </span><span style=3D'color:navy'><a href='http://www.intercontinentaltrust.com/disclaimer.htm' >
+          <span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\"'>http://www.intercontinentaltrust.com/disclaimer.htm</span></a>
+          </span><span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>for further information</span>
+          <span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>on confidentiality and the risks inherent in electronic communication.</span></p>";
+
+    echo $msg;
+
+    //mail( $to, $subject, $msg, $headers );
   }
 }
 

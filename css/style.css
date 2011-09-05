@@ -199,10 +199,10 @@ p {
 	}
 	
 .core {
-	padding-right:16px;
+	padding-left:16px;
 	width:738px;
-	float:left;
-	}
+	float:right;
+	}	
 	
 .core_content {
 	width:708px;
@@ -913,7 +913,7 @@ p.news_read_more a {
 /*---- Content Overlay ----*/
 .content_overlay{
 	position: absolute;
-	right:134px;
+	right:133px;
 	z-index:1000;
 	background:#000;
 }
