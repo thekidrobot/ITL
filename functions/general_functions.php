@@ -274,9 +274,7 @@ function sendemail($to,$subject,$msg)
           </span><span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>for further information</span>
           <span style='font-size:8.0pt;font-family:\"Arial\",\"sans-serif\";color:blue'>on confidentiality and the risks inherent in electronic communication.</span></p>";
 
-    echo $msg;
-
-    //mail( $to, $subject, $msg, $headers );
+    mail( $to, $subject, $msg, $headers );
   }
 }
 
